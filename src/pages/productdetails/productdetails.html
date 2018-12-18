@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ProductdetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>productdetails</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="{{  detailsp.msg['0'].image }}" />
+  <p><strong>Product Name:</strong> {{ detailsp.msg["0"].product_name }}</p>
+  <p>Product Details: {{ detailsp.msg["0"].product_details }}</p>
+  <p>Product Price: ₹{{ detailsp.msg["0"].product_actual_price }}</p>
+  <p>Company Name: {{ detailsp.msg["0"].product_company }}</p>
+  <button (click)="addToCart()" ion-button icon-left small>
+    <ion-icon name="add"></ion-icon>
+    Add to Cart
+  </button>
+    <!-- <ul>
+        <li *ngFor="let product of detailsp">
+          {{ product.msg["0"].product_name }}
+        </li>
+    </ul> -->
+</ion-content>

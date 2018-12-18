@@ -1,0 +1,389 @@
+page-front {
+
+    .myphoto{
+    text-align: center;
+    background-color: #ffd832;
+    }
+
+
+  .myproducts{
+    text-align: center;
+    padding: 20px 2px;
+    background-color: #ffffff;
+  }
+  .myproducts ion-col.col {
+    background-color: whitesmoke;
+    /* border: 1px solid #6b6b6b; */
+    border-radius: 6px;
+    margin: 6px;
+    box-shadow: 0px 1px 4px 1px #6d6d6d;
+  }
+
+  ion-slide.myslider1 {
+    background-image: url(http://localhost:8100/assets/imgs/3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4px;
+    background-position: center center;
+  }
+  ion-slide.myslider2 {
+    background-image: url(http://localhost:8100/assets/imgs/6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4px;
+    background-position: center center;
+  }
+  ion-slide.myslider3 {
+    background-image: url(http://localhost:8100/assets/imgs/7.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4px;
+    background-position: center center;
+  }
+
+  h1.myph11
+  {
+    font-size: 20px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+  }
+
+  img.imgsection12 {
+    width: 60px;
+    margin-top: 8px;
+    border-radius: 200px;
+    height: 60px;
+  }
+
+  h4.mynewph22 {
+    font-size: 13px;
+    color: #000;
+  }
+   hr {
+    background-color: rgba(0, 0, 0, 0.51) !important;
+    width: 130px;
+    color: #000;
+    height: 1px;
+}
+
+    // .mycol11 ion-slides
+    // {
+    //   margin-top: 22px;
+    // }
+
+    .myphoto {
+        img{
+          text-align: center;
+        }
+        h3{
+          text-align: center;
+        }
+    }
+
+    .slide-zoom {
+      padding-bottom: 22px;
+    }
+
+    div.part1
+    {
+      text-align: center;
+    }
+
+    ion-grid.myslider22 {
+      padding: 0px;
+    }
+
+    ion-col.mycol11 {
+      padding: 0px;
+    }
+
+    h1.slide-title1
+    {
+    margin-bottom: 0px;
+    background-color: #000000;
+    padding: 11px 11px;
+    color: #e4e4e4;
+    margin-top: 31px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    }
+
+    p.mysliderp1
+    {
+      margin-top: 4px;
+      margin-bottom: 11px;
+      /* background-color: #000; */
+      color: #000000;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 4px 8px;
+      display: inline-block;
+      letter-spacing: 1px;
+      line-height: 2;
+      font-family: 'Acme', sans-serif;
+    }
+
+    img.slide-image1
+    {
+      max-height: 31%;
+      max-width: 31%;
+      margin: 2px 0;
+    }
+
+    img.slide-image11
+    {
+      max-height: 110px;
+      max-width: 110px;
+      margin: 2px 0;
+    }
+    ion-icon.myicon22.icon {
+      float: right;
+      font-size: 20px;
+      vertical-align: middle;
+      margin: 2px 6px;
+      color: #000000;
+    }
+
+    img.slide-image
+    {
+      max-height: 50%;
+      max-width: 60%;
+      margin: 20px 0;
+    }
+
+    h2.slide-title
+    {
+      background-color: black;
+      padding: 15px 6px;
+      color: #f5e801;
+      font-weight: bold;
+    }
+
+    .myphoto .imgsection1 img {
+      text-align: center;
+      width: 200px;
+      height: 200px;
+    }
+    .mycol11
+    {
+      text-align: center;
+      align-items: center;
+    }
+
+    .imgsection1{
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+    }
+
+    .mysection2
+    {
+    text-align: center;
+    background-color: #221e1e;
+    padding: 15px 0px 11px;
+    }
+
+    .myion2
+    {
+      font-size: 31px;
+      color: #fff;
+    }
+
+    .mysection2 p
+    {
+      color: #ffd832;
+      font-size: 13px;
+      letter-spacing: 0px;
+      font-weight: 600;
+    }
+
+    div.mydiv2 {
+      text-align: right;
+      display: inline-block;
+      float: right;
+      vertical-align: middle !important;
+      margin: 22px;
+  }
+
+  .mydiv1 {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+    h4.myh4
+    {
+      font-size: 22px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    h4.mynewh4
+    {
+      font-size: 40px;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .mysection3{
+      text-align: center;
+      background-color: #f2f2f2;
+      //margin-bottom: 22px;
+    }
+
+    h4.mynewh22
+    {
+      font-size: 19px;
+      color: #000000;
+      font-weight: 700;
+    }
+
+    .mysection3
+    {
+      p
+      {
+        font-family: 'Acme', sans-serif;
+        color: #000000;
+        font-size: 13px;
+        /* letter-spacing: 1px; */
+        line-height: 2;
+        font-weight: 600;
+      }
+    }
+
+    h4.mynewh11
+    {
+      color:#EB6D2F;
+      font-size: 26px;
+      font-weight: bolder;
+    }
+    h1.myphnew11
+    {
+      font-size: 20px;
+      margin-bottom: 11px;
+      margin-top: 11px;
+    }
+
+    .myava11
+    {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+      margin: 11px !important;
+    }
+    .myimg22
+    {
+      width: 20px !important;
+      height: 20px !important;
+    }
+    .mysection4
+    {
+      padding: 26px 4px;
+      background-color: #faf5e2;
+    }
+
+  ion-row.mycol22{
+      text-align: center;
+  }
+
+  ion-row.mybee2
+  {
+    text-align: right;
+  }
+
+  .myp1{
+    font-size: 26px;
+    margin-top: 4px;
+    font-weight: bold;
+  }
+
+  .myp2
+  {
+    margin-bottom: 6px;
+    font-size: 20px;
+  }
+
+  .mybtn22
+  {
+    background: #EB6D2F;
+    border-color: #EB6D2F;
+    text-transform: uppercase;
+  }
+
+  .myimgbee22
+  {
+  animation: mover 1s infinite alternate;
+  }
+
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-30px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-30px); }
+}
+
+.mysectiontest
+{
+  background-color: #ffd832;
+}
+
+p.mytest22
+{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.myitem22 ion-label
+{
+  white-space: normal;
+}
+
+// .mysection11
+// {
+//   background-color: #f5f5f5;
+// }
+
+.mysection6
+{
+  background-color: #212020;
+  padding: 15px 2px;
+}
+
+.mycol33 p
+{
+  color: #ababab;
+
+}
+
+.mynewh33
+{
+  font-size: 26px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.mtmargin11
+{
+  margin-top: 31px;
+}
+
+ion-icon.myicons22 {
+    color: #F57F15;
+    font-size: 40px;
+}
+
+.mycom22
+{
+    text-align: center;
+}
+
+.mycom22 p
+{
+  color: #ababab;
+
+}
+}

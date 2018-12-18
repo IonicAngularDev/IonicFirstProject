@@ -1,0 +1,55 @@
+page-product {
+
+  img.slide-image11
+    {
+      max-height: 40%;
+      max-width: 40%;
+      margin: 2px 0;
+    }
+
+    .myproducts{
+      text-align: center;
+      padding: 20px 2px;
+      background-color: #ffd832;
+    }
+    .myproducts ion-col.col {
+        border: 1px solid #6b6b6b;
+        margin: 15px;
+        box-shadow: 0 0 4px black;
+    }
+    img.imgsection12 {
+      width: 70px;
+      border-radius: 200px;
+      height: 70px;
+    }
+
+    h4.mynewph22 {
+      font-size: 15px;
+    }
+
+  div.mydiv2 {
+    text-align: right;
+    display: inline-block;
+    float: right;
+    vertical-align: middle !important;
+    margin: 29px 22px;
+}
+
+.mydiv1 {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+img.slide-image11
+    {
+      max-height: 130px;
+      max-width: 130px;
+      margin: 2px 0;
+    }
+ion-icon.myicon22.icon {
+      float: right;
+      vertical-align: middle;
+      margin: 2px 11px;
+      color: #EB6D2F;
+}
+}
