@@ -8,7 +8,7 @@ page-front {
 
   .myproducts{
     text-align: center;
-    padding: 20px 2px;
+    padding: 20px 2px 2px;
     background-color: #ffffff;
   }
   .myproducts ion-col.col {
@@ -20,25 +20,30 @@ page-front {
   }
 
   ion-slide.myslider1 {
-    background-image: url(http://localhost:8100/assets/imgs/3.jpg);
+    background-image: url(http://localhost:8100/assets/imgs/6slide1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 4px;
     background-position: center center;
   }
   ion-slide.myslider2 {
-    background-image: url(http://localhost:8100/assets/imgs/6.jpg);
+    background-image: url(http://localhost:8100/assets/imgs/6slide21.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 4px;
     background-position: center center;
   }
   ion-slide.myslider3 {
-    background-image: url(http://localhost:8100/assets/imgs/7.jpg);
+    background-image: url(http://localhost:8100/assets/imgs/6slide31.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 4px;
     background-position: center center;
+  }
+
+  ion-row.mytestcol22.row {
+    box-shadow: 0px 1px 4px 1px #6d6d6d;
+    background-color: #efefef;
   }
 
   h1.myph11
@@ -46,6 +51,8 @@ page-front {
     font-size: 20px;
     margin-bottom: 2px;
     margin-top: 2px;
+    font-family: 'Aleo', serif;
+    font-weight: 700;
   }
 
   img.imgsection12 {
@@ -63,7 +70,7 @@ page-front {
     background-color: rgba(0, 0, 0, 0.51) !important;
     width: 130px;
     color: #000;
-    height: 1px;
+    height: 1px !important;
 }
 
     // .mycol11 ion-slides
@@ -172,29 +179,41 @@ page-front {
     }
 
     .imgsection1{
-      border-radius: 50%;
-      width: 110px;
-      height: 110px;
+      //border-radius: 50%;
+      width: 51px;
+      height: 51px;
     }
 
+    ion-col.mycol33.col {
+      text-align: center;
+    }
     .mysection2
     {
     text-align: center;
-    background-color: #221e1e;
-    padding: 15px 0px 11px;
+    background-color: #000000;
+    margin-top: 11px;
+    padding: 15px;
+    }
+
+    .mysocialicons22
+    {
+      border-top: 1px solid #000;
+      background-color: #ffffff;
+      padding: 2px;
     }
 
     .myion2
     {
-      font-size: 31px;
-      color: #fff;
+      font-size: 22px;
+      color: #ffffff;
     }
 
     .mysection2 p
     {
-      color: #ffd832;
+      color: #ffffff;
       font-size: 13px;
       letter-spacing: 0px;
+      margin: 0px;
       font-weight: 600;
     }
 
@@ -213,8 +232,9 @@ page-front {
 
     h4.myh4
     {
-      font-size: 22px;
-      color: #fff;
+      font-size: 13px;
+      color: #ffffff;
+      margin-bottom: 0px;
       font-weight: 700;
     }
 
@@ -227,14 +247,16 @@ page-front {
 
     .mysection3{
       text-align: center;
-      background-color: #f2f2f2;
+      background-color: #ffffff;
       //margin-bottom: 22px;
     }
 
     h4.mynewh22
     {
-      font-size: 19px;
+      font-size: 20px;
+      margin-bottom: 0px;
       color: #000000;
+      font-family: 'Aleo', serif;
       font-weight: 700;
     }
 
@@ -306,8 +328,11 @@ page-front {
 
   .mybtn22
   {
+    border-radius: 0px;
+    font-size: 13px;
     background: #EB6D2F;
     border-color: #EB6D2F;
+    margin-top: 26px;
     text-transform: uppercase;
   }
 
@@ -332,7 +357,7 @@ page-front {
 
 p.mytest22
 {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -372,10 +397,37 @@ p.mytest22
 }
 
 ion-icon.myicons22 {
-    color: #F57F15;
-    font-size: 40px;
+  color: #000000;
+  font-size: 26px;
+}
+.new22 {
+  padding: 2px 6px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.inner22 {
+  border-radius: 11px;
+  padding: 15px;
+  background-color: #f2f2f2;
+  margin: 7px 4px;
+    /* border: 1px solid; */
+  display: inline-block;
+  box-shadow: 0px 1px 4px 1px #6d6d6d;
 }
 
+.mynewh12
+{
+  font-size: 13px;
+  // margin-top: 2px;
+  margin-bottom: 0px;
+  color: #000000;
+  font-weight: 700;
+}
+.myhr22
+{
+  width: 74px;
+  height: 1px;
+}
 .mycom22
 {
     text-align: center;
@@ -385,5 +437,10 @@ ion-icon.myicons22 {
 {
   color: #ababab;
 
+}
+
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+  color: #000;
+  background-color: transparent;
 }
 }

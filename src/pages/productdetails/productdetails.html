@@ -14,15 +14,17 @@
 
 
 <ion-content padding>
-  <img src="{{  detailsp.msg['0'].image }}" />
-  <p><strong>Product Name:</strong> {{ detailsp.msg["0"].product_name }}</p>
-  <p>Product Details: {{ detailsp.msg["0"].product_details }}</p>
-  <p>Product Price: ₹{{ detailsp.msg["0"].product_actual_price }}</p>
-  <p>Company Name: {{ detailsp.msg["0"].product_company }}</p>
-  <button (click)="addToCart()" ion-button icon-left small>
+  <div *ngFor="let product of this.pdeta">
+  <img src="{{product.image}}" />
+  <p><strong>Product Name:</strong> {{ product.product_name }}</p>
+  <p>Product Details: {{ product.product_details }}</p>
+  <p>Product Price: ₹{{ product.product_actual_price }}</p>
+  <p>Company Name: {{ product.product_company }}</p>
+  <button (click)="addToCart(product)" ion-button icon-left small>
     <ion-icon name="add"></ion-icon>
     Add to Cart
   </button>
+</div>
     <!-- <ul>
         <li *ngFor="let product of detailsp">
           {{ product.msg["0"].product_name }}

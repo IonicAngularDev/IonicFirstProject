@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { CartProvider } from '../../providers/cart/cart';
+import { CartPage } from '../cart/cart';
 
 /**
  * Generated class for the ProductdetailsPage page.
@@ -14,24 +16,76 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'productdetails.html',
 })
 export class ProductdetailsPage {
-  detailsp: any;
+  detailsp: any = [];
+  pdeta: any = [];
   items: Object[] = []
   itemsInCart: Object[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.detailsp = navParams.get('productdet');
+  selectProduct: any;
+  productCount: number = 1;
+  cartItems: any[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public toastCtrl: ToastController) {
+    this.detailsp = this.navParams.get('productdet');
+    this.pdeta = this.detailsp.msg;
     console.log(this.detailsp);
+    if (this.navParams.get("productdet")) {
+      window.localStorage.setItem('ProductdetailsPage', JSON.stringify(this.navParams.get("productdet")));
+    }
+  }
+
+  ionViewDidEnter(){
+    this.getSingleProduct();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductdetailsPage');
+    this.selectProduct = this.navParams.get("productdet");
+    this.cartService.getCartItems().then((val) => {
+      this.cartItems = val;
+    })
   }
 
-  addToCart()
-  {
-    console.log('Added');
-    // item.quantityInCart += 1;
-    // this.itemsInCart.push(item);
-    // console.log(this.itemsInCart);
-    // localStorage.setItem('cart', JSON.stringify(this.itemsInCart));
+  getSingleProduct() {
+    if (window.localStorage.getItem('productdet') != 'undefined') {
+      this.selectProduct = JSON.parse(window.localStorage.getItem('productdet'))
+    }
   }
+  addToCart(detailsp) {
+    var productPrice = detailsp.product_actual_price;
+    let cartProduct = {
+      product_id: detailsp.id,
+      name: detailsp.product_name,
+      image: detailsp.image,
+      //count: this.productCount,
+      productPrice: detailsp.product_actual_price,
+      totalPrice: parseInt(productPrice),
+    };
+    console.log(cartProduct);
+    //this.presentToast(productdet.product_name);
+
+    this.cartService.addToCart(cartProduct).then((val) => {
+      this.presentToast(cartProduct.name);
+    });
+  }
+
+
+  presentToast(name: any) {
+    let toast = this.toastCtrl.create({
+      message: `${name} has been added to cart`,
+      showCloseButton: true,
+      closeButtonText: 'View Cart'
+    });
+
+    toast.onDidDismiss(() => {
+      this.navCtrl.push(CartPage);
+    });
+    toast.present();
+  }
+  // addToCart()
+  // {
+  //   console.log('Added');
+  //   item.quantityInCart += 1;
+  //   this.itemsInCart.push(item);
+  //   console.log(this.itemsInCart);
+  //   localStorage.setItem('cart', JSON.stringify(this.itemsInCart));
+  // }
 }

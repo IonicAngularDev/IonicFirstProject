@@ -26,4 +26,6 @@ export class FrontPage {
     console.log('ionViewDidLoad FrontPage');
   }
 
+  
+
 }

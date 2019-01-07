@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
+//import {Http, Headers} from '@angular/http';
 //import { HttpModule } from '@angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Response } from '@angular/http';
@@ -21,7 +21,8 @@ export class RestapiProvider {
 
   token:any;
   //url: string = 'http://192.168.1.10/honeybee/HoneyApi';
-  apiUrl2 = 'http://192.168.1.10/honeybee/HoneyApi/getproducts/';
+  apiUrl2 = 'http://beegoodhoney.in/HoneyApi/getproducts/';
+  apiUrl3 = 'http://beegoodhoney.in/HoneyApi/category';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
@@ -47,7 +48,7 @@ export class RestapiProvider {
     //     'Access-Control-Allow-Headers' : 'Content-Type; Authorization',
     //     'Content-Type': 'application/json; charset=utf-8',
     //     'Access-Control-Allow-Credentials' : 'true',
-    //     //'Authorization': 'Bearer ' + this.token,
+    //     'Authorization': 'Bearer ' + this.token,
     //  });
 
   this.http.post(apiUrl + type, JSON.stringify(credentials), {headers: headers})
@@ -58,6 +59,10 @@ export class RestapiProvider {
         });
     });
   }
+
+  // fnCallApi(methodTYpe='POST',paramObj={}){
+
+  // }
 
   getproductdetails($id) {
     //console.log($id);
@@ -70,7 +75,25 @@ export class RestapiProvider {
       headers.append('content-type','application/json');
 
     this.http.get(this.apiUrl2+$id, {headers: headers}).subscribe(data => {
-    resolve(data);},
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+  }
+
+  getproductcategories()
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl3, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
     err => {
     console.log(err);
     });

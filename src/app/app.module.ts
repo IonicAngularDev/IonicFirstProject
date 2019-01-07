@@ -10,6 +10,8 @@ import { FrontPage } from './../pages/front/front';
 import { FooterPage } from './../pages/footer/footer';
 import { ProductPage } from './../pages/product/product';
 import { ProductdetailsPage } from './../pages/productdetails/productdetails';
+import { CartPage } from './../pages/cart/cart';
+import { CheckoutPage } from './../pages/checkout/checkout';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RestapiProvider } from '../providers/restapi/restapi';
 import { FootCardComponent } from '../components/foot-card/foot-card';
 import { ComponentsModule } from '../components/components.module'
+import { CartProvider } from '../providers/cart/cart';
 
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,8 @@ import { ComponentsModule } from '../components/components.module'
     FrontPage,
     FooterPage,
     ProductPage,
+    CartPage,
+    CheckoutPage,
     ProductdetailsPage,
     //FootCardComponent
   ],
@@ -35,7 +41,8 @@ import { ComponentsModule } from '../components/components.module'
     BrowserModule,
     HttpClientModule,
     ComponentsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,6 +53,8 @@ import { ComponentsModule } from '../components/components.module'
     FrontPage,
     FooterPage,
     ProductPage,
+    CartPage,
+    CheckoutPage,
     ProductdetailsPage,
     FootCardComponent
   ],
@@ -53,7 +62,8 @@ import { ComponentsModule } from '../components/components.module'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestapiProvider
+    RestapiProvider,
+    CartProvider
   ]
 })
 export class AppModule {}

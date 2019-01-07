@@ -1,18 +1,63 @@
 <ion-menu [content]="content">
-  <ion-header>
+  <!-- <ion-header>
     <ion-toolbar>
       <ion-title>HoneyBee</ion-title>
     </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
+  </ion-header> -->
+  <ion-content class="mymenu22">
+    <!-- <ion-grid class="formenu2">
+      <img class="imgsection12" src="assets/imgs/def_face.jpg" />
+	    <h1 class="mymenuh2">Welcome User</h1>
+    </ion-grid> -->
+  <ion-grid class="formenu2">
+    <ion-row align-items-center class="mymenuicons22">
+      <ion-col col-4>
+        <img class="imgsection12" src="assets/imgs/hipster-man.jpg" />
+      </ion-col>
+      <ion-col class="mycols11" col-8>
+        <h1 class="mymenuh2">Welcome User</h1>
+        <ion-icon name="log-in" class="myicons22"></ion-icon> Login/SignUp
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row align-items-center class="mymenuicons22">
+      <ion-col class="mycols11">
+          <ion-icon name="log-in" class="myicons22"></ion-icon>
+        Login/SignUp
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="menu2">
+        <ion-icon name="{{p.name2}}"></ion-icon> {{p.title}}
       </button>
     </ion-list>
+    <!-- <button menuClose ion-item class="btn22">
+        <ion-icon name="log-out"></ion-icon> Logout
+    </button> -->
+    <ion-grid class="formenu11">
+      <h1 class="mymenuh11">OTHERS</h1>
+    </ion-grid>
+    <ion-list>
+      <button menuClose ion-item class="menu2">
+        <ion-icon name="settings"></ion-icon> Manage Account
+      </button>
+      <button menuClose ion-item class="menu2">
+        <ion-icon name="people"></ion-icon> About Us
+      </button>
+      <button menuClose ion-item class="menu2">
+        <ion-icon name="create"></ion-icon> Blog
+      </button>
+      <button menuClose ion-item class="menu2">
+        <ion-icon name="contacts"></ion-icon> Contact Us
+      </button>
+      <!-- <button menuClose ion-item class="menu2">
+        <ion-icon name="log-in"></ion-icon> Sign Up
+      </button>
+      <button menuClose ion-item class="menu2">
+        <ion-icon name="log-out"></ion-icon> Sign Out
+      </button> -->
+    </ion-list>
   </ion-content>
-
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

@@ -13,7 +13,7 @@
     <div class="mydiv2">
     <ion-icon name="search" class="myicon22"></ion-icon>
     <ion-icon name="heart" class="myicon22"></ion-icon>
-    <ion-icon name="cart" class="myicon22"></ion-icon>
+    <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
     </div>
   </ion-navbar>
 </ion-header>
@@ -23,24 +23,28 @@
   <ion-grid class="myproducts">
     <h1 class="myph11">Our Product Categories</h1>
     <ion-row align-items-center>
-      <ion-col (click)="getproducts(1)">
-        <img class="imgsection12" src="assets/imgs/dark-honey2.jpg" />
-        <h4 class="mynewph22">Dark Honey</h4>
+        <ion-col col-1>
+        </ion-col>
+      <ion-col (click)="getproducts(1)" *ngFor="let pcat of this.pcatg" col-5>
+        <img class="imgsection12" src="{{pcat.category_img}}" />
+        <h4 class="mynewph22">{{pcat.category_name}}</h4>
       </ion-col>
-      <ion-col>
+      <ion-col col-1>
+      </ion-col>
+      <!-- <ion-col>
         <img class="imgsection12" src="assets/imgs/eucalyptus-honey2.jpg" />
         <h4 class="mynewph22">Eucalyptus Honey</h4>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
-    <ion-row align-items-center>
+    <!-- <ion-row align-items-center>
         <ion-col>
           <img class="imgsection12" src="assets/imgs/light-honey3-2.jpg" />
-          <h4 class="mynewph22">Light Forest Honey</h4>
+          <h4 class="mynewph22">Light Forest Honey {{categories?.msg?.cat[0].category_name}}</h4>
         </ion-col>
         <ion-col>
             <img class="imgsection12" src="assets/imgs/organic-honey2-2.jpg" />
             <h4 class="mynewph22">Organic Honey</h4>
         </ion-col>
-    </ion-row>
+    </ion-row> -->
 </ion-grid>
 </ion-content>
