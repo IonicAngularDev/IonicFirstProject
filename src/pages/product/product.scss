@@ -13,9 +13,13 @@ page-product {
       background-color: #ffd832;
     }
     .myproducts ion-col.col {
-        border: 1px solid #6b6b6b;
+        border-radius: 6px;
+        margin: 6px;
         //margin: 15px;
-        box-shadow: 0 0 4px black;
+        background-color: whitesmoke;
+        box-shadow: 0px 1px 4px 1px #6d6d6d;
+        // width: 46%;
+        // max-width: 46%;
     }
     img.imgsection12 {
       width: 70px;
@@ -24,7 +28,7 @@ page-product {
     }
 
     h4.mynewph22 {
-      font-size: 15px;
+      font-size: 13px;
     }
 
   div.mydiv2 {
@@ -32,7 +36,7 @@ page-product {
     display: inline-block;
     float: right;
     vertical-align: middle !important;
-    margin: 29px 22px;
+    margin: 22px;
 }
 
 .mydiv1 {
@@ -42,14 +46,18 @@ page-product {
 
 img.slide-image11
     {
-      max-height: 130px;
-      max-width: 130px;
+      max-height: 110px;
+      max-width: 110px;
       margin: 2px 0;
     }
 ion-icon.myicon22.icon {
-      float: right;
-      vertical-align: middle;
-      margin: 2px 11px;
-      color: #EB6D2F;
+  float: right;
+  font-size: 20px;
+  vertical-align: middle;
+  margin: 2px 6px;
+  color: #000000;
+}
+ion-row.mynewr11.row {
+  padding: 11px;
 }
 }

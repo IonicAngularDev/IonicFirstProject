@@ -52,7 +52,13 @@
   <ion-grid class="myproducts">
     <h1 class="myph11">Product Categories</h1>
     <hr />
-    <ion-row align-items-center style="padding: 2px 40px;">
+    <ion-row align-items-center justify-content-center class="mynewr11" style="padding: 2px 33px;">
+        <ion-col (click)="getproducts(pcat.id)" *ngFor="let pcat of this.pcatg" col-5 class="mynewcol22">
+          <img class="imgsection12" src="{{pcat.category_img}}" />
+          <h4 class="mynewph22">{{pcat.category_name}}</h4>
+        </ion-col>
+    </ion-row>
+    <!-- <ion-row align-items-center style="padding: 2px 40px;">
       <ion-col>
         <img class="imgsection12" src="assets/imgs/dark-honey2.jpg" />
         <h4 class="mynewph22">Dark Honey</h4>
@@ -65,24 +71,23 @@
     <ion-row align-items-center style="padding: 2px 40px;">
         <ion-col>
           <img class="imgsection12" src="assets/imgs/light-honey3-2.jpg" />
-          <h4 class="mynewph22">Light Forest Honey</h4>
+         <h4 class="mynewph22">Light Forest Honey</h4>
         </ion-col>
         <ion-col>
             <img class="imgsection12" src="assets/imgs/organic-honey2-2.jpg" />
             <h4 class="mynewph22">Organic Honey</h4>
         </ion-col>
-    </ion-row>
+    </ion-row>  -->
 </ion-grid>
   <ion-grid class="mysection3">
       <h4 class="mynewh22">Merchandise</h4>
       <hr class="myhr22">
       <div class="new22">
-
-       <div class="inner22">
-          <img class="imgsection1" src="assets/imgs/honeycomb (1).png" />
-          <h4 class="mynewh12">Tess</h4>
+       <div class="inner22" (click)="getmerchproducts(pmat.id)" *ngFor="let pmat of this.mcat">
+          <img class="imgsection1" src="{{pmat.category_img}}" />
+          <h4 class="mynewh12">{{pmat.category_name}}</h4>
        </div>
-       <div class="inner22">
+       <!-- <div class="inner22">
           <img class="imgsection1" src="assets/imgs/bee.png" />
          <h4 class="mynewh12">Caps</h4>
        </div>
@@ -93,7 +98,7 @@
        <div class="inner22">
           <img class="imgsection1" src="assets/imgs/beehive.png" />
           <h4 class="mynewh12">Water Bottle</h4>
-       </div>
+       </div> -->
       </div>
     <!-- <ion-slides pager>
       <ion-slide>
@@ -131,12 +136,12 @@
       <h4 class="mynewh22">Total Honey Sold</h4>
       <hr />
     <ion-row align-items-center class="mysection2">
-      <ion-col>
+      <ion-col *ngFor="let ptot of this.pcount">
         <ion-icon name="flower" class="myion2"></ion-icon>
-        <h4 class="myh4">645 (L)</h4>
-        <p>Total</p>
+        <p>{{this.ptot.sold}} (ML)</p>
+        <h4 class="myh4">{{this.ptot.category}}</h4>
       </ion-col>
-      <ion-col>
+      <!-- <ion-col>
         <ion-icon name="color-fill" class="myion2"></ion-icon>
         <h4 class="myh4">563 (L)</h4>
         <p>Dark</p>
@@ -150,7 +155,7 @@
         <ion-icon name="star" class="myion2"></ion-icon>
         <h4 class="myh4">1045 (L)</h4>
         <p>Eucalyptus</p>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
 </ion-grid>
 <!-- <ion-grid>

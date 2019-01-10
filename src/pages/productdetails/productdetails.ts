@@ -18,18 +18,25 @@ import { CartPage } from '../cart/cart';
 export class ProductdetailsPage {
   detailsp: any = [];
   pdeta: any = [];
-  items: Object[] = []
+  items: Object[] = [];
   itemsInCart: Object[] = [];
   selectProduct: any;
+  //heart_clicked: boolean;
+  totalPrice: any;
   productCount: number = 1;
+  //count: number = 1;
   cartItems: any[];
   constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public toastCtrl: ToastController) {
     this.detailsp = this.navParams.get('productdet');
+    // this.pdeta.forEach(product => product.count = 1);
     this.pdeta = this.detailsp.msg;
+    this.pdeta.forEach(product => product.count = 1);
+    //this.pdeta.forEach(product => product.heart_clicked = true);
     console.log(this.detailsp);
     if (this.navParams.get("productdet")) {
       window.localStorage.setItem('ProductdetailsPage', JSON.stringify(this.navParams.get("productdet")));
     }
+
   }
 
   ionViewDidEnter(){
@@ -49,15 +56,17 @@ export class ProductdetailsPage {
       this.selectProduct = JSON.parse(window.localStorage.getItem('productdet'))
     }
   }
+
   addToCart(detailsp) {
-    var productPrice = detailsp.product_actual_price;
+    var productPrice = this.productCount * parseInt(detailsp.product_actual_price);
     let cartProduct = {
       product_id: detailsp.id,
       name: detailsp.product_name,
       image: detailsp.image,
-      //count: this.productCount,
-      productPrice: detailsp.product_actual_price,
-      totalPrice: parseInt(productPrice),
+      count: detailsp.count,
+      //heart_clicked: detailsp.heart_clicked,
+      productPrice: this.productCount * parseInt(detailsp.product_actual_price),
+      totalPrice: productPrice,
     };
     console.log(cartProduct);
     //this.presentToast(productdet.product_name);
@@ -66,7 +75,6 @@ export class ProductdetailsPage {
       this.presentToast(cartProduct.name);
     });
   }
-
 
   presentToast(name: any) {
     let toast = this.toastCtrl.create({
@@ -88,4 +96,45 @@ export class ProductdetailsPage {
   //   console.log(this.itemsInCart);
   //   localStorage.setItem('cart', JSON.stringify(this.itemsInCart));
   // }
+
+  // decreaseProductCount(product) {
+  //   if (product.count > 1) {
+  //     product.count--;
+  //   }
+  // }
+
+  // incrementProductCount(product) {
+  //   product.count++;
+  // }
+
+  decreaseProductCount(product) {
+    if(typeof product.count === 'undefined') {
+       product.count = 1;
+    }
+    if (product.count > 1) {
+      product.count--;
+    }
+  }
+
+  incrementProductCount(product) {
+    if(typeof product.count === 'undefined') {
+       product.count = 1;
+    }
+    product.count++;
+  }
+
+  // addtoWishlist(a,product){
+  //   console.log(a);
+  //   if(a==true){
+  //     product.heart_clicked=false;
+  //   }else
+  //   {
+  //     product.heart_clicked=true;
+  //   }
+  // }
+
+  toggleOnWishlist(product){
+    product.onWishlist = !product.onWishlist;
+  }
+
 }

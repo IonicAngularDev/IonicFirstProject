@@ -36,23 +36,21 @@
 
     <footer class="content-foot">
       <ion-row class="item-count">
-          <!-- <ion-col class="qty">
-              <button (click)="decreaseProductCount()" clear ion-button small color="dark">
+          <ion-col class="qty">
+              <button (click)="decreaseProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
                 -
               </button>
-              <button ion-button small clear color="dark">
-                {{itm.count}}
+              <button ion-button small clear color="dark" class="mewbtn11">
+                {{itm?.count}}
               </button>
-              <button (click)="incrementProductCount()" clear ion-button small color="dark">
+              <button (click)="incrementProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
                 +
               </button>
-              {{itm.productPrice}}
-          </ion-col> -->
-
+              <!-- {{itm.productPrice}} -->
+          </ion-col>
             <ion-col class="price">
-              Price: ₹{{itm.productPrice}}
+               ₹{{itm.productPrice * itm.count}}
             </ion-col>
-
             <ion-col class="mynewc11">
               <button (click)="removeItem(itm)" class="mybtn22">
                 Remove
@@ -69,7 +67,7 @@
     <ion-row>
       <ion-col class="addCart" (click)="checkpage()">
         <button color="secondary" full="" ion-button="" round="true">
-          {{totalAmount}}     Checkout
+          {{totalAmount}} Checkout
         </button>
       </ion-col>
     </ion-row>

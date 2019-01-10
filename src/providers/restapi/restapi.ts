@@ -23,6 +23,9 @@ export class RestapiProvider {
   //url: string = 'http://192.168.1.10/honeybee/HoneyApi';
   apiUrl2 = 'http://beegoodhoney.in/HoneyApi/getproducts/';
   apiUrl3 = 'http://beegoodhoney.in/HoneyApi/category';
+  apiUrl4 = 'http://beegoodhoney.in/HoneyApi/count_sold_item';
+  apiUrl5 = 'http://beegoodhoney.in/HoneyApi/Merchand_category';
+  apiUrl6 = 'http://beegoodhoney.in/HoneyApi/MerchandiseProducts/';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
@@ -82,6 +85,24 @@ export class RestapiProvider {
     });
   }
 
+  getmerchproductdetails($imd) {
+    //console.log($id);
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl6+$imd, {headers: headers}).subscribe(data => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+  }
+
   getproductcategories()
   {
     return new Promise(resolve => {
@@ -93,6 +114,42 @@ export class RestapiProvider {
       headers.append('content-type','application/json');
 
     this.http.get(this.apiUrl3, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+  }
+
+  getcount()
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl4, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+  }
+
+  getmerchcat()
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl5, {headers: headers}).subscribe((data: Response) => {
       resolve(data);},
     err => {
     console.log(err);

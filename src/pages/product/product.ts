@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { ProductdetailsPage } from './../productdetails/productdetails';
 import { CartPage } from './../cart/cart';
@@ -13,7 +13,7 @@ export class ProductPage {
   users: any;
   categories: any = [];
   pcatg: any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestapiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
   //this.getproducts($id);
   this.getcategories();
   }
@@ -30,12 +30,17 @@ export class ProductPage {
 
   getcategories()
   {
+    let loader = this.loadingCtrl.create({
+      content: "Wait.."
+    });
+    loader.present();
     this.restProvider.getproductcategories()
       .then(data => {
       this.categories = data;
       this.pcatg = this.categories.msg.cat;
       console.log(this.categories.msg);
       });
+      loader.dismiss();
   }
 
   getproducts($id)

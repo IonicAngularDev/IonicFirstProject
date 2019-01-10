@@ -179,9 +179,9 @@ page-front {
     }
 
     .imgsection1{
-      //border-radius: 50%;
-      width: 51px;
-      height: 51px;
+      border-radius: 80px;
+      width: 60px;
+      height: 60px;
     }
 
     ion-col.mycol33.col {
@@ -206,6 +206,7 @@ page-front {
     {
       font-size: 22px;
       color: #ffffff;
+      margin-bottom: 15px;
     }
 
     .mysection2 p
@@ -236,6 +237,8 @@ page-front {
       color: #ffffff;
       margin-bottom: 0px;
       font-weight: 700;
+      margin-top: 6px;
+      height: 31px;
     }
 
     h4.mynewh4

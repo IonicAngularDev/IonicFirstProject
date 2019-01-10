@@ -7,24 +7,43 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>productdetails</ion-title>
+    <ion-title>Products</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div *ngFor="let product of this.pdeta">
-  <img src="{{product.image}}" />
-  <p><strong>Product Name:</strong> {{ product.product_name }}</p>
-  <p>Product Details: {{ product.product_details }}</p>
-  <p>Product Price: ₹{{ product.product_actual_price }}</p>
-  <p>Company Name: {{ product.product_company }}</p>
-  <button (click)="addToCart(product)" ion-button icon-left small>
-    <ion-icon name="add"></ion-icon>
+<ion-row align-items-center justify-content-center class="mynewr11">
+ <ion-col *ngFor="let product of this.pdeta" col-5 class="mynewcol22">
+  <img class="myimg11" src="{{product.image}}" />
+  <p>{{ product.product_name }}</p>
+  <!-- <p>Product Details: {{ product.product_details }}</p> -->
+  <p><strong>Price:</strong> ₹{{ product.product_actual_price * product?.count }}</p>
+  <!-- <p>Company Name: {{ product.product_company }}</p> -->
+  <ion-col class="qty">
+    <button (click)="decreaseProductCount(product)" clear ion-button small color="dark" class="mynewbtn11">
+      -
+    </button>
+    <button ion-button small clear color="dark" class="mynewbtn11">
+      {{product?.count}}
+    </button>
+    <button (click)="incrementProductCount(product)" clear ion-button small color="dark" class="mynewbtn11">
+      +
+    </button>
+</ion-col>
+  <button class="mybtn11" (click)="addToCart(product)" ion-button small>
     Add to Cart
   </button>
-</div>
+  <button ion-button icon-only class="wish-list-btn card" (click)="toggleOnWishlist(product)" color="light" class="mywisbtn11">
+    <ion-icon [name]="product.onWishlist ? 'ios-heart' : 'heart-outline' "></ion-icon>
+  </button>
+  <!-- <button ion-button icon-only class="wish-list-btn card" *ngIf="heart_clicked" (click)="addtoWishlist(false,product)" color="light" class="mywisbtn11">
+    <ion-icon name="ios-heart"></ion-icon>
+  </button> -->
+ </ion-col>
+
+</ion-row>
     <!-- <ul>
         <li *ngFor="let product of detailsp">
           {{ product.msg["0"].product_name }}

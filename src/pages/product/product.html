@@ -11,9 +11,9 @@
     </button>
     <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11"/></div>
     <div class="mydiv2">
-    <ion-icon name="search" class="myicon22"></ion-icon>
-    <ion-icon name="heart" class="myicon22"></ion-icon>
     <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
+    <ion-icon name="heart" class="myicon22"></ion-icon>
+    <ion-icon name="search" class="myicon22"></ion-icon>
     </div>
   </ion-navbar>
 </ion-header>
@@ -22,15 +22,15 @@
 <ion-content no-padding>
   <ion-grid class="myproducts">
     <h1 class="myph11">Our Product Categories</h1>
-    <ion-row align-items-center>
-        <ion-col col-1>
-        </ion-col>
-      <ion-col (click)="getproducts(1)" *ngFor="let pcat of this.pcatg" col-5>
+    <ion-row align-items-center justify-content-center class="mynewr11">
+        <!-- <ion-col col-1>
+        </ion-col> -->
+      <ion-col (click)="getproducts(pcat.id)" *ngFor="let pcat of this.pcatg" col-5 class="mynewcol22">
         <img class="imgsection12" src="{{pcat.category_img}}" />
         <h4 class="mynewph22">{{pcat.category_name}}</h4>
       </ion-col>
-      <ion-col col-1>
-      </ion-col>
+      <!-- <ion-col col-1>
+      </ion-col> -->
       <!-- <ion-col>
         <img class="imgsection12" src="assets/imgs/eucalyptus-honey2.jpg" />
         <h4 class="mynewph22">Eucalyptus Honey</h4>
@@ -46,5 +46,25 @@
             <h4 class="mynewph22">Organic Honey</h4>
         </ion-col>
     </ion-row> -->
+
 </ion-grid>
+
+<!-- <ion-grid>
+  <ion-row align-items-center class="mysocialicons22">
+    <ion-col class="mycol33">
+      <ion-icon name="home" class="myicons22"></ion-icon>
+    </ion-col>
+    <ion-col class="mycol33">
+      <ion-icon name="people" class="myicons22"></ion-icon>
+    </ion-col>
+    <ion-col class="mycol33">
+      <ion-icon name="create" class="myicons22"></ion-icon>
+    </ion-col>
+    <ion-col class="mycol33">
+        <ion-icon name="contacts" class="myicons22"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-grid> -->
+
+
 </ion-content>
