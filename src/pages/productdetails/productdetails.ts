@@ -65,6 +65,8 @@ export class ProductdetailsPage {
       image: detailsp.image,
       count: detailsp.count,
       //heart_clicked: detailsp.heart_clicked,
+      disprice: detailsp.product_price,
+      discountp: detailsp.discount,
       productPrice: this.productCount * parseInt(detailsp.product_actual_price),
       totalPrice: productPrice,
     };

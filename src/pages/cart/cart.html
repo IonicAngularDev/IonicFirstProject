@@ -21,9 +21,38 @@
 
     </ion-item>
   </ion-list> -->
+  <ion-list *ngFor="let itm of cartItems" class="myitem11">
+    <ion-item>
+      <ion-thumbnail item-start >
+        <img src="{{itm.image}}">
+      </ion-thumbnail>
+      <h2>{{itm.name}}</h2>
+      <p>Actual Price:
+        <span [ngStyle]="itm?.discountp === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">
+          ₹{{itm.disprice * itm.count}}
+        </span>
+      </p>
+      <p>Discount: {{itm?.discountp}}%</p>
+      <ion-row class="item-count">
+        <ion-col class="qty">
+            <button (click)="decreaseProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
+              -
+            </button>
+            <button ion-button small clear color="dark" class="mewbtn11">
+              {{itm?.count}}
+            </button>
+            <button (click)="incrementProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
+              +
+            </button>
+            <!-- {{itm.productPrice}} -->
+        </ion-col>
+      </ion-row>
+      <p>Discounted Price: ₹{{itm.productPrice * itm.count}}</p>
+      <button ion-button icon-only clear item-end (click)="removeItem(itm)"><ion-icon class="mycaicon11" name="ios-trash-outline"></ion-icon></button>
+    </ion-item>
+  </ion-list>
 
-
-  <article class="product" *ngFor="let itm of cartItems">
+  <!-- <article class="product" *ngFor="let itm of cartItems">
     <header>
       <a class="remove">
         <img src="{{itm.image}}">
@@ -46,19 +75,26 @@
               <button (click)="incrementProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
                 +
               </button>
-              <!-- {{itm.productPrice}} -->
           </ion-col>
-            <ion-col class="price">
-               ₹{{itm.productPrice * itm.count}}
-            </ion-col>
-            <ion-col class="mynewc11">
-              <button (click)="removeItem(itm)" class="mybtn22">
-                Remove
-              </button>
-            </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="price">
+          ₹{{itm.productPrice * itm.count}}
+       </ion-col>
+       <ion-col class="price">
+        {{itm.discount}}%
+       </ion-col>
+       <ion-col class="price">
+        ₹{{itm.disprice}}
+       </ion-col>
+       <ion-col class="mynewc11">
+         <button (click)="removeItem(itm)" class="mybtn22">
+           Remove
+         </button>
+       </ion-col>
       </ion-row>
     </footer>
-  </article>
+  </article> -->
 </ion-content>
 
 <ion-footer class="single-footer" ngif="!isEmptyCart">

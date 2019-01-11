@@ -14,12 +14,18 @@
 
 
 <ion-content padding>
-<ion-row align-items-center justify-content-center class="mynewr11">
+<ion-row align-items-center class="mynewr11">
  <ion-col *ngFor="let product of this.pdeta" col-5 class="mynewcol22">
   <img class="myimg11" src="{{product.image}}" />
   <p>{{ product.product_name }}</p>
   <!-- <p>Product Details: {{ product.product_details }}</p> -->
-  <p><strong>Price:</strong> ₹{{ product.product_actual_price * product?.count }}</p>
+  <p><strong>Actual Price:</strong>
+    <span [ngStyle]="product.discount === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">
+      ₹{{product.product_price * product?.count}}
+    </span>
+  </p>
+  <p><strong>Discount:</strong> {{product.discount}}%</p>
+  <p><strong>Discount Price:</strong> ₹{{ product.product_actual_price * product?.count }}</p>
   <!-- <p>Company Name: {{ product.product_company }}</p> -->
   <ion-col class="qty">
     <button (click)="decreaseProductCount(product)" clear ion-button small color="dark" class="mynewbtn11">
