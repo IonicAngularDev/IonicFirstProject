@@ -14,7 +14,7 @@ import 'rxjs/add/operator/timeout'
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-let apiUrl = 'http://192.168.1.10/honeybee/HoneyApi/';
+let apiUrl = 'http://beegoodhoney.in/HoneyApi/';
 
 @Injectable()
 export class RestapiProvider {
@@ -32,40 +32,59 @@ export class RestapiProvider {
     //this.token = "";
   }
 
+
+  getUsers(credentials, type) {
+    var headers = new HttpHeaders();
+    headers.append('Access-Control-Allow-Origin' , '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    headers.append('Accept','application/json');
+    headers.append('Access-Control-Allow-Credentials','true');
+    headers.append('Content-Type','application/json');
+    headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+    return this.http.post(apiUrl + type, credentials, {headers: headers});
+}
+
+
   // getUsers(endpoint: string, body: any, reqOpts?: any) {
   //   return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   // }
 
-  getUsers(credentials, type) {
-    return new Promise((resolve, reject) => {
-      var headers = new HttpHeaders();
-      headers.append('Access-Control-Allow-Origin' , '*');
-      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-      headers.append('Accept','application/json');
-      headers.append('content-type','application/json');
+  // getUsers(credentials, type) {
+  //   return new Promise((resolve, reject) => {
+  //     var headers = new HttpHeaders();
+  //     headers.append('Access-Control-Allow-Origin' , '*');
+  //     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+  //     headers.append('Accept','application/json');
+  //     headers.append('Content-Type','application/json');
 
-    //  let headers = new HttpHeaders({
-    //     'Accept': 'application/json',
-    //     'Access-Control-Allow-Origin' : 'http://localhost:8100',
-    //     'Access-Control-Allow-Methods' : 'POST',
-    //     'Access-Control-Allow-Headers' : 'Content-Type; Authorization',
-    //     'Content-Type': 'application/json; charset=utf-8',
-    //     'Access-Control-Allow-Credentials' : 'true',
-    //     'Authorization': 'Bearer ' + this.token,
-    //  });
+  //   //  let headers = new HttpHeaders({
+  //   //     'Accept': 'application/json',
+  //   //     'Access-Control-Allow-Origin' : 'http://localhost:8100',
+  //   //     'Access-Control-Allow-Methods' : 'POST',
+  //   //     'Access-Control-Allow-Headers' : 'Content-Type; Authorization',
+  //   //     'Content-Type': 'application/json; charset=utf-8',
+  //   //     'Access-Control-Allow-Credentials' : 'true',
+  //   //     'Authorization': 'Bearer ' + this.token,
+  //   //  });
 
-  this.http.post(apiUrl + type, JSON.stringify(credentials), {headers: headers})
-    .subscribe((res: Response) => {
-        resolve(res.json());
-      }, (err) => {
-          reject(err);
-        });
-    });
-  }
+  // // this.http.post(apiUrl + type, JSON.stringify(credentials), {headers: headers})
+  // //   .subscribe((res: Response) => {
+  // //       resolve(res);
+  // //     }, (err) => {
+  // //         reject(err);
+  // //       });
+
+  //       // return this.http
+  //       //   .post(apiUrl + type, JSON.stringify(credentials), {headers: headers})
+  //       //   .map((res: Response) => res.json());
+  //   });
+  // }
 
   // fnCallApi(methodTYpe='POST',paramObj={}){
 
   // }
+
+
 
   getproductdetails($id) {
     //console.log($id);

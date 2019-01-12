@@ -1,5 +1,5 @@
 import { CheckoutPage } from './../checkout/checkout';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
 
@@ -21,7 +21,7 @@ export class CartPage {
  isCartItemLoaded: boolean = false;
  isEmptyCart: boolean = true;
  productCount: number = 1;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, private cdr: ChangeDetectorRef) {
   }
 
   ionViewDidLoad() {
@@ -95,11 +95,13 @@ export class CartPage {
   decreaseProductCount(itm) {
     if (itm.count > 1) {
       itm.count--;
+      this.cdr.detectChanges();
     }
   }
 
   incrementProductCount(itm) {
     itm.count++;
+    this.cdr.detectChanges();
   }
 
 }

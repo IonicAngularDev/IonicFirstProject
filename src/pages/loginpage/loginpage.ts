@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
-
 import { ListPage } from '../list/list';
 
 /**
@@ -37,21 +36,26 @@ export class LoginpagePage {
   //   });
   // }
 
-  getloginUsers(){
-
-    this.restProvider.getUsers(this.userData,'user_Login').then((result) => {
-     this.responseData = result;
-     if(this.responseData.userData){
-     console.log(this.responseData);
-     console.log("User Details");
-     //localStorage.setItem('userData', JSON.stringify(this.responseData));
-     this.navCtrl.push(ListPage);
-     }
-     else{
-       console.log("Incorrect Details"); }
-    }, (err) => {
-     // Error log
-   });
+    getloginUsers(){
+  //   this.restProvider.getUsers(this.userData,'user_Login').then((result) => {
+  //     if(result){
+  //      this.responseData = result;
+  //    if(this.responseData.userData){
+  //    console.log(this.responseData);
+  //    console.log("User Details");
+  //    this.navCtrl.push(ListPage);
+  //    }
+  //    else{
+  //      console.log("Incorrect Details"); }
+  //   }
+  //    }
+  //    , (err) => {
+  //    // Error log
+  //  });
+  this.restProvider.getUsers(this.userData,'user_Login').subscribe((data) => {
+    console.log(data);
+});
+ }
 
  }
 
@@ -64,4 +68,4 @@ export class LoginpagePage {
   //   }
   // }
 
-}
+
