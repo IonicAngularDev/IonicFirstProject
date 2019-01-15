@@ -1,27 +1,30 @@
 import { FrontPage } from './../pages/front/front';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, NavController} from 'ionic-angular';
+import { IonicPage, Nav, Platform, NavController, NavParams} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+//import { HomePage } from '../pages/home/home';
+//import { ListPage } from '../pages/list/list';
 import { ProductPage } from '../pages/product/product';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
 
-
+@IonicPage()
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  //@ViewChild(NavController) navctrl: NavController;
+  menuclick: boolean = true;
+  menuclick2: boolean = false;
   rootPage: any = FrontPage;
+  uname: string;
 
   pages: Array<{title: string, component: any, name2: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public navParams: NavParams) {
     this.initializeApp();
-
+    this.uname = this.navParams.get('param1');
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: FrontPage, name2: 'home' },
@@ -54,5 +57,13 @@ export class MyApp {
   loginpage2()
   {
     this.nav.push(LoginpagePage);
+    //this.uname = this.navParams.get('param1');
   }
+
+  logoutClicked() {
+    console.log("Logout");
+    //this.authService.logout();
+    this.nav.pop();
+  }
+
 }

@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { ListPage } from '../list/list';
+import { FrontPage } from '../front/front';
+import { CartPage } from './../cart/cart';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { MyApp } from './../../app/app.component';
 
 /**
  * Generated class for the LoginpagePage page.
@@ -14,14 +18,20 @@ import { ListPage } from '../list/list';
 @Component({
   selector: 'page-loginpage',
   templateUrl: 'loginpage.html',
+  providers: [NavParams],
 })
 export class LoginpagePage {
+  todo : FormGroup;
   responseData : any;
-  userData = {"email": "", "password": ""};
+  userData = {"username": "", "password": ""};
   //users: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public restProvider: RestapiProvider) {
-      this.getloginUsers();
+    public restProvider: RestapiProvider, private formBuilder: FormBuilder, private alertCtrl: AlertController) {
+      //this.getloginUsers();
+      this.todo = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required],
+      });
   }
 
   ionViewDidLoad() {
@@ -37,7 +47,7 @@ export class LoginpagePage {
   // }
 
     getloginUsers(){
-  //   this.restProvider.getUsers(this.userData,'user_Login').then((result) => {
+  //   this.restProvider.getUsers(this.userData,'user_Login').subscribe((result) => {
   //     if(result){
   //      this.responseData = result;
   //    if(this.responseData.userData){
@@ -50,22 +60,44 @@ export class LoginpagePage {
   //   }
   //    }
   //    , (err) => {
-  //    // Error log
+  //     console.log("Incorrect Details");
   //  });
-  this.restProvider.getUsers(this.userData,'user_Login').subscribe((data) => {
-    console.log(data);
-});
+
+  //console.log(this.userData.username);
+      this.restProvider.getUsers(this.userData, 'user_Login').subscribe((data) => {
+        console.log(data);
+        if (data) {
+          this.responseData = data;
+          console.log(this.responseData.msg.name);
+          if (this.responseData.status === 'success') {
+            //console.log(this.responseData);
+            //console.log("User Details");
+            this.navCtrl.push(MyApp,{
+              param1: this.responseData.msg.name,
+            });
+          }
+          else{
+            this.presentAlert();
+          }
+        }
+      });
+
+ }
+
+ presentAlert() {
+  let alert = this.alertCtrl.create({
+    title: 'Incorrect Username Or Password',
+    buttons: ['Dismiss']
+  });
+  alert.present();
+}
+
+ cardpage2()
+ {
+   this.navCtrl.push(CartPage);
  }
 
  }
 
-
-  // doLogin()
-  // {
-  //   if(this.users.email == this.email && this.users.password == this.password)
-  //   {
-
-  //   }
-  // }
 
 

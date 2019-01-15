@@ -38,10 +38,20 @@ export class RestapiProvider {
     headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
     headers.append('Accept','application/json');
-    headers.append('Access-Control-Allow-Credentials','true');
     headers.append('Content-Type','application/json');
+    headers.append('Access-Control-Allow-Credentials','true');
     headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-    return this.http.post(apiUrl + type, credentials, {headers: headers});
+
+    // headers.append('Access-Control-Allow-Origin' , '*');
+    // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    // headers.append('Accept','application/json');
+    // headers.append('Access-Control-Allow-Credentials','true');
+    // headers.append('Content-Type','application/json');
+    // headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+    //console.log(credentials);
+    let v = new FormData();
+    for(var k in credentials)v.append(k,credentials[k]);
+    return this.http.post(apiUrl + type, v, {headers: headers});
 }
 
 

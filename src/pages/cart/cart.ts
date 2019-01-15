@@ -48,6 +48,7 @@ export class CartPage {
             this.totalAmount += parseInt(v.totalPrice);
             console.log(this.totalAmount);
           });
+          this.cdr.detectChanges();
           this.isEmptyCart = false;
         }
 

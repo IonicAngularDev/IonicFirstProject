@@ -1,3 +1,69 @@
 page-loginpage {
+  div.mydiv2 {
+    text-align: right;
+    display: inline-block;
+    float: right;
+    vertical-align: middle !important;
+    margin: 22px;
+}
 
+.mydiv1 {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+img.slide-image11
+    {
+      max-height: 110px;
+      max-width: 110px;
+      margin: 2px 0;
+    }
+ion-icon.myicon22.icon {
+  float: right;
+  font-size: 20px;
+  vertical-align: middle;
+  margin: 2px 6px;
+  color: #000000;
+}
+ion-row.mynewr11.row {
+  padding: 11px;
+}
+ion-content.newbg11 {
+  background-position: center;
+  background-size: cover;
+  background-image: url(http://localhost:8100/assets/imgs/bees22.jpg);
+}
+
+ion-item.newitem2 {
+  margin-bottom: 11px;
+  padding-left: 0px
+}
+
+.newitem2 .item-inner {
+  border-bottom: 1px solid #dedede !important;
+}
+
+.newitem2 ion-label {
+  padding-left: 11px;
+}
+
+button.newbtn11 {
+  border-radius: 0px;
+  font-size: 13px;
+  background: #EB6D2F;
+  border-color: #EB6D2F;
+}
+.newbg11 .scroll-content {
+  padding-bottom: 0px !important;
+}
+
+h2 { width:100%; text-align:center; border-bottom: 1px solid #000; line-height:0.1em; margin:10px 0 20px; }
+h2 span { background:#fff; padding:0 10px; font-size: 15px; }
+
+span.newspan2
+{
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
+}
 }
