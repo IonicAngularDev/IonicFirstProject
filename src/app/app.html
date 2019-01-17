@@ -15,7 +15,7 @@
         <img class="imgsection12" src="assets/imgs/hipster-man.jpg" />
       </ion-col>
       <ion-col class="mycols11" col-8>
-        <h1 class="mymenuh2">Welcome</h1>
+        <h1 class="mymenuh2">Welcome {{this.userName1}}</h1>
         <span menuClose (click)="loginpage2()" *ngIf="menuclick"><ion-icon menuClose name="log-in" class="myicons22"></ion-icon> Login/SignUp </span>
         <span menuClose (click)="logoutClicked()" *ngIf="menuclick2"><ion-icon menuClose name="log-out" class="myicons22"></ion-icon> Logout </span>
       </ion-col>

@@ -23,11 +23,12 @@
   <ion-grid align-items-center justify-content-center style="height: 100%;">
     <ion-row align-items-center justify-content-center style="height: 100%;">
       <ion-col align-self-center col-12 style="text-align: center;">
+        <h1 class="newh1">Login Here</h1>
       <form [formGroup]="todo" (ngSubmit)="getloginUsers()">
         <ion-list>
           <ion-item class="newitem2">
             <!-- <ion-label>Username:</ion-label> -->
-            <ion-input placeholder="Username" type="text" [(ngModel)]="userData.username" formControlName="username" required></ion-input>
+            <ion-input placeholder="Email" type="text" [(ngModel)]="userData.username" formControlName="username" required></ion-input>
           </ion-item>
           <ion-item class="newitem2">
             <!-- <ion-label>Password:</ion-label> -->
@@ -39,7 +40,7 @@
         </ion-list>
       </form>
       <h2><span>OR</span></h2>
-      <span class="newspan2">Register | Forgot Password</span>
+      <p><span menuClose swipeBackEnabled="false" (click)="registerpage2()" class="newspan2">Register</span> | <span (click)="forgetpassword2()" class="newspan2">Forgot Password</span></p>
     </ion-col>
     </ion-row>
   </ion-grid>

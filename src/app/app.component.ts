@@ -1,14 +1,13 @@
+import { LoginpagePage } from './../pages/loginpage/loginpage';
 import { FrontPage } from './../pages/front/front';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, Nav, Platform, NavController, NavParams} from 'ionic-angular';
+import { Events, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import { HomePage } from '../pages/home/home';
 //import { ListPage } from '../pages/list/list';
 import { ProductPage } from '../pages/product/product';
-import { LoginpagePage } from '../pages/loginpage/loginpage';
 
-@IonicPage()
 @Component({
   templateUrl: 'app.html'
 })
@@ -18,13 +17,12 @@ export class MyApp {
   menuclick: boolean = true;
   menuclick2: boolean = false;
   rootPage: any = FrontPage;
-  uname: string;
-
+  uemail: string;
+  userName1: string;
   pages: Array<{title: string, component: any, name2: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public navParams: NavParams) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events) {
     this.initializeApp();
-    this.uname = this.navParams.get('param1');
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: FrontPage, name2: 'home' },
@@ -36,6 +34,15 @@ export class MyApp {
       // { title: 'Contact Us', component: LoginpagePage, name2: 'contacts' },
       // { title: 'Login/Sign Up', component: LoginpagePage, name2: 'log-in' },
     ];
+
+    //this.uname = this.navParams.get('param1');
+    this.events.subscribe('user:created', (data) => { // update from login
+      //console.log(data);
+      //this.uemail = data.email;
+      this.userName1 = data;
+      this.menuclick2 = true;
+      this.menuclick = false;
+ });
 
   }
 
@@ -63,7 +70,10 @@ export class MyApp {
   logoutClicked() {
     console.log("Logout");
     //this.authService.logout();
-    this.nav.pop();
+    this.nav.setRoot(FrontPage);
+    this.userName1 = null;
+    this.menuclick2 = false;
+    this.menuclick = true;
   }
 
 }

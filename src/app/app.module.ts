@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, NavParams } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavParams, NavController } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +14,8 @@ import { CartPage } from './../pages/cart/cart';
 import { CheckoutPage } from './../pages/checkout/checkout';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { RegisterPage } from './../pages/register/register';
+import {ForgetpasswordPage} from './../pages/forgetpassword/forgetpassword';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RestapiProvider } from '../providers/restapi/restapi';
@@ -33,6 +35,8 @@ import { FormsModule } from '@angular/forms';
     FrontPage,
     FooterPage,
     ProductPage,
+    RegisterPage,
+    ForgetpasswordPage,
     CartPage,
     CheckoutPage,
     ProductdetailsPage,
@@ -54,6 +58,8 @@ import { FormsModule } from '@angular/forms';
     LoginpagePage,
     FrontPage,
     FooterPage,
+    RegisterPage,
+    ForgetpasswordPage,
     ProductPage,
     CartPage,
     CheckoutPage,

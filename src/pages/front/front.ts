@@ -47,7 +47,7 @@ export class FrontPage {
       .then(data => {
       this.categories = data;
       this.pcatg = this.categories.msg.cat;
-      console.log(this.categories.msg);
+      //console.log(this.categories.msg);
       });
       loader.dismiss();
   }
@@ -90,7 +90,7 @@ export class FrontPage {
       .then(data => {
       this.procount = data;
       this.pcount = this.procount.msg;
-      console.log(this.pcount);
+      //console.log(this.pcount);
       });
       // loader.dismiss();
   }
@@ -105,7 +105,7 @@ export class FrontPage {
       .then(data => {
       this.merchcat = data;
       this.mcat = this.merchcat.msg.merchan_cat;
-      console.log(this.mcat);
+      //console.log(this.mcat);
       });
       //loader.dismiss();
   }
