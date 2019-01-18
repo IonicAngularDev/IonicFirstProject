@@ -50,9 +50,13 @@
  </ion-col>
 
 </ion-row>
-    <!-- <ul>
-        <li *ngFor="let product of detailsp">
-          {{ product.msg["0"].product_name }}
-        </li>
-    </ul> -->
+
+<ion-grid *ngIf="noproducts" align-items-center justify-content-center style="height: 100%;">
+      <ion-row align-items-center justify-content-center style="height: 100%;">
+        <ion-col align-self-center col-12 style="text-align: center;">
+          <h1 class="newh1">No Products Found!!</h1>
+          <img src="assets/imgs/noproductimage.png" class="slide-image11"/>
+        </ion-col>
+      </ion-row>
+</ion-grid>
 </ion-content>

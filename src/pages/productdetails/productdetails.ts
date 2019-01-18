@@ -26,13 +26,19 @@ export class ProductdetailsPage {
   productCount: number = 1;
   //count: number = 1;
   cartItems: any[];
+  noproducts: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public toastCtrl: ToastController) {
     this.detailsp = this.navParams.get('productdet');
     // this.pdeta.forEach(product => product.count = 1);
     this.pdeta = this.detailsp.msg;
     this.pdeta.forEach(product => product.count = 1);
     //this.pdeta.forEach(product => product.heart_clicked = true);
-    console.log(this.detailsp);
+    //console.log(this.detailsp);
+    //console.log(this.detailsp.msg.length);
+    if(this.detailsp.msg.length === 0)
+    {
+      this.noproducts = true;
+    }
     if (this.navParams.get("productdet")) {
       window.localStorage.setItem('ProductdetailsPage', JSON.stringify(this.navParams.get("productdet")));
     }

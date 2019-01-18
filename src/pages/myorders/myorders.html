@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar swipeBackEnabled="false">
+    <button ion-button menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
+    <div class="mydiv2">
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
+      <ion-icon name="heart" class="myicon22"></ion-icon>
+      <ion-icon name="search" class="myicon22"></ion-icon>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="newbg11">
+  <ion-grid *ngIf="userhas" align-items-center justify-content-center style="height: 100%;">
+    <ion-row align-items-center justify-content-center style="height: 100%;">
+      <ion-col align-self-center col-12 style="text-align: center;">
+        <h1 class="newh1">Your order list is empty!!</h1>
+        <img src="assets/imgs/shoppingcart.png" class="slide-image11"/>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="usernot" align-items-center justify-content-center style="height: 100%;">
+      <ion-row align-items-center justify-content-center style="height: 100%;">
+        <ion-col align-self-center col-12 style="text-align: center;">
+          <h1 class="newh1">Please Login To Check Your Orders</h1>
+          <!-- <button class="mybtn22" ion-button>Login</button> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- <p>{{this.newuserid}}</p> -->
+</ion-content>

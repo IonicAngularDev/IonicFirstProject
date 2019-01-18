@@ -25,7 +25,7 @@ export class ProductPage {
 
   ionViewWillEnter()
   {
-    this.getcategories();
+    //this.getcategories();
   }
 
   getcategories()

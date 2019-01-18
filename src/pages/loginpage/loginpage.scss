@@ -31,7 +31,8 @@ ion-row.mynewr11.row {
 ion-content.newbg11 {
   background-position: center;
   background-size: cover;
-  background-image: url(http://localhost:8100/assets/imgs/bees22.jpg);
+  //background-image: url(http://localhost:8100/assets/imgs/bees22.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(123, 123, 123, 0.78)), url(http://localhost:8100/assets/imgs/black-bg22.jpg);
 }
 
 ion-item.newitem2 {
@@ -70,6 +71,7 @@ span.newspan2
 h1.newh1 {
   margin-bottom: 40px;
   font-size: 22px;
+  color: #fff;
 }
 .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
   -webkit-box-shadow: inset 2px -3px 0 0 #f53d3d;

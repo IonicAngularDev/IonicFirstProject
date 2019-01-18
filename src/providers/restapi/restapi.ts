@@ -26,6 +26,7 @@ export class RestapiProvider {
   apiUrl4 = 'http://beegoodhoney.in/HoneyApi/count_sold_item';
   apiUrl5 = 'http://beegoodhoney.in/HoneyApi/Merchand_category';
   apiUrl6 = 'http://beegoodhoney.in/HoneyApi/MerchandiseProducts/';
+  apiUrl7 = 'http://beegoodhoney.in/HoneyApi/Userdashboard/';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
@@ -42,13 +43,6 @@ export class RestapiProvider {
     headers.append('Access-Control-Allow-Credentials','true');
     headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
 
-    // headers.append('Access-Control-Allow-Origin' , '*');
-    // headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-    // headers.append('Accept','application/json');
-    // headers.append('Access-Control-Allow-Credentials','true');
-    // headers.append('Content-Type','application/json');
-    // headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-    //console.log(credentials);
     let v = new FormData();
     for(var k in credentials)v.append(k,credentials[k]);
     return this.http.post(apiUrl + type, v, {headers: headers});
@@ -84,47 +78,6 @@ getregisterpassword(credentials, type) {
   return this.http.post(apiUrl + type, v, {headers: headers});
 }
 
-  // getUsers(endpoint: string, body: any, reqOpts?: any) {
-  //   return this.http.post(this.url + '/' + endpoint, body, reqOpts);
-  // }
-
-  // getUsers(credentials, type) {
-  //   return new Promise((resolve, reject) => {
-  //     var headers = new HttpHeaders();
-  //     headers.append('Access-Control-Allow-Origin' , '*');
-  //     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-  //     headers.append('Accept','application/json');
-  //     headers.append('Content-Type','application/json');
-
-  //   //  let headers = new HttpHeaders({
-  //   //     'Accept': 'application/json',
-  //   //     'Access-Control-Allow-Origin' : 'http://localhost:8100',
-  //   //     'Access-Control-Allow-Methods' : 'POST',
-  //   //     'Access-Control-Allow-Headers' : 'Content-Type; Authorization',
-  //   //     'Content-Type': 'application/json; charset=utf-8',
-  //   //     'Access-Control-Allow-Credentials' : 'true',
-  //   //     'Authorization': 'Bearer ' + this.token,
-  //   //  });
-
-  // // this.http.post(apiUrl + type, JSON.stringify(credentials), {headers: headers})
-  // //   .subscribe((res: Response) => {
-  // //       resolve(res);
-  // //     }, (err) => {
-  // //         reject(err);
-  // //       });
-
-  //       // return this.http
-  //       //   .post(apiUrl + type, JSON.stringify(credentials), {headers: headers})
-  //       //   .map((res: Response) => res.json());
-  //   });
-  // }
-
-  // fnCallApi(methodTYpe='POST',paramObj={}){
-
-  // }
-
-
-
   getproductdetails($id) {
     //console.log($id);
     return new Promise(resolve => {
@@ -136,6 +89,24 @@ getregisterpassword(credentials, type) {
       headers.append('content-type','application/json');
 
     this.http.get(this.apiUrl2+$id, {headers: headers}).subscribe(data => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+  }
+
+  getorderdetails($oid) {
+    //console.log($oid);
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl7+$oid, {headers: headers}).subscribe(data => {
       resolve(data);},
     err => {
     console.log(err);

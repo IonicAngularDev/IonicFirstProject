@@ -7,6 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 //import { HomePage } from '../pages/home/home';
 //import { ListPage } from '../pages/list/list';
 import { ProductPage } from '../pages/product/product';
+import { MyordersPage } from '../pages/myorders/myorders';
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,14 +23,14 @@ export class MyApp {
   userName1: string;
   pages: Array<{title: string, component: any, name2: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events, private storage: Storage) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: FrontPage, name2: 'home' },
       { title: 'Product Categories', component: ProductPage, name2: 'basket' },
       { title: 'Merchandise', component: ProductPage, name2: 'man' },
-      { title: 'My Orders', component: ProductPage, name2: 'cart' },
+      { title: 'My Orders', component: MyordersPage, name2: 'cart' },
       // { title: 'About Us', component: FrontPage, name2: 'people' },
       // { title: 'Blog', component: ProductPage, name2: 'create' },
       // { title: 'Contact Us', component: LoginpagePage, name2: 'contacts' },
@@ -70,10 +72,13 @@ export class MyApp {
   logoutClicked() {
     console.log("Logout");
     //this.authService.logout();
-    this.nav.setRoot(FrontPage);
-    this.userName1 = null;
-    this.menuclick2 = false;
-    this.menuclick = true;
+    //window.localStorage.removeItem("ID");
+    this.storage.remove("ID").then(() => {
+      this.userName1 = null;
+      this.menuclick2 = false;
+      this.menuclick = true;
+      this.nav.setRoot(FrontPage);
+    });
   }
 
 }

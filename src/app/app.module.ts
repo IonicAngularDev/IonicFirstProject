@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, NavParams, NavController } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -9,6 +9,7 @@ import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { FrontPage } from './../pages/front/front';
 import { FooterPage } from './../pages/footer/footer';
 import { ProductPage } from './../pages/product/product';
+import { MyordersPage } from './../pages/myorders/myorders';
 import { ProductdetailsPage } from './../pages/productdetails/productdetails';
 import { CartPage } from './../pages/cart/cart';
 import { CheckoutPage } from './../pages/checkout/checkout';
@@ -22,7 +23,6 @@ import { RestapiProvider } from '../providers/restapi/restapi';
 import { FootCardComponent } from '../components/foot-card/foot-card';
 import { ComponentsModule } from '../components/components.module'
 import { CartProvider } from '../providers/cart/cart';
-
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
 
@@ -36,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     FooterPage,
     ProductPage,
     RegisterPage,
+    MyordersPage,
     ForgetpasswordPage,
     CartPage,
     CheckoutPage,
@@ -59,6 +60,7 @@ import { FormsModule } from '@angular/forms';
     FrontPage,
     FooterPage,
     RegisterPage,
+    MyordersPage,
     ForgetpasswordPage,
     ProductPage,
     CartPage,
