@@ -39,24 +39,9 @@
       <h1 class="mymenuh11">OTHERS</h1>
     </ion-grid>
     <ion-list>
-      <button menuClose ion-item class="menu2">
-        <ion-icon name="settings"></ion-icon> Manage Account
+      <button menuClose ion-item *ngFor="let p1 of pages1" (click)="openPage(p1)" class="menu2">
+        <ion-icon name="{{p1.name1}}"></ion-icon> {{p1.title1}}
       </button>
-      <button menuClose ion-item class="menu2">
-        <ion-icon name="people"></ion-icon> About Us
-      </button>
-      <button menuClose ion-item class="menu2">
-        <ion-icon name="create"></ion-icon> Blog
-      </button>
-      <button menuClose ion-item class="menu2">
-        <ion-icon name="contacts"></ion-icon> Contact Us
-      </button>
-      <!-- <button menuClose ion-item class="menu2">
-        <ion-icon name="log-in"></ion-icon> Sign Up
-      </button>
-      <button menuClose ion-item class="menu2">
-        <ion-icon name="log-out"></ion-icon> Sign Out
-      </button> -->
     </ion-list>
   </ion-content>
 </ion-menu>

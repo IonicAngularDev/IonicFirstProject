@@ -4,10 +4,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Events, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-//import { HomePage } from '../pages/home/home';
-//import { ListPage } from '../pages/list/list';
-import { ProductPage } from '../pages/product/product';
-import { MyordersPage } from '../pages/myorders/myorders';
+import { ProductPage } from './../pages/product/product';
+import { MyordersPage } from './../pages/myorders/myorders';
+import { ManageaccountPage } from './../pages/manageaccount/manageaccount';
+import { AboutPage } from './../pages/about/about';
+import { BlogPage } from './../pages/blog/blog';
+import { ContactPage } from '../pages/contact/contact';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -22,7 +24,7 @@ export class MyApp {
   uemail: string;
   userName1: string;
   pages: Array<{title: string, component: any, name2: string}>;
-
+  pages1: Array<{title1: string, component: any, name1: string}>;
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events, private storage: Storage) {
     this.initializeApp();
     // used for an example of ngFor and navigation
@@ -31,12 +33,14 @@ export class MyApp {
       { title: 'Product Categories', component: ProductPage, name2: 'basket' },
       { title: 'Merchandise', component: ProductPage, name2: 'man' },
       { title: 'My Orders', component: MyordersPage, name2: 'cart' },
-      // { title: 'About Us', component: FrontPage, name2: 'people' },
-      // { title: 'Blog', component: ProductPage, name2: 'create' },
-      // { title: 'Contact Us', component: LoginpagePage, name2: 'contacts' },
-      // { title: 'Login/Sign Up', component: LoginpagePage, name2: 'log-in' },
     ];
 
+    this.pages1 = [
+      { title1: 'Manage Account', component: ManageaccountPage, name1: 'settings' },
+      { title1: 'About Us', component: AboutPage, name1: 'people' },
+      { title1: 'Blog', component: BlogPage, name1: 'create' },
+      { title1: 'Contact Us', component: ContactPage, name1: 'contacts' },
+    ];
     //this.uname = this.navParams.get('param1');
     this.events.subscribe('user:created', (data) => { // update from login
       //console.log(data);

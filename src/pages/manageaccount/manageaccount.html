@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar swipeBackEnabled="false">
+    <button ion-button menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
+    <div class="mydiv2">
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
+      <ion-icon name="heart" class="myicon22"></ion-icon>
+      <ion-icon name="search" class="myicon22"></ion-icon>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="newbg11">
+  <ion-grid *ngIf="userhas" align-items-center justify-content-center style="height: 100%;">
+    <ion-row align-items-center justify-content-center style="height: 100%;">
+      <ion-col align-self-center col-12 style="text-align: center;">
+
+        <ion-card>
+          <img src="assets/imgs/6.jpg" />
+          <ion-card-content>
+            <ion-card-title>
+              View Your Orders
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <img src="assets/imgs/6.jpg" />
+          <ion-card-content>
+            <ion-card-title>
+              View Your Wishlist
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="usernot" align-items-center justify-content-center style="height: 100%;">
+    <ion-row align-items-center justify-content-center style="height: 100%;">
+      <ion-col align-self-center col-12 style="text-align: center;">
+        <h1 class="newh1">Please Login To Manage Your Account</h1>
+        <!-- <button class="mybtn22" ion-button>Login</button> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
