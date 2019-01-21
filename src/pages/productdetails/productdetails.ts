@@ -25,8 +25,13 @@ export class ProductdetailsPage {
   totalPrice: any;
   productCount: number = 1;
   //count: number = 1;
+  SelectedSize:any;
   cartItems: any[];
   noproducts: boolean = false;
+  nosize: boolean = true;
+  isenabled: boolean = false;
+  hassizenot: boolean = false;
+  hassize:boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public toastCtrl: ToastController) {
     this.detailsp = this.navParams.get('productdet');
     // this.pdeta.forEach(product => product.count = 1);
@@ -34,11 +39,25 @@ export class ProductdetailsPage {
     this.pdeta.forEach(product => product.count = 1);
     //this.pdeta.forEach(product => product.heart_clicked = true);
     //console.log(this.detailsp);
+    //console.log(this.detailsp.SelectedSize);
     //console.log(this.detailsp.msg.length);
     if(this.detailsp.msg.length === 0)
     {
       this.noproducts = true;
     }
+
+    if(this.detailsp.msg.length != 0)
+    {
+      if(this.detailsp.msg["0"].product_size === undefined)
+      {
+        //console.log(11);
+        this.nosize = false;
+        this.isenabled = true;
+        this.hassize = false;
+        this.hassizenot = true;
+      }
+    }
+
     if (this.navParams.get("productdet")) {
       window.localStorage.setItem('ProductdetailsPage', JSON.stringify(this.navParams.get("productdet")));
     }
@@ -48,6 +67,10 @@ export class ProductdetailsPage {
   ionViewDidEnter(){
     this.getSingleProduct();
   }
+
+  // valueChanged(event) {
+  //   this.isenabled = true;
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductdetailsPage');
@@ -71,12 +94,13 @@ export class ProductdetailsPage {
       image: detailsp.image,
       count: detailsp.count,
       //heart_clicked: detailsp.heart_clicked,
+      psize: detailsp.SelectedSize,
       disprice: detailsp.product_price,
       discountp: detailsp.discount,
       productPrice: this.productCount * parseInt(detailsp.product_actual_price),
       totalPrice: productPrice,
     };
-    console.log(cartProduct);
+    //console.log(cartProduct);
     //this.presentToast(productdet.product_name);
 
     this.cartService.addToCart(cartProduct).then((val) => {
@@ -96,24 +120,6 @@ export class ProductdetailsPage {
     });
     toast.present();
   }
-  // addToCart()
-  // {
-  //   console.log('Added');
-  //   item.quantityInCart += 1;
-  //   this.itemsInCart.push(item);
-  //   console.log(this.itemsInCart);
-  //   localStorage.setItem('cart', JSON.stringify(this.itemsInCart));
-  // }
-
-  // decreaseProductCount(product) {
-  //   if (product.count > 1) {
-  //     product.count--;
-  //   }
-  // }
-
-  // incrementProductCount(product) {
-  //   product.count++;
-  // }
 
   decreaseProductCount(product) {
     if(typeof product.count === 'undefined') {
@@ -131,18 +137,12 @@ export class ProductdetailsPage {
     product.count++;
   }
 
-  // addtoWishlist(a,product){
-  //   console.log(a);
-  //   if(a==true){
-  //     product.heart_clicked=false;
-  //   }else
-  //   {
-  //     product.heart_clicked=true;
-  //   }
-  // }
-
   toggleOnWishlist(product){
     product.onWishlist = !product.onWishlist;
   }
+
+  toggleOnSize(psize){
+    psize.onSize = !psize.onSize;
+}
 
 }

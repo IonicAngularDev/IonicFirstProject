@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ProductdetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -38,9 +32,32 @@
       +
     </button>
 </ion-col>
-  <button class="mybtn11" (click)="addToCart(product)" ion-button small>
+
+<!-- <button *ngFor="let psize of product.product_size" (click)="toggleOnSize(psize)" [ngClass]="psize.onSize ? 'mynewbtn22' : 'newbtn11' " ion-button small>
+  {{ psize.size }}
+</button> -->
+<ion-col *ngIf="nosize" style="padding: 0px;">
+<ion-select placeholder="Select Size" [(ngModel)]="product.SelectedSize">
+  <ion-option *ngFor="let psize of product.product_size" value="{{psize.size}}">{{psize.size}}</ion-option>
+</ion-select>
+</ion-col>
+
+  <!-- <button [disabled]="!product.SelectedSize" class="mybtn11" (click)="addToCart(product)" ion-button small>
     Add to Cart
-  </button>
+  </button> -->
+
+  <ion-col *ngIf="hassizenot" style="padding: 0px;">
+      <button class="mybtn11" (click)="addToCart(product)" ion-button small>
+        Add to Cart
+      </button>
+    </ion-col>
+
+    <ion-col *ngIf="hassize" style="padding: 0px;">
+      <button [disabled]="!product.SelectedSize" class="mybtn11" (click)="addToCart(product)" ion-button small>
+        Add to Cart
+      </button>
+    </ion-col>
+
   <button ion-button icon-only class="wish-list-btn card" (click)="toggleOnWishlist(product)" color="light" class="mywisbtn11">
     <ion-icon [name]="product.onWishlist ? 'ios-heart' : 'heart-outline' "></ion-icon>
   </button>
