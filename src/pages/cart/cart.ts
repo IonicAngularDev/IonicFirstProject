@@ -3,13 +3,6 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
 
-/**
- * Generated class for the CartPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-cart',
@@ -20,16 +13,21 @@ export class CartPage {
  totalAmount: number = 0;
  isCartItemLoaded: boolean = false;
  isEmptyCart: boolean = true;
+ ifSize: boolean = true;
  productCount: number = 1;
   constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, private cdr: ChangeDetectorRef) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
-    this.cartService.getCartItems().then((val) => {
-      this.cartItems = val;
-      console.log(val);
-    });
+    // this.cartService.getCartItems().then((val) => {
+    //   this.cartItems = val;
+    //   console.log(val);
+    //   if(val.psize === undefined)
+    //   {
+    //     this.ifSize = false;
+    //   }
+    // });
     this.loadCartItems();
   }
 
@@ -42,16 +40,22 @@ export class CartPage {
       .getCartItems()
       .then(val => {
         this.cartItems = val;
+        //console.log(val);
         //console.log(this.cartItems.length);
         if (this.cartItems.length > 0) {
           this.cartItems.forEach((v, indx) => {
+            // console.log(v.psize);
+            // if(v.psize===undefined){
+            //   this.ifSize = false;
+            // }else{
+            //   this.ifSize = true;
+            // }
             this.totalAmount += parseInt(v.totalPrice);
-            console.log(this.totalAmount);
+            //console.log(this.totalAmount);
           });
           this.cdr.detectChanges();
           this.isEmptyCart = false;
         }
-
         this.isCartItemLoaded = true;
         loader.dismiss();
       })
@@ -71,12 +75,13 @@ export class CartPage {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel Clicked');
+            //console.log('Cancel Clicked');
           }
         },
         {
           text: 'Yes',
           handler: () => {
+            //console.log(itm.product_id);
             this.cartService.removeFromCart(itm).then(() => {
               this.loadCartItems();
             });
@@ -93,16 +98,24 @@ export class CartPage {
     this.navCtrl.push(CheckoutPage);
   }
 
+  recalculateTotalAmount() {
+    let newTotalAmount = 0;
+    this.cartItems.forEach( cartItem => {
+        newTotalAmount += (cartItem.productPrice * cartItem.count)
+    });
+    this.totalAmount = newTotalAmount;
+}
+
   decreaseProductCount(itm) {
     if (itm.count > 1) {
       itm.count--;
-      this.cdr.detectChanges();
+      this.recalculateTotalAmount();
     }
   }
 
   incrementProductCount(itm) {
     itm.count++;
-    this.cdr.detectChanges();
+    this.recalculateTotalAmount();
   }
 
 }

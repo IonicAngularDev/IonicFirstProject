@@ -3,13 +3,10 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      Your Cart
-    </ion-title>
+    <ion-title>Your Cart</ion-title>
   </ion-navbar>
 
 </ion-header>
-
 
 <ion-content>
   <!-- <ion-list>
@@ -23,33 +20,37 @@
   </ion-list> -->
   <ion-list *ngFor="let itm of cartItems" class="myitem11">
     <ion-item>
-      <ion-thumbnail item-start >
+      <ion-thumbnail item-start>
         <img src="{{itm.image}}">
       </ion-thumbnail>
       <h2>{{itm.name}}</h2>
-      <p>Actual Price:
-        <span [ngStyle]="itm?.discountp === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">
-          ₹{{itm.disprice * itm.count}}
-        </span>
+      <p>
+        Actual Price:
+        <span [ngStyle]="itm?.discountp === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">₹{{itm.disprice
+          * itm.count}}</span>
       </p>
       <p>Discount: {{itm?.discountp}}%</p>
-      <p>Size: {{itm?.psize}}</p>
+      <p *ngIf="itm?.psize!== undefined">Size: {{itm?.psize}}</p>
       <ion-row class="item-count">
         <ion-col class="qty">
-            <button (click)="decreaseProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
-              -
-            </button>
-            <button ion-button small clear color="dark" class="mewbtn11">
-              {{itm?.count}}
-            </button>
-            <button (click)="incrementProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
-              +
-            </button>
-            <!-- {{itm.productPrice}} -->
+          <button (click)="decreaseProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
+            -
+          </button>
+          <button ion-button small clear color="dark" class="mewbtn11">
+            {{itm?.count}}
+          </button>
+          <button (click)="incrementProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
+            +
+          </button>
+          <!-- {{itm.productPrice}} -->
         </ion-col>
       </ion-row>
-      <p>Discounted Price: ₹{{itm.productPrice * itm.count}}</p>
-      <button ion-button icon-only clear item-end (click)="removeItem(itm)"><ion-icon class="mycaicon11" name="ios-trash-outline"></ion-icon></button>
+      <p>
+        Discounted Price: ₹{{itm.productPrice * itm.count}}
+      </p>
+      <button ion-button icon-only clear item-end (click)="removeItem(itm)">
+        <ion-icon class="mycaicon11" name="ios-trash-outline"></ion-icon>
+      </button>
     </ion-item>
   </ion-list>
 
@@ -103,7 +104,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="addCart" (click)="checkpage()">
-        <button color="secondary" full="" ion-button="" round="true">
+        <button color="secondary" full ion-button round="true">
           {{totalAmount}} Checkout
         </button>
       </ion-col>

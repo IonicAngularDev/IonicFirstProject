@@ -1,3 +1,4 @@
+import { WishlistPage } from './../pages/wishlist/wishlist';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -40,6 +41,7 @@ import { FormsModule } from '@angular/forms';
     RegisterPage,
     MyordersPage,
     AboutPage,
+    WishlistPage,
     ManageaccountPage,
     ForgetpasswordPage,
     BlogPage,
@@ -68,6 +70,7 @@ import { FormsModule } from '@angular/forms';
     RegisterPage,
     MyordersPage,
     AboutPage,
+    WishlistPage,
     BlogPage,
     ContactPage,
     ManageaccountPage,

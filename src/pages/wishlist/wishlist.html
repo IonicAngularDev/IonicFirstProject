@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Your Wishlist</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list *ngFor="let itm of wishItems" class="myitem11">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="{{itm.image}}">
+      </ion-thumbnail>
+      <h2>{{itm.product_name}}</h2>
+      <p>
+        Actual Price:
+        <span [ngStyle]="itm?.discount === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">₹{{itm.product_price}}</span>
+      </p>
+      <p>Discount: {{itm?.discount}}%</p>
+      <p>
+        Discounted Price: ₹{{itm.product_actual_price}}
+      </p>
+      <button class="btnmy22" ion-button clear (click)="WishItemToCart(itm)">
+        Move To Cart
+      </button>
+      <button ion-button icon-only clear item-end (click)="removeWishItem(itm)">
+        <ion-icon class="mycaicon11" name="ios-trash-outline"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

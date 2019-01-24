@@ -3,13 +3,8 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 const CART_KEY = 'cartItems';
+const WISH_KEY = 'wishItems';
 
-/*
-  Generated class for the CartProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class CartProvider {
 
@@ -40,15 +35,58 @@ export class CartProvider {
     })
   }
 
-  removeFromCart(productdet) {
-    return this.getCartItems().then(result => {
+  addToWishlist(productwishdet) {
+    return this.getWishItems().then(result => {
       if (result) {
-        var productIndex = result.indexOf(productdet);
-        result.splice(productIndex, 1);
-        return this.storage.set(CART_KEY, result);
+        if (!this.containsObject(productwishdet, result)) {
+          result.push(productwishdet);
+          return this.storage.set(WISH_KEY, result);
+        } else {
+          //let index = result.findIndex(x => x.id == productwishdet.id);
+          // let prevQuantity = parseInt(result[index].count);
+          // productwishdet.count = (prevQuantity + productwishdet.count);
+          // let currentPrice = (parseInt(productwishdet.totalPrice));
+          // productwishdet.totalPrice = currentPrice;
+          //result.splice(index, 1);
+          result.push(productwishdet);
+          return this.storage.set(WISH_KEY, result);
+        }
+
+      } else {
+        return this.storage.set(WISH_KEY, [productwishdet]);
       }
     })
   }
+
+  // removeFromCart(productdet) {
+  //   return this.getCartItems().then(result => {
+  //     if (result) {
+  //       var productIndex = result.indexOf(productdet);
+  //       result.splice(productIndex, 1);
+  //       return this.storage.set(CART_KEY, result);
+  //     }
+  //   })
+  // }
+
+  removeFromCart(productdet) {
+    //console.log(productdet);
+    return this.getCartItems().then(result => {
+      if (result && result.length) {
+        const newList = result.filter(el => el.product_id !== productdet.product_id);
+        return this.storage.set(CART_KEY, newList);
+      }
+    })
+  }
+
+  removeFromWish(productdet) {
+    //console.log(productdet);
+    return this.getWishItems().then(result => {
+      if (result && result.length) {
+        const newList = result.filter(el => el.id !== productdet.id);
+        return this.storage.set(WISH_KEY, newList);
+      }
+    })
+}
 
   removeAllCartItems() {
     return this.storage.remove(CART_KEY).then(res => {
@@ -76,5 +114,9 @@ export class CartProvider {
 
   getCartItems() {
     return this.storage.get(CART_KEY);
+  }
+
+  getWishItems() {
+    return this.storage.get(WISH_KEY);
   }
 }

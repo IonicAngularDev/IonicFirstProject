@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart';
 import { CartPage } from '../cart/cart';
+import { Storage } from '@ionic/storage';
+import { WishlistPage } from '../wishlist/wishlist';
 
 /**
  * Generated class for the ProductdetailsPage page.
@@ -32,7 +34,7 @@ export class ProductdetailsPage {
   isenabled: boolean = false;
   hassizenot: boolean = false;
   hassize:boolean = true;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public toastCtrl: ToastController, private storage: Storage, private alertCtrl: AlertController) {
     this.detailsp = this.navParams.get('productdet');
     // this.pdeta.forEach(product => product.count = 1);
     this.pdeta = this.detailsp.msg;
@@ -87,6 +89,7 @@ export class ProductdetailsPage {
   }
 
   addToCart(detailsp) {
+    //console.log(detailsp);
     var productPrice = this.productCount * parseInt(detailsp.product_actual_price);
     let cartProduct = {
       product_id: detailsp.id,
@@ -138,11 +141,47 @@ export class ProductdetailsPage {
   }
 
   toggleOnWishlist(product){
-    product.onWishlist = !product.onWishlist;
+    this.storage.get("ID").then((val) =>
+    {
+      if(val)
+      {
+       product.onWishlist = !product.onWishlist;
+       //console.log(product);
+       this.cartService.addToWishlist(product).then((val) => {
+        this.presentWishToast(product.product_name);
+      });
+      }
+      else
+      {
+        //console.log("Please Login");
+        this.presentAlert();
+      }
+    });
+  }
+
+  presentWishToast(name: any) {
+    let toast = this.toastCtrl.create({
+      message: `${name} has been added to wishlist`,
+      showCloseButton: true,
+      closeButtonText: 'View Wishlist'
+    });
+
+    toast.onDidDismiss(() => {
+      this.navCtrl.push(WishlistPage);
+    });
+    toast.present();
+  }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Please Login For Wishlist',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
   toggleOnSize(psize){
     psize.onSize = !psize.onSize;
-}
+  }
 
 }
