@@ -10,6 +10,7 @@
 <ion-content padding>
 <ion-row align-items-center class="mynewr11">
  <ion-col *ngFor="let product of this.pdeta" col-5 class="mynewcol22">
+  <div (click)="showDetails(product)">
   <img class="myimg11" src="{{product.image}}" />
   <p>{{ product.product_name }}</p>
   <!-- <p>Product Details: {{ product.product_details }}</p> -->
@@ -21,6 +22,7 @@
   <p><strong>Discount:</strong> {{product.discount}}%</p>
   <p><strong>Discount Price:</strong> ₹{{ product.product_actual_price * product?.count }}</p>
   <!-- <p>Company Name: {{ product.product_company }}</p> -->
+  </div>
   <ion-col class="qty">
     <button (click)="decreaseProductCount(product)" clear ion-button small color="dark" class="mynewbtn11">
       -
@@ -57,13 +59,20 @@
         Add to Cart
       </button>
     </ion-col>
-
+    <!-- {{product.id}} -->
   <button ion-button icon-only class="wish-list-btn card" (click)="toggleOnWishlist(product)" color="light" class="mywisbtn11">
     <ion-icon [name]="product.onWishlist ? 'ios-heart' : 'heart-outline' "></ion-icon>
   </button>
+
+
+  <!-- <button ion-button icon-only *ngIf="product.onWishlist" (click)="toggleOnWishlist2(product.id)"><ion-icon name="ios-heart"></ion-icon></button> -->
   <!-- <button ion-button icon-only class="wish-list-btn card" *ngIf="heart_clicked" (click)="addtoWishlist(false,product)" color="light" class="mywisbtn11">
     <ion-icon name="ios-heart"></ion-icon>
   </button> -->
+
+  <!-- <button ion-button icon-only *ngIf="!product.onWishlist" (click)="toggleOnWishlist1(product.id)"><ion-icon name="heart-outline"></ion-icon></button> -->
+
+
  </ion-col>
 
 </ion-row>

@@ -20,7 +20,7 @@
   </ion-list> -->
   <ion-list *ngFor="let itm of cartItems" class="myitem11">
     <ion-item>
-      <ion-thumbnail item-start>
+      <ion-thumbnail item-start (click)="showDetails(itm)">
         <img src="{{itm.image}}">
       </ion-thumbnail>
       <h2>{{itm.name}}</h2>
@@ -105,7 +105,7 @@
     <ion-row>
       <ion-col class="addCart" (click)="checkpage()">
         <button color="secondary" full ion-button round="true">
-          {{totalAmount}} Checkout
+          {{totalAmount}} Checkout  {{cartItems.length}}
         </button>
       </ion-col>
     </ion-row>

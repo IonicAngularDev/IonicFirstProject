@@ -1,8 +1,9 @@
 import { CheckoutPage } from './../checkout/checkout';
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
-
+import { Storage } from '@ionic/storage';
+import { SingleproductPage } from '../singleproduct/singleproduct';
 @IonicPage()
 @Component({
   selector: 'page-cart',
@@ -15,7 +16,12 @@ export class CartPage {
  isEmptyCart: boolean = true;
  ifSize: boolean = true;
  productCount: number = 1;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, private cdr: ChangeDetectorRef) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, private cdr: ChangeDetectorRef, public events: Events, private storage: Storage) {
+  }
+
+  createWishUser(pwish) {
+    //console.log('User created!')
+    this.events.publish('wishlist:created', pwish);
   }
 
   ionViewDidLoad() {
@@ -31,6 +37,15 @@ export class CartPage {
     this.loadCartItems();
   }
 
+  showDetails(detailsp)
+  {
+     console.log(detailsp);
+     this.navCtrl.push(SingleproductPage,
+      {
+        product: detailsp
+      });
+  }
+
   loadCartItems() {
     let loader = this.loadingCtrl.create({
       content: "Wait.."
@@ -42,6 +57,8 @@ export class CartPage {
         this.cartItems = val;
         //console.log(val);
         //console.log(this.cartItems.length);
+        this.createWishUser(this.cartItems.length);
+        this.storage.set("ITEMSLength", this.cartItems.length);
         if (this.cartItems.length > 0) {
           this.cartItems.forEach((v, indx) => {
             // console.log(v.psize);

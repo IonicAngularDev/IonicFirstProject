@@ -4,13 +4,7 @@ import { CartProvider } from '../../providers/cart/cart';
 import { CartPage } from '../cart/cart';
 import { Storage } from '@ionic/storage';
 import { WishlistPage } from '../wishlist/wishlist';
-
-/**
- * Generated class for the ProductdetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { SingleproductPage } from '../singleproduct/singleproduct';
 
 @IonicPage()
 @Component({
@@ -33,14 +27,18 @@ export class ProductdetailsPage {
   nosize: boolean = true;
   isenabled: boolean = false;
   hassizenot: boolean = false;
+  //onWishlist:boolean = true;
   hassize:boolean = true;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public toastCtrl: ToastController, private storage: Storage, private alertCtrl: AlertController) {
+  public isDisabled: boolean = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private cartService: CartProvider, public toastCtrl: ToastController,
+  private storage: Storage, private alertCtrl: AlertController) {
     this.detailsp = this.navParams.get('productdet');
     // this.pdeta.forEach(product => product.count = 1);
     this.pdeta = this.detailsp.msg;
     this.pdeta.forEach(product => product.count = 1);
     //this.pdeta.forEach(product => product.heart_clicked = true);
-    //console.log(this.detailsp);
+    console.log(this.detailsp);
     //console.log(this.detailsp.SelectedSize);
     //console.log(this.detailsp.msg.length);
     if(this.detailsp.msg.length === 0)
@@ -87,6 +85,14 @@ export class ProductdetailsPage {
       this.selectProduct = JSON.parse(window.localStorage.getItem('productdet'))
     }
   }
+  showDetails(detailsp)
+  {
+     console.log(detailsp);
+     this.navCtrl.push(SingleproductPage,
+      {
+        product: detailsp
+      });
+  }
 
   addToCart(detailsp) {
     //console.log(detailsp);
@@ -100,6 +106,7 @@ export class ProductdetailsPage {
       psize: detailsp.SelectedSize,
       disprice: detailsp.product_price,
       discountp: detailsp.discount,
+      //diataisl: detailsp.product_details,
       productPrice: this.productCount * parseInt(detailsp.product_actual_price),
       totalPrice: productPrice,
     };
@@ -145,29 +152,102 @@ export class ProductdetailsPage {
     {
       if(val)
       {
-       product.onWishlist = !product.onWishlist;
-       //console.log(product);
-       this.cartService.addToWishlist(product).then((val) => {
-        this.presentWishToast(product.product_name);
-      });
+        if (!product.onWishlist) {
+          this.cartService.addToWishlist(product).then(val => {
+            this.presentWishToast(product.product_name);
+          });
+        } else {
+          this.cartService.removeFromWish(product).then(val => {
+            this.presentWishToastRemove(product.product_name);
+          });
+        }
+        product.onWishlist = !product.onWishlist;
       }
       else
       {
-        //console.log("Please Login");
         this.presentAlert();
       }
     });
   }
 
+  // toggleOnWishlist1(product){
+  //   this.storage.get("ID").then((val) =>
+  //   {
+  //     if(val)
+  //     {
+  //       //console.log(this.detailsp.msg["0"].id);
+
+  //       for(let user of this.detailsp.msg) {
+  //         console.log(user.id);
+  //         if(user.id == product) {
+  //             user.onWishlist = true;
+  //             this.cartService.addToWishlist(product).then(val => {
+  //               this.presentWishToast(product.product_name);
+  //             });
+  //           }
+  //        }
+  //     }
+  //     else
+  //     {
+  //       this.presentAlert();
+  //     }
+  //   });
+  // }
+
+  // toggleOnWishlist2(product){
+  //   this.storage.get("ID").then((val) =>
+  //   {
+  //     if(val)
+  //     {
+  //       for(let user of this.detailsp.msg) {
+  //         if(user.id == product) {
+  //             user.onWishlist = false;
+  //             this.cartService.removeFromWish(product).then(val => {
+  //               this.presentWishToastRemove(product.product_name);
+  //             });
+  //           }
+  //        }
+  //     }
+  //     else
+  //     {
+  //       this.presentAlert();
+  //     }
+  //   });
+  // }
+
+
   presentWishToast(name: any) {
     let toast = this.toastCtrl.create({
       message: `${name} has been added to wishlist`,
       showCloseButton: true,
-      closeButtonText: 'View Wishlist'
+      //duration: 2000,
+      closeButtonText: 'View Wishlist',
+      //dismissOnPageChange: true,
     });
 
     toast.onDidDismiss(() => {
       this.navCtrl.push(WishlistPage);
+    });
+    toast.present();
+    //this.isDisabled = true;
+
+    // setTimeout(() => {
+    //   toast.dismiss();
+    //   console.log("called dismiss");
+    //   this.isDisabled = false;
+    // }, 2000);
+  }
+
+  presentWishToastRemove(name: any) {
+    let toast = this.toastCtrl.create({
+      message: `${name} has been removed to wishlist`,
+      showCloseButton: true,
+      duration: 1100,
+      closeButtonText: 'OK'
+    });
+
+    toast.onDidDismiss(() => {
+      //this.navCtrl.push(WishlistPage);
     });
     toast.present();
   }

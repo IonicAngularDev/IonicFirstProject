@@ -22,6 +22,7 @@ export class FrontPage {
   pcount: any = [];
   pcatg: any = [];
   mcat: any = [];
+  HasSearch: boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
     this.getcategories();
     this.getpcount();
@@ -110,4 +111,8 @@ export class FrontPage {
       //loader.dismiss();
   }
 
+  hasSearchnot()
+  {
+    this.HasSearch = !this.HasSearch;
+  }
 }

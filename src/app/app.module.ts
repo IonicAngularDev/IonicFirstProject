@@ -28,6 +28,8 @@ import { ComponentsModule } from '../components/components.module'
 import { CartProvider } from '../providers/cart/cart';
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
+import { SingleproductPage } from './../pages/singleproduct/singleproduct';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { FormsModule } from '@angular/forms';
     CartPage,
     CheckoutPage,
     ProductdetailsPage,
+    SingleproductPage,
     //FootCardComponent
   ],
   imports: [
@@ -76,6 +79,7 @@ import { FormsModule } from '@angular/forms';
     ManageaccountPage,
     ForgetpasswordPage,
     ProductPage,
+    SingleproductPage,
     CartPage,
     CheckoutPage,
     ProductdetailsPage,
