@@ -27,7 +27,8 @@ export class RestapiProvider {
   apiUrl5 = 'http://beegoodhoney.in/HoneyApi/Merchand_category';
   apiUrl6 = 'http://beegoodhoney.in/HoneyApi/MerchandiseProducts/';
   apiUrl7 = 'http://beegoodhoney.in/HoneyApi/Userdashboard/';
-
+  apiUrl8 = 'http://beegoodhoney.in/HoneyApi/get_all_products';
+  apiUrl11 = 'http://beegoodhoney.in/HoneyApi/about';
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
     //this.token = "";
@@ -186,6 +187,41 @@ getregisterpassword(credentials, type) {
     });
   }
 
+  getproductsforsearch()
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl8, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+
+ getaboutus()
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl11, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
   // getUsers(credentials, type) {
   //     var headers = new Headers();
   //     headers.append('Access-Control-Allow-Origin' , '*');

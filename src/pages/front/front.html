@@ -16,7 +16,15 @@
     <ion-icon name="search" class="myicon22" (click)="hasSearchnot()"></ion-icon>
     </div>
   </ion-navbar>
-  <ion-searchbar *ngIf="HasSearch"></ion-searchbar>
+  <ion-searchbar *ngIf="HasSearch" (input)="setSearchProducts($event)"></ion-searchbar>
+  <ion-list *ngIf="HasSearch">
+    <ion-item *ngFor="let item of finalproductsearch" (click)="showProductDetails(item)">
+        <ion-thumbnail item-start>
+            <img src="{{'http://beegoodhoney.in/uploads/products/'+item.images['0'].pro_images}}">
+        </ion-thumbnail>
+        {{ item.product_name }}
+    </ion-item>
+</ion-list>
 </ion-header>
 
 <ion-content no-padding>
@@ -53,7 +61,7 @@
   <ion-grid class="myproducts">
     <h1 class="myph11">Product Categories</h1>
     <hr />
-    <ion-row align-items-center justify-content-center class="mynewr11" style="padding: 2px 33px;">
+    <ion-row align-items-center justify-content-center class="mynewr11" style="padding: 2px;">
         <ion-col (click)="getproducts(pcat.id)" *ngFor="let pcat of this.pcatg" col-5 class="mynewcol22">
           <img class="imgsection12" src="{{pcat.category_img}}" />
           <h4 class="mynewph22">{{pcat.category_name}}</h4>

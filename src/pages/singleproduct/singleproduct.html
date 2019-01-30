@@ -15,6 +15,11 @@
 
 <ion-content padding>
   <img class="myimg11" src="{{detailsp.image}}" />
+  <ion-slides *ngIf="detailsp.images != null" loop="true" paginationType="dots" zoom="true" pager>
+      <ion-slide *ngFor="let slide of detailsp.images; let i = index ;" >
+          <img [src]="'http://beegoodhoney.in/uploads/products/'+slide.pro_images">
+      </ion-slide>
+  </ion-slides>
   <h2>{{detailsp.product_name || detailsp.name}}</h2>
   <!-- <p>MRP: ₹{{detailsp.product_price}}</p> -->
   <p>MRP: ₹{{detailsp.product_price || detailsp.disprice}}</p>

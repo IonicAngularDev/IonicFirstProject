@@ -1,3 +1,76 @@
 page-about {
+  div.mydiv2 {
+    text-align: right;
+    //display: inline-block;
+    float: right;
+    vertical-align: middle !important;
+    margin: 22px;
+  }
 
+.mydiv1 {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+img.slide-image11
+    {
+      max-height: 110px;
+      max-width: 110px;
+      margin: 2px 0;
+    }
+ion-icon.myicon22.icon {
+  float: right;
+  font-size: 20px;
+  vertical-align: middle;
+  margin: 2px 6px;
+  color: #000000;
+}
+.mycol11
+{
+  text-align: center;
+}
+img.imgsec11 {
+  width: 110px;
+  height: auto;
+}
+ion-col.mycol22.col {
+  text-align: center;
+  background-color: whitesmoke;
+  border-radius: 6px;
+  margin: 6px;
+  padding: 6px 15px;
+  box-shadow: 0px 1px 4px 1px #6d6d6d;
+}
+.mycol33
+{
+  text-align: center;
+}
+hr {
+  background-color: rgba(0, 0, 0, 0.51) !important;
+  width: 110px;
+  color: #000;
+  height: 1px !important;
+}
+.new22 {
+  padding: 2px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.inner22 {
+  border-radius: 11px;
+  padding: 15px;
+  width: 150px;
+  //background-color: #f2f2f2;
+  margin: 7px;
+  display: inline-block;
+  box-shadow: 0px 1px 4px 1px #6d6d6d;
+}
+p.mynwep2
+{
+   white-space: pre-line;
+}
+video {
+  width: 310px;
+  margin-top: 22px;
+}
 }

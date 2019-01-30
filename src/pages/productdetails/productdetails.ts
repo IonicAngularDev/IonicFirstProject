@@ -38,7 +38,7 @@ export class ProductdetailsPage {
     this.pdeta = this.detailsp.msg;
     this.pdeta.forEach(product => product.count = 1);
     //this.pdeta.forEach(product => product.heart_clicked = true);
-    console.log(this.detailsp);
+    //console.log(this.detailsp);
     //console.log(this.detailsp.SelectedSize);
     //console.log(this.detailsp.msg.length);
     if(this.detailsp.msg.length === 0)
@@ -87,7 +87,7 @@ export class ProductdetailsPage {
   }
   showDetails(detailsp)
   {
-     console.log(detailsp);
+     //console.log(detailsp);
      this.navCtrl.push(SingleproductPage,
       {
         product: detailsp

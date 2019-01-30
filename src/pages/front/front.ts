@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,  LoadingController } from 'ionic-angular';
-import { ProductPage } from '../product/product';
 import { ProductdetailsPage } from './../productdetails/productdetails';
 import { RestapiProvider } from '../../providers/restapi/restapi';
+import { SingleproductPage } from '../singleproduct/singleproduct';
 /**
  * Generated class for the FrontPage page.
  *
@@ -22,11 +22,16 @@ export class FrontPage {
   pcount: any = [];
   pcatg: any = [];
   mcat: any = [];
+  finalseaproduct: any = [];
+  searchproduct: any = [];
+  finalproductsearch: any;
   HasSearch: boolean;
+  mysInput: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
     this.getcategories();
     this.getpcount();
     this.getmerchcategory();
+    this.getsearchproducts();
   }
 
   // getproducts()
@@ -114,5 +119,48 @@ export class FrontPage {
   hasSearchnot()
   {
     this.HasSearch = !this.HasSearch;
+  }
+
+  getsearchproducts()
+  {
+    this.restProvider.getproductsforsearch()
+      .then(data => {
+      this.searchproduct = data;
+      this.finalseaproduct = this.searchproduct.msg;
+      //console.log(this.finalseaproduct);
+      });
+  }
+
+  // setSearchProducts()
+  // {
+  //    this.searchproduct.filter(searproduct => {
+  //      return searproduct.product_name.includes(this.mysInput);
+  //    });
+  //    console.log(this.mysInput);
+  // }
+
+  setSearchProducts(searchbar) {
+    this.finalproductsearch = [];
+
+    var query = searchbar.target.value;
+    if (query.trim() == '') {
+      return;
+    }
+
+    this.finalproductsearch = this.finalseaproduct.filter((value)=> {
+      if (value.product_name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    });
+  }
+
+  showProductDetails(item)
+  {
+     //console.log(item);
+     this.navCtrl.push(SingleproductPage,
+      {
+        product: item
+      });
   }
 }

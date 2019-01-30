@@ -10,6 +10,8 @@ import { ManageaccountPage } from './../pages/manageaccount/manageaccount';
 import { AboutPage } from './../pages/about/about';
 import { BlogPage } from './../pages/blog/blog';
 import { ContactPage } from '../pages/contact/contact';
+import { MerchandisePage } from './../pages/merchandise/merchandise';
+import { GalleryPage } from './../pages/gallery/gallery';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -31,14 +33,14 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: FrontPage, name2: 'home' },
       { title: 'Product Categories', component: ProductPage, name2: 'basket' },
-      { title: 'Merchandise', component: ProductPage, name2: 'man' },
+      { title: 'Merchandise', component: MerchandisePage, name2: 'man' },
       { title: 'My Orders', component: MyordersPage, name2: 'cart' },
     ];
 
     this.pages1 = [
       { title1: 'Manage Account', component: ManageaccountPage, name1: 'settings' },
       { title1: 'About Us', component: AboutPage, name1: 'people' },
-      { title1: 'Blog', component: BlogPage, name1: 'create' },
+      { title1: 'Gallery', component: GalleryPage, name1: 'images' },
       { title1: 'Contact Us', component: ContactPage, name1: 'contacts' },
     ];
     //this.uname = this.navParams.get('param1');

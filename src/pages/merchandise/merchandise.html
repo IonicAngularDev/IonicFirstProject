@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar swipeBackEnabled="false">
+    <button ion-button menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
+    <div class="mydiv2">
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
+      <ion-icon name="heart" class="myicon22"></ion-icon>
+      <ion-icon name="search" class="myicon22"></ion-icon>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="myproducts2">
+  <ion-grid class="myproducts">
+    <h1 class="myph11">Merchandise</h1>
+    <ion-row align-items-center justify-content-center class="mynewr11">
+      <ion-col (click)="getmerchproducts(pmat.id)" *ngFor="let pmat of this.mcat" col-5 class="mynewcol22">
+        <img class="imgsection12" src="{{pmat.category_img}}" />
+        <h4 class="mynewph22">{{pmat.category_name}}</h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

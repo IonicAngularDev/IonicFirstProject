@@ -6,4 +6,14 @@ page-singleproduct {
     text-transform: uppercase;
     border-radius: 0px;
   }
+
+  .swiper-slide img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 40px;
+  }
+
+  ion-slides {
+    height: 220px;
+  }
 }

@@ -5,21 +5,58 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle end>
+  <ion-navbar swipeBackEnabled="false">
+    <button ion-button menuToggle start>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <img src="assets/imgs/logo3.png" class="slide-image11"/>
+    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
+    <div class="mydiv2">
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
+      <ion-icon name="heart" class="myicon22"></ion-icon>
+      <ion-icon name="search" class="myicon22"></ion-icon>
+    </div>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content no-padding>
-  <ion-grid class="myslider22 ">
-    <ion-row align-items-center>
-      <ion-col class="mycol11">
-         <h3>What we do</h3>
+<ion-content padding overflow-scroll="true">
+  <ion-grid align-items-center justify-content-center>
+    <ion-row align-items-center justify-content-center>
+      <ion-col class="mycol11" col-12>
+        <h2>{{this.aboutdetails[0]?.main_head | uppercase}}</h2>
+        <hr />
       </ion-col>
+      <ion-col class="mycol22" col-12>
+        <img class="imgsec11" src="{{this.aboutdetails[0]?.sub_images}}" />
+        <h3>{{this.aboutdetails[0]?.sub_head}}</h3>
+        <p>{{this.aboutdetails[0]?.sub_description}}</p>
+      </ion-col>
+      <ion-col class="mycol22" col-12>
+        <img class="imgsec11" src="{{this.aboutdetails[1]?.sub_images}}" />
+        <h3>{{this.aboutdetails[1]?.sub_head}}</h3>
+        <p>{{this.aboutdetails[1]?.sub_description}}</p>
+      </ion-col>
+      <ion-col class="mycol11" style="padding: 22px 2px;" col-12>
+        <h3>{{this.aboutdetails[2]?.main_head}}</h3>
+        <hr />
+        <p>{{this.aboutdetails[2]?.main_description}}</p>
+      </ion-col>
+      <ion-col class="mycol11" style="padding: 2px 2px 22px;" col-12>
+          <h3>{{this.aboutdetails[3]?.main_head}}</h3>
+          <hr />
+          <p>{{this.aboutdetails[3]?.main_description}}</p>
+          <video controls="controls" preload="metadata" class="videoPlayer">
+              <source src="./assets/imgs/bee.mp4" type="video/mp4" />
+           </video>
+        </ion-col>
+      <ion-col class="mycol33" col-12>
+          <div class="new22">
+            <div class="inner22" *ngFor="let n of this.aboutnum">
+              <img class="imgsec11" src="{{this.aboutdetails[n]?.sub_images}}" />
+              <p class="mynwep2">{{this.aboutdetails[n]?.sub_head}}</p>
+            </div>
+          </div>
+        </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

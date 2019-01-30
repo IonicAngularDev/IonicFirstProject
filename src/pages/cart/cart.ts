@@ -60,18 +60,21 @@ export class CartPage {
         this.createWishUser(this.cartItems.length);
         this.storage.set("ITEMSLength", this.cartItems.length);
         if (this.cartItems.length > 0) {
-          this.cartItems.forEach((v, indx) => {
-            // console.log(v.psize);
-            // if(v.psize===undefined){
-            //   this.ifSize = false;
-            // }else{
-            //   this.ifSize = true;
-            // }
-            this.totalAmount += parseInt(v.totalPrice);
-            //console.log(this.totalAmount);
-          });
-          this.cdr.detectChanges();
+          // this.cartItems.forEach((v, indx) => {
+          //   // console.log(v.psize);
+          //   // if(v.psize===undefined){
+          //   //   this.ifSize = false;
+          //   // }else{
+          //   //   this.ifSize = true;
+          //   // }
+          //   this.totalAmount += parseInt(v.totalPrice);
+          //   //console.log(this.totalAmount);
+          // });
+          // this.cdr.detectChanges();
+          // this.isEmptyCart = false;
+
           this.isEmptyCart = false;
+          this.recalculateTotalAmount();
         }
         this.isCartItemLoaded = true;
         loader.dismiss();

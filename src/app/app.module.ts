@@ -29,6 +29,8 @@ import { CartProvider } from '../providers/cart/cart';
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
 import { SingleproductPage } from './../pages/singleproduct/singleproduct';
+import { MerchandisePage } from './../pages/merchandise/merchandise';
+import { GalleryPage } from './../pages/gallery/gallery';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { SingleproductPage } from './../pages/singleproduct/singleproduct';
     CheckoutPage,
     ProductdetailsPage,
     SingleproductPage,
+    MerchandisePage,
+    GalleryPage
     //FootCardComponent
   ],
   imports: [
@@ -83,7 +87,9 @@ import { SingleproductPage } from './../pages/singleproduct/singleproduct';
     CartPage,
     CheckoutPage,
     ProductdetailsPage,
-    FootCardComponent
+    FootCardComponent,
+    MerchandisePage,
+    GalleryPage
   ],
   providers: [
     StatusBar,

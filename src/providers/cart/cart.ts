@@ -70,12 +70,14 @@ export class CartProvider {
 
   removeFromCart(productdet) {
     //console.log(productdet);
+
     return this.getCartItems().then(result => {
       if (result && result.length) {
         const newList = result.filter(el => el.product_id !== productdet.product_id);
         return this.storage.set(CART_KEY, newList);
       }
     })
+
   }
 
   removeFromWish(productdet) {

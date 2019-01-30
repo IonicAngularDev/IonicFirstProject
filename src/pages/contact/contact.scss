@@ -1,3 +1,28 @@
 page-contact {
+  div.mydiv2 {
+    text-align: right;
+    //display: inline-block;
+    float: right;
+    vertical-align: middle !important;
+    margin: 22px;
+  }
 
+.mydiv1 {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+img.slide-image11
+    {
+      max-height: 110px;
+      max-width: 110px;
+      margin: 2px 0;
+    }
+ion-icon.myicon22.icon {
+  float: right;
+  font-size: 20px;
+  vertical-align: middle;
+  margin: 2px 6px;
+  color: #000000;
+}
 }
