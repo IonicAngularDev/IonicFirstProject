@@ -3,6 +3,12 @@ import { IonicPage, NavController, NavParams,  LoadingController } from 'ionic-a
 import { ProductdetailsPage } from './../productdetails/productdetails';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { SingleproductPage } from '../singleproduct/singleproduct';
+import { MerchandisePage } from '../merchandise/merchandise';
+import { AboutPage } from '../about/about';
+import { ContactPage } from '../contact/contact';
+import { GalleryPage } from '../gallery/gallery';
+import { CartPage } from './../cart/cart';
+
 /**
  * Generated class for the FrontPage page.
  *
@@ -163,4 +169,34 @@ export class FrontPage {
         product: item
       });
   }
+
+  merchandisepage2()
+{
+    this.navCtrl.setRoot(MerchandisePage);
+}
+
+aboutpage2()
+{
+    this.navCtrl.setRoot(AboutPage);
+}
+
+contactpage2()
+{
+    this.navCtrl.setRoot(ContactPage);
+}
+
+gallerypage2()
+{
+    this.navCtrl.setRoot(GalleryPage);
+}
+
+frontpage2()
+{
+    this.navCtrl.setRoot(FrontPage);
+}
+
+cardpage2()
+{
+    this.navCtrl.setRoot(CartPage);
+}
 }

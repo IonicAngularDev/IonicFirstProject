@@ -5,67 +5,67 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
     <button ion-button menuToggle start>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11"/></div>
+    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
     <div class="mydiv2">
-    <ion-icon name="cart" class="myicon22"></ion-icon>
-    <ion-icon name="heart" class="myicon22"></ion-icon>
-    <ion-icon name="search" class="myicon22" (click)="hasSearchnot()"></ion-icon>
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
+      <ion-icon name="heart" class="myicon22"></ion-icon>
+      <ion-icon name="search" class="myicon22" (click)="hasSearchnot()"></ion-icon>
     </div>
   </ion-navbar>
   <ion-searchbar *ngIf="HasSearch" (input)="setSearchProducts($event)"></ion-searchbar>
   <ion-list *ngIf="HasSearch">
     <ion-item *ngFor="let item of finalproductsearch" (click)="showProductDetails(item)">
-        <ion-thumbnail item-start>
-            <img src="{{'http://beegoodhoney.in/uploads/products/'+item.images['0'].pro_images}}">
-        </ion-thumbnail>
-        {{ item.product_name }}
+      <ion-thumbnail item-start>
+        <img src="{{'http://beegoodhoney.in/uploads/products/'+item.images['0'].pro_images}}">
+      </ion-thumbnail>
+      {{ item.product_name }}
     </ion-item>
-</ion-list>
+  </ion-list>
 </ion-header>
 
 <ion-content no-padding>
-    <ion-grid class="myslider22">
-        <ion-row align-items-center>
-        <ion-col class="mycol11">
-            <ion-slides loop="true" pager>
-                <ion-slide class="myslider1">
-                  <div class="part1">
-                  <h1 class="slide-title1">FRESH PRODUCE RIGHT TO YOU</h1>
-                  <p class="mysliderp1">100% PURE HONEY</p>
-                  </div>
-                </ion-slide>
+  <ion-grid class="myslider22">
+    <ion-row align-items-center>
+      <ion-col class="mycol11">
+        <ion-slides loop="true" pager>
+          <ion-slide class="myslider1">
+            <div class="part1">
+              <h1 class="slide-title1">FRESH PRODUCE RIGHT TO YOU</h1>
+              <p class="mysliderp1">100% PURE HONEY</p>
+            </div>
+          </ion-slide>
 
-                <ion-slide class="myslider2">
-                    <div class="part1">
-                    <h1 class="slide-title1">FRESH PRODUCE RIGHT TO YOU</h1>
-                    <p class="mysliderp1">100% PURE HONEY</p>
-                    </div>
-                </ion-slide>
+          <ion-slide class="myslider2">
+            <div class="part1">
+              <h1 class="slide-title1">FRESH PRODUCE RIGHT TO YOU</h1>
+              <p class="mysliderp1">100% PURE HONEY</p>
+            </div>
+          </ion-slide>
 
-                <ion-slide class="myslider3">
-                  <div class="part1">
-                  <h1 class="slide-title1">FRESH PRODUCE RIGHT TO YOU</h1>
-                  <p class="mysliderp1">100% PURE HONEY</p>
-                  </div>
-                </ion-slide>
+          <ion-slide class="myslider3">
+            <div class="part1">
+              <h1 class="slide-title1">FRESH PRODUCE RIGHT TO YOU</h1>
+              <p class="mysliderp1">100% PURE HONEY</p>
+            </div>
+          </ion-slide>
 
-              </ion-slides>
-        </ion-col>
-      </ion-row>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
   <ion-grid class="myproducts">
     <h1 class="myph11">Product Categories</h1>
     <hr />
     <ion-row align-items-center justify-content-center class="mynewr11" style="padding: 2px;">
-        <ion-col (click)="getproducts(pcat.id)" *ngFor="let pcat of this.pcatg" col-5 class="mynewcol22">
-          <img class="imgsection12" src="{{pcat.category_img}}" />
-          <h4 class="mynewph22">{{pcat.category_name}}</h4>
-        </ion-col>
+      <ion-col (click)="getproducts(pcat.id)" *ngFor="let pcat of this.pcatg" col-5 class="mynewcol22">
+        <img class="imgsection12" src="{{pcat.category_img}}" />
+        <h4 class="mynewph22">{{pcat.category_name}}</h4>
+      </ion-col>
     </ion-row>
     <!-- <ion-row align-items-center style="padding: 2px 40px;">
       <ion-col>
@@ -87,16 +87,16 @@
             <h4 class="mynewph22">Organic Honey</h4>
         </ion-col>
     </ion-row>  -->
-</ion-grid>
+  </ion-grid>
   <ion-grid class="mysection3">
-      <h4 class="mynewh22">Merchandise</h4>
-      <hr class="myhr22">
-      <div class="new22">
-       <div class="inner22" (click)="getmerchproducts(pmat.id)" *ngFor="let pmat of this.mcat">
-          <img class="imgsection1" src="{{pmat.category_img}}" />
-          <h4 class="mynewh12">{{pmat.category_name}}</h4>
-       </div>
-       <!-- <div class="inner22">
+    <h4 class="mynewh22">Merchandise</h4>
+    <hr class="myhr22">
+    <div class="new22">
+      <div class="inner22" (click)="getmerchproducts(pmat.id)" *ngFor="let pmat of this.mcat">
+        <img class="imgsection1" src="{{pmat.category_img}}" />
+        <h4 class="mynewh12">{{pmat.category_name}}</h4>
+      </div>
+      <!-- <div class="inner22">
           <img class="imgsection1" src="assets/imgs/bee.png" />
          <h4 class="mynewh12">Caps</h4>
        </div>
@@ -108,7 +108,7 @@
           <img class="imgsection1" src="assets/imgs/beehive.png" />
           <h4 class="mynewh12">Water Bottle</h4>
        </div> -->
-      </div>
+    </div>
     <!-- <ion-slides pager>
       <ion-slide>
        <img class="imgsection1" src="assets/imgs/hex1.png" />
@@ -134,18 +134,18 @@
         <p>Great Savings. Every Day. Shop from our Deal of the Day, Lightning Deals and avail other great offers.</p>
       </ion-slide>
 </ion-slides> -->
-<ion-row align-items-center>
-    <ion-col>
-<button class="mybtn22" ion-button round>View All</button>
-</ion-col>
-</ion-row>
+    <ion-row align-items-center>
+      <ion-col>
+        <button (click)="merchandisepage2()" class="mybtn22" ion-button round>View All</button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
   <ion-grid style="text-align: center; padding: 0px;">
-      <h4 class="mynewh22">Total Honey Sold</h4>
-      <hr />
-    <ion-row align-items-center class="mysection2">
-      <ion-col *ngFor="let ptot of this.pcount">
+    <h4 class="mynewh22">Total Honey Sold</h4>
+    <hr />
+    <ion-row align-items-center justify-content-center class="mysection2">
+      <ion-col align-items-center justify-content-center *ngFor="let ptot of this.pcount">
         <ion-icon name="flower" class="myion2"></ion-icon>
         <p>{{this.ptot.sold}} (ML)</p>
         <h4 class="myh4">{{this.ptot.category}}</h4>
@@ -166,8 +166,8 @@
         <p>Eucalyptus</p>
       </ion-col> -->
     </ion-row>
-</ion-grid>
-<!-- <ion-grid>
+  </ion-grid>
+  <!-- <ion-grid>
   <ion-row class="mycol22" align-items-center>
     <ion-col>
         <h4 class="mynewh22">Testimonials</h4>
@@ -204,23 +204,6 @@
     </ion-col>
   </ion-row>
 </ion-grid> -->
-
-<ion-row align-items-center class="mysocialicons22">
-    <ion-col class="mycol33">
-      <!-- <h4 class="mynewh33">Social Links</h4> -->
-      <ion-icon name="home" class="myicons22"></ion-icon>
-    </ion-col>
-    <ion-col class="mycol33">
-      <ion-icon name="people" class="myicons22"></ion-icon>
-    </ion-col>
-    <ion-col class="mycol33">
-      <ion-icon name="create" class="myicons22"></ion-icon>
-    </ion-col>
-    <ion-col class="mycol33">
-        <ion-icon name="contacts" class="myicons22"></ion-icon>
-    </ion-col>
-</ion-row>
-
   <!-- <ion-grid class="mysection11">
       <ion-row align-items-center>
         <ion-col>
@@ -358,3 +341,23 @@
   </ion-grid>
   <foot-card></foot-card> -->
 </ion-content>
+
+<ion-footer class="single-footer">
+    <ion-grid>
+      <ion-row align-items-center class="mysocialicons22">
+        <ion-col class="mycol33">
+          <!-- <h4 class="mynewh33">Social Links</h4> -->
+          <ion-icon (click)="frontpage2()" name="home" class="myicons22"></ion-icon>
+        </ion-col>
+        <ion-col class="mycol33">
+          <ion-icon (click)="aboutpage2()" name="people" class="myicons22"></ion-icon>
+        </ion-col>
+        <ion-col class="mycol33">
+          <ion-icon (click)="gallerypage2()" name="images" class="myicons22"></ion-icon>
+        </ion-col>
+        <ion-col class="mycol33">
+          <ion-icon (click)="contactpage2()" name="contacts" class="myicons22"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-footer>

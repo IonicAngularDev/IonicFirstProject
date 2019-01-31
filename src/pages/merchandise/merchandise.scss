@@ -63,4 +63,21 @@ ion-icon.myicon22.icon {
 ion-row.mynewr11.row {
   padding: 11px;
 }
+.mycol33 p
+{
+  color: #ababab;
+}
+ion-col.mycol33.col {
+      text-align: center;
+}
+ion-icon.myicons22 {
+  color: #000000;
+  font-size: 26px;
+}
+ion-footer.single-footer.footer.footer-md {
+  background-color: #fff;
+}
+ion-navbar[hidebackbutton] button[menutoggle] {
+  display: block !important;
+}
 }

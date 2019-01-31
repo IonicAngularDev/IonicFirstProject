@@ -1,9 +1,12 @@
+import { FrontPage } from './../front/front';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ViewController } from 'ionic-angular';
 import { CartPage } from './../cart/cart';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { ProductdetailsPage } from './../productdetails/productdetails';
-
+import { AboutPage } from '../about/about';
+import { ContactPage } from '../contact/contact';
+import { GalleryPage } from '../gallery/gallery';
 /**
  * Generated class for the MerchandisePage page.
  *
@@ -25,13 +28,23 @@ export class MerchandisePage {
   pcatg: any = [];
   mcat: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
+    public restProvider: RestapiProvider, public loadingCtrl: LoadingController, private viewCtrl: ViewController) {
       this.getmerchcategory();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MerchandisePage');
   }
+
+  // ionViewWillEnter() {
+  //   this.navCtrl.setRoot(MerchandisePage.component);
+  // }
+
+  // openPage(page) {
+  //   Reset the content nav to have just this page
+  //   we wouldn't want the back button to show in this scenario
+  //   this.navCtrl.setRoot(MerchandisePage);
+  // }
 
   getmerchcategory()
   {
@@ -66,4 +79,24 @@ export class MerchandisePage {
   {
     this.navCtrl.push(CartPage);
   }
+
+  aboutpage2()
+{
+    this.navCtrl.push(AboutPage);
+}
+
+contactpage2()
+{
+    this.navCtrl.push(ContactPage);
+}
+
+gallerypage2()
+{
+    this.navCtrl.push(GalleryPage);
+}
+
+frontpage2()
+{
+    this.navCtrl.push(FrontPage);
+}
 }
