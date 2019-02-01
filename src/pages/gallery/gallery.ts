@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 
 /**
@@ -18,7 +18,7 @@ export class GalleryPage {
   imggallery: any = [];
   galleryimages: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public restProvider: RestapiProvider) {
+    public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
       this.getImagesGallery();
   }
 
@@ -28,11 +28,16 @@ export class GalleryPage {
 
   getImagesGallery()
   {
+    let loader = this.loadingCtrl.create({
+      content: "Wait.."
+    });
+    loader.present();
     this.restProvider.getgallery()
       .then(data => {
       this.imggallery = data;
       this.galleryimages = this.imggallery.msg;
-      console.log(this.galleryimages);
+      //console.log(this.galleryimages);
       });
+    loader.dismiss();
   }
 }

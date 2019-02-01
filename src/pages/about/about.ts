@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 
 @IonicPage()
@@ -13,7 +13,7 @@ export class AboutPage {
   abouth1: any;
   aboutnum: any = [3, 4, 5, 6];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public restProvider: RestapiProvider) {
+    public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
       this.getAboutDetails();
   }
 
@@ -23,6 +23,10 @@ export class AboutPage {
 
   getAboutDetails()
   {
+    let loader = this.loadingCtrl.create({
+      content: "Wait.."
+    });
+    loader.present();
     this.restProvider.getaboutus()
       .then(data => {
       this.aboutus = data;
@@ -31,5 +35,6 @@ export class AboutPage {
       //console.log(this.aboutdetails["0"].main_head);
       //console.log(this.aboutdetails);
       });
+      loader.dismiss();
   }
 }

@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { SingleproductPage } from './../pages/singleproduct/singleproduct';
 import { MerchandisePage } from './../pages/merchandise/merchandise';
 import { GalleryPage } from './../pages/gallery/gallery';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { GalleryPage } from './../pages/gallery/gallery';
     HttpClientModule,
     ComponentsModule,
     FormsModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
