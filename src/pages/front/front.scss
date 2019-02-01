@@ -449,12 +449,6 @@ ion-icon.myicons22 {
 .searchbar-clear-icon {
   display: none !important;
   }
-
-.platform-ipad .myproducts ion-col.col
-{
-width: 150px !important;
-max-width: 150px !important;
-}
 }
 
 .platform-ipad .myproducts ion-col.col
@@ -480,4 +474,8 @@ max-width: 150px !important;
 .platform-ipad  ion-slide.myslider3 {
   background-size: contain;
   padding: 60px;
+}
+ion-app [no-padding] .scroll-content {
+  padding-bottom: 51px;
+  padding-top: 80px;
 }

@@ -1,4 +1,27 @@
-<ion-menu [content]="content">
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
+    <div class="mydiv2">
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
+      <ion-icon name="heart" class="myicon22"></ion-icon>
+      <ion-icon name="search" class="myicon22" (click)="hasSearchnot()"></ion-icon>
+    </div>
+  </ion-navbar>
+  <ion-searchbar *ngIf="HasSearch" (input)="setSearchProducts($event)"></ion-searchbar>
+  <ion-list *ngIf="HasSearch">
+    <ion-item *ngFor="let item of finalproductsearch" (click)="showProductDetails(item)">
+      <ion-thumbnail item-start>
+        <img src="{{'http://beegoodhoney.in/uploads/products/'+item.images['0'].pro_images}}">
+      </ion-thumbnail>
+      {{ item.product_name }}
+    </ion-item>
+  </ion-list>
+</ion-header>
+
+<ion-menu [content]="content" side="left" type="overlay">
   <!-- <ion-header>
     <ion-toolbar>
       <ion-title>HoneyBee</ion-title>
@@ -16,8 +39,8 @@
       </ion-col>
       <ion-col class="mycols11" col-8>
         <h1 class="mymenuh2">Welcome {{this.userName1}}</h1>
-        <span menuClose (click)="loginpage2()" *ngIf="menuclick"><ion-icon menuClose name="log-in" class="myicons22"></ion-icon> Login/SignUp </span>
-        <span menuClose (click)="logoutClicked()" *ngIf="menuclick2"><ion-icon menuClose name="log-out" class="myicons22"></ion-icon> Logout </span>
+        <span menuClose (click)="loginpage2()" *ngIf="menuclick"><ion-icon menuClose name="log-in" class="mynewicons22"></ion-icon> Login/SignUp </span>
+        <span menuClose (click)="logoutClicked()" *ngIf="menuclick2"><ion-icon menuClose name="log-out" class="mynewicons22"></ion-icon> Logout </span>
       </ion-col>
     </ion-row>
     <!-- <ion-row align-items-center class="mymenuicons22">
@@ -45,6 +68,26 @@
     </ion-list>
   </ion-content>
 </ion-menu>
+
+<ion-footer class="single-footer">
+    <ion-grid>
+      <ion-row align-items-center class="mysocialicons22">
+        <ion-col class="mycol33">
+          <!-- <h4 class="mynewh33">Social Links</h4> -->
+          <ion-icon (click)="frontpage2()" name="home" class="myicons22"></ion-icon>
+        </ion-col>
+        <ion-col class="mycol33">
+          <ion-icon (click)="aboutpage2()" name="people" class="myicons22"></ion-icon>
+        </ion-col>
+        <ion-col class="mycol33">
+          <ion-icon (click)="gallerypage2()" name="images" class="myicons22"></ion-icon>
+        </ion-col>
+        <ion-col class="mycol33">
+          <ion-icon (click)="contactpage2()" name="contacts" class="myicons22"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-footer>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

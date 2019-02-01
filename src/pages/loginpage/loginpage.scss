@@ -54,10 +54,6 @@ button.newbtn11 {
   background: #EB6D2F;
   border-color: #EB6D2F;
 }
-.newbg11 .scroll-content {
-  padding-bottom: 0px !important;
-}
-
 h2 { width:100%; text-align:center; border-bottom: 1px solid #000; line-height:0.1em; margin:10px 0 20px; }
 h2 span { background:#fff; padding:0 10px; font-size: 15px; }
 
@@ -76,5 +72,8 @@ h1.newh1 {
 .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
   -webkit-box-shadow: inset 2px -3px 0 0 #f53d3d;
   box-shadow: inset 2px -3px 0 0 #f53d3d;
+}
+.scroll-content {
+  padding: 85px 16px 51px !important;
 }
 }

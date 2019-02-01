@@ -1,22 +1,7 @@
-<ion-header>
-  <ion-navbar swipeBackEnabled="false">
-    <button ion-button menuToggle start>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
-    <div class="mydiv2">
-      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
-      <ion-icon name="heart" class="myicon22"></ion-icon>
-      <ion-icon name="search" class="myicon22"></ion-icon>
-    </div>
-  </ion-navbar>
-</ion-header>
-
-
 <ion-content padding class="newbg11">
   <ion-grid align-items-center justify-content-center style="height: 100%;">
     <ion-row align-items-center justify-content-center style="height: 100%;">
-      <ion-col align-self-center col-12 style="text-align: center;">
+      <ion-col align-self-center justify-content-center col-12 col-md-6 col-xl-3 style="text-align: center;">
         <h1 class="newh1">Register Here</h1>
       <form [formGroup]="todo" (ngSubmit)="getregisterUsers()">
         <ion-list>
@@ -40,7 +25,7 @@
           <ion-item class="newitem2">
             <ion-input placeholder="Password" type="password" [(ngModel)]="useregData.password" formControlName="password" required></ion-input>
           </ion-item>
-          <div padding>
+          <div>
             <button [disabled]="!todo.valid" ion-button type="submit" class="newbtn11" color="primary" block>Register</button>
           </div>
         </ion-list>

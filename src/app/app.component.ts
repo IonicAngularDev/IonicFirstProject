@@ -8,11 +8,13 @@ import { ProductPage } from './../pages/product/product';
 import { MyordersPage } from './../pages/myorders/myorders';
 import { ManageaccountPage } from './../pages/manageaccount/manageaccount';
 import { AboutPage } from './../pages/about/about';
-import { BlogPage } from './../pages/blog/blog';
 import { ContactPage } from '../pages/contact/contact';
 import { MerchandisePage } from './../pages/merchandise/merchandise';
 import { GalleryPage } from './../pages/gallery/gallery';
 import { Storage } from '@ionic/storage';
+import { CartPage } from './../pages/cart/cart';
+import { SingleproductPage } from './../pages/singleproduct/singleproduct';
+import { RestapiProvider } from '../providers/restapi/restapi';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,9 +27,15 @@ export class MyApp {
   rootPage: any = FrontPage;
   uemail: string;
   userName1: string;
+  finalseaproduct: any = [];
+  searchproduct: any = [];
+  finalproductsearch: any;
+  HasSearch: boolean;
   pages: Array<{title: string, component: any, name2: string}>;
   pages1: Array<{title1: string, component: any, name1: string}>;
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events, private storage: Storage) {
+  constructor(public platform: Platform, public statusBar: StatusBar,
+    public splashScreen: SplashScreen, public events: Events,
+    private storage: Storage, public restProvider: RestapiProvider) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -52,6 +60,7 @@ export class MyApp {
       this.menuclick = false;
  });
 
+ this.getsearchproducts();
   }
 
   initializeApp() {
@@ -71,7 +80,7 @@ export class MyApp {
 
   loginpage2()
   {
-    this.nav.push(LoginpagePage);
+    this.nav.setRoot(LoginpagePage);
     //this.uname = this.navParams.get('param1');
   }
 
@@ -87,4 +96,69 @@ export class MyApp {
     });
   }
 
+  aboutpage2()
+{
+    this.nav.setRoot(AboutPage);
+}
+
+contactpage2()
+{
+    this.nav.setRoot(ContactPage);
+}
+
+gallerypage2()
+{
+    this.nav.setRoot(GalleryPage);
+}
+
+frontpage2()
+{
+    this.nav.setRoot(FrontPage);
+}
+
+cardpage2()
+{
+    this.nav.setRoot(CartPage);
+}
+
+hasSearchnot()
+{
+    this.HasSearch = !this.HasSearch;
+}
+
+getsearchproducts()
+  {
+    this.restProvider.getproductsforsearch()
+      .then(data => {
+      this.searchproduct = data;
+      this.finalseaproduct = this.searchproduct.msg;
+      //console.log(this.finalseaproduct);
+      });
+  }
+
+
+setSearchProducts(searchbar) {
+  this.finalproductsearch = [];
+
+  var query = searchbar.target.value;
+  if (query.trim() == '') {
+    return;
+  }
+
+  this.finalproductsearch = this.finalseaproduct.filter((value)=> {
+    if (value.product_name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
+      return true;
+    }
+    return false;
+  });
+}
+
+showProductDetails(item)
+{
+   //console.log(item);
+   this.nav.setRoot(SingleproductPage,
+    {
+      product: item
+    });
+}
 }

@@ -47,7 +47,7 @@ ion-col.mycol22.col {
 }
 hr {
   background-color: rgba(0, 0, 0, 0.51) !important;
-  width: 110px;
+  width: 100%;
   color: #000;
   height: 1px !important;
 }
@@ -69,8 +69,24 @@ p.mynwep2
 {
    white-space: pre-line;
 }
+h3.myneh31
+{
+  margin-top: 13px !important;
+  text-transform: capitalize;
+}
 video {
   width: 310px;
   margin-top: 22px;
 }
+p.newmyp2
+{
+  text-align: justify;
+}
+}
+ion-app.md [padding] .scroll-content {
+  padding: 85px 16px 51px;
+}
+
+ion-app.ios [padding] .scroll-content {
+  padding: 85px 16px 51px;
 }

@@ -3,11 +3,8 @@ import { IonicPage, NavController, NavParams,  LoadingController } from 'ionic-a
 import { ProductdetailsPage } from './../productdetails/productdetails';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { SingleproductPage } from '../singleproduct/singleproduct';
-import { MerchandisePage } from '../merchandise/merchandise';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { GalleryPage } from '../gallery/gallery';
 import { CartPage } from './../cart/cart';
+import { MerchandisePage } from '../merchandise/merchandise';
 
 /**
  * Generated class for the FrontPage page.
@@ -33,7 +30,8 @@ export class FrontPage {
   finalproductsearch: any;
   HasSearch: boolean;
   mysInput: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
     this.getcategories();
     this.getpcount();
     this.getmerchcategory();
@@ -85,7 +83,7 @@ export class FrontPage {
       .then(data => {
       this.users = data;
       //console.log(this.users);
-      this.navCtrl.push(ProductdetailsPage,
+      this.navCtrl.setRoot(ProductdetailsPage,
         {
           productdet : this.users,
         });
@@ -164,7 +162,7 @@ export class FrontPage {
   showProductDetails(item)
   {
      //console.log(item);
-     this.navCtrl.push(SingleproductPage,
+     this.navCtrl.setRoot(SingleproductPage,
       {
         product: item
       });
@@ -173,26 +171,6 @@ export class FrontPage {
   merchandisepage2()
 {
     this.navCtrl.setRoot(MerchandisePage);
-}
-
-aboutpage2()
-{
-    this.navCtrl.setRoot(AboutPage);
-}
-
-contactpage2()
-{
-    this.navCtrl.setRoot(ContactPage);
-}
-
-gallerypage2()
-{
-    this.navCtrl.setRoot(GalleryPage);
-}
-
-frontpage2()
-{
-    this.navCtrl.setRoot(FrontPage);
 }
 
 cardpage2()

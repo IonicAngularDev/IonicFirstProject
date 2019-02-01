@@ -5,6 +5,10 @@ import { ProductdetailsPage } from './../productdetails/productdetails';
 import { CartPage } from './../cart/cart';
 import { CartProvider } from "../../providers/cart/cart";
 import { Storage } from '@ionic/storage';
+import { AboutPage } from '../about/about';
+import { ContactPage } from '../contact/contact';
+import { GalleryPage } from '../gallery/gallery';
+import { FrontPage } from './../front/front';
 
 @IonicPage()
 @Component({
@@ -100,5 +104,25 @@ export class ProductPage {
   {
     this.navCtrl.push(CartPage);
   }
+
+  aboutpage2()
+{
+    this.navCtrl.setRoot(AboutPage);
+}
+
+contactpage2()
+{
+    this.navCtrl.setRoot(ContactPage);
+}
+
+gallerypage2()
+{
+    this.navCtrl.setRoot(GalleryPage);
+}
+
+frontpage2()
+{
+    this.navCtrl.setRoot(FrontPage);
+}
 
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CartPage } from './../cart/cart';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 
 @IonicPage()
@@ -33,9 +32,4 @@ export class AboutPage {
       //console.log(this.aboutdetails);
       });
   }
-
-  cardpage2()
- {
-   this.navCtrl.push(CartPage);
- }
 }

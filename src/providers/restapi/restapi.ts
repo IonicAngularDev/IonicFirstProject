@@ -28,7 +28,10 @@ export class RestapiProvider {
   apiUrl6 = 'http://beegoodhoney.in/HoneyApi/MerchandiseProducts/';
   apiUrl7 = 'http://beegoodhoney.in/HoneyApi/Userdashboard/';
   apiUrl8 = 'http://beegoodhoney.in/HoneyApi/get_all_products';
-  apiUrl11 = 'http://beegoodhoney.in/HoneyApi/about';
+  // apiUrl11 = apiUrl+'about';
+  apiUrl11 = 'http://192.168.1.3/BGH/HoneyApi/about';
+  apiUrl12 = apiUrl+'gallery_images';
+
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
     //this.token = "";
@@ -216,6 +219,24 @@ getregisterpassword(credentials, type) {
       headers.append('content-type','application/json');
 
     this.http.get(this.apiUrl11, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+
+ getgallery()
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl12, {headers: headers}).subscribe((data: Response) => {
       resolve(data);},
     err => {
     console.log(err);

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CartPage } from './../cart/cart';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 
 /**
@@ -16,17 +15,24 @@ import { RestapiProvider } from '../../providers/restapi/restapi';
   templateUrl: 'gallery.html',
 })
 export class GalleryPage {
-
+  imggallery: any = [];
+  galleryimages: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public restProvider: RestapiProvider) {
+      this.getImagesGallery();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GalleryPage');
   }
 
-  cardpage2()
+  getImagesGallery()
   {
-    this.navCtrl.push(CartPage);
+    this.restProvider.getgallery()
+      .then(data => {
+      this.imggallery = data;
+      this.galleryimages = this.imggallery.msg;
+      console.log(this.galleryimages);
+      });
   }
 }
