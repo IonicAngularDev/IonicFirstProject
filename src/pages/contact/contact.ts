@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CartPage } from './../cart/cart';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 
 /**
@@ -16,17 +15,29 @@ import { RestapiProvider } from '../../providers/restapi/restapi';
   templateUrl: 'contact.html',
 })
 export class ContactPage {
-
+  contactus: any = [];
+  detailscontact: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public restProvider: RestapiProvider) {
+    public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
+      this.getContactDetails();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
   }
 
-  cardpage2()
+  getContactDetails()
   {
-    this.navCtrl.push(CartPage);
+    let loader = this.loadingCtrl.create({
+      content: "Wait.."
+    });
+    loader.present();
+    this.restProvider.getcontact()
+      .then(data => {
+      this.contactus = data;
+      this.detailscontact = this.contactus.msg;
+      //console.log(this.detailscontact);
+      });
+    loader.dismiss();
   }
 }

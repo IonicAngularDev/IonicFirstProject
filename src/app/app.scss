@@ -107,10 +107,6 @@ ion-icon.myicons22 {
   color: #000000;
   font-size: 26px;
 }
-ion-footer.single-footer.footer {
-  background-color: #f2f2f2;
-  box-shadow: 0px 1px 6px 1px #929292;
-}
 ion-icon.mynewicons22 {
   color: #eb6d2fed;
 }
@@ -148,10 +144,21 @@ img.slide-image11
 }
 
 ion-header.header {
-    background-color: #fff;
+    background-color: #e0e0e0;
 }
-
+ion-footer.single-footer.footer {
+  background-color: #e0e0e0;
+  box-shadow: 0px 1px 6px 1px #929292;
+}
+.toolbar-background-md {
+  background: transparent;
+}
 .text-input-ios {
   padding-left: 6px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #EB6D2F;
+  opacity: 1;
 }
 

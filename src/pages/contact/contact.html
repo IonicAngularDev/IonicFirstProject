@@ -1,3 +1,12 @@
-<ion-content padding>
-
+<ion-content padding overflow-scroll="true">
+  <ion-grid align-items-center justify-content-center>
+    <ion-row align-items-center justify-content-center>
+      <ion-col class="mycol22" col-12 *ngFor="let contdetails of this.detailscontact">
+          <h3 class="myneh31">{{contdetails?.sub_head}}</h3>
+          <hr />
+          <p class="newmyp2">{{contdetails?.sub_content_first}}</p>
+          <p class="newmyp2">{{contdetails?.sub_content_second}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

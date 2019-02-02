@@ -15,10 +15,13 @@ import { CartProvider } from '../../providers/cart/cart';
   templateUrl: 'singleproduct.html',
 })
 export class SingleproductPage {
-  detailsp: any;
+  detailsp: any = [];
+  count: number = 1
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private cartService: CartProvider, public toastCtrl: ToastController) {
     this.detailsp = this.navParams.get('product');
+    //this.detailsp.forEach(product => product.count = 1);
+    //console.log(this.detailsp);
   }
 
   ionViewDidLoad() {
@@ -32,12 +35,13 @@ export class SingleproductPage {
       product_id: detailsp.id || detailsp.product_id,
       name: detailsp.product_name || detailsp.name,
       image: detailsp.image,
-      count: detailsp.count,
+      pimage: detailsp.images || detailsp.pimage,
+      count: this.count,
       //heart_clicked: detailsp.heart_clicked,
       psize: detailsp.SelectedSize,
       disprice: detailsp.product_price || detailsp.disprice,
       discountp: detailsp.discount || detailsp.discountp,
-      //diataisl: detailsp.product_details,
+      ditailspro: detailsp.product_details || detailsp.ditailspro,
       productPrice: parseInt(detailsp.product_actual_price) || parseInt(detailsp.productPrice),
       totalPrice: productPrice,
     };
@@ -54,7 +58,7 @@ export class SingleproductPage {
       message: `${name} has been added to cart`,
       showCloseButton: true,
       closeButtonText: 'OK',
-      duration: 1100,
+      duration: 1500,
     });
 
     toast.onDidDismiss(() => {

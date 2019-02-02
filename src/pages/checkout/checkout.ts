@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
 
-/**
- * Generated class for the CheckoutPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-checkout',
@@ -31,7 +24,7 @@ export class CheckoutPage {
       content: "Wait.."
     });
     loader.present();
-    this.cartService .getCartItems()
+    this.cartService.getCartItems()
     .then(val => {
         this.cartItems = val;
         if (this.cartItems.length > 0) {

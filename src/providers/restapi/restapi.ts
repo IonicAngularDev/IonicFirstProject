@@ -31,6 +31,7 @@ export class RestapiProvider {
   // apiUrl11 = apiUrl+'about';
   apiUrl11 = 'http://192.168.1.3/BGH/HoneyApi/about';
   apiUrl12 = apiUrl+'gallery_images';
+  apiUrl13 = apiUrl+'contactus';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
@@ -237,6 +238,23 @@ getregisterpassword(credentials, type) {
       headers.append('content-type','application/json');
 
     this.http.get(this.apiUrl12, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+ getcontact()
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl13, {headers: headers}).subscribe((data: Response) => {
       resolve(data);},
     err => {
     console.log(err);

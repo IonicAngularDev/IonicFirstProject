@@ -25,7 +25,7 @@ export class ProductPage {
   //this.getproducts($id);
   this.getcategories();
   this.events.subscribe('wishlist:created', (pwish) => { // Update from Cart Page
-    console.log(pwish);
+    //console.log(pwish);
    });
    this.getproductslenght();
   }
@@ -60,7 +60,7 @@ export class ProductPage {
   {
     this.storage.get("ITEMSLength").then((val) =>
     {
-      console.log(val);
+      //console.log(val);
       this.itemlength = val;
     });
   }

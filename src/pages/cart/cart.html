@@ -11,9 +11,10 @@
   <ion-list *ngFor="let itm of cartItems" class="myitem11">
     <ion-item>
       <ion-thumbnail item-start (click)="showDetails(itm)">
-        <img src="{{itm.image}}">
+        <img src="{{itm.image || 'http://beegoodhoney.in/uploads/products/'+itm.pimage['0']?.pro_images}}" />
       </ion-thumbnail>
-      <h2>{{itm.name}}</h2>
+      <h2 (click)="showDetails(itm)">{{itm.name}}</h2>
+      <!-- <h2 (click)="showDetails(itm)">{{itm.ditailspro}}</h2> -->
       <p>
         Actual Price:
         <span [ngStyle]="itm?.discountp === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">₹{{itm.disprice
@@ -89,16 +90,18 @@
   </article> -->
 </ion-content>
 
-<ion-footer class="single-footer" ngif="!isEmptyCart" style="bottom: 51px;">
+<ion-footer class="single-footer" ngif="!isEmptyCart" style="bottom: 51px; background-color: #fff;">
 
   <ion-grid>
     <ion-row>
       <ion-col class="addCart" (click)="checkpage()">
-        <button color="secondary" full ion-button round="true">
-          {{totalAmount}} Checkout  {{cartItems.length}}
+        <button class="myaddto22" color="secondary" full ion-button round="true">
+          {{totalAmount}} Checkout
         </button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
 </ion-footer>
+
+<!-- {{cartItems.length}} -->

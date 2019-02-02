@@ -1,6 +1,6 @@
 <ion-content padding>
-<ion-row align-items-center class="mynewr11">
- <ion-col *ngFor="let product of this.pdeta" col-5 class="mynewcol22">
+<ion-row align-items-center justify-content-center class="mynewr11">
+ <ion-col align-items-center justify-content-center *ngFor="let product of this.pdeta" col-5 class="mynewcol22">
   <div (click)="showDetails(product)">
   <img class="myimg11" src="{{product.image}}" />
   <p>{{ product.product_name }}</p>

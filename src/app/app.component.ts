@@ -15,6 +15,7 @@ import { Storage } from '@ionic/storage';
 import { CartPage } from './../pages/cart/cart';
 import { SingleproductPage } from './../pages/singleproduct/singleproduct';
 import { RestapiProvider } from '../providers/restapi/restapi';
+import { WishlistPage } from './../pages/wishlist/wishlist';
 
 @Component({
   templateUrl: 'app.html'
@@ -119,6 +120,11 @@ frontpage2()
 cardpage2()
 {
     this.nav.setRoot(CartPage);
+}
+
+wishpage2()
+{
+    this.nav.setRoot(WishlistPage);
 }
 
 hasSearchnot()

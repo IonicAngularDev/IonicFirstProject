@@ -39,7 +39,7 @@ export class CartPage {
 
   showDetails(detailsp)
   {
-     console.log(detailsp);
+     //console.log(detailsp);
      this.navCtrl.push(SingleproductPage,
       {
         product: detailsp
@@ -55,24 +55,11 @@ export class CartPage {
       .getCartItems()
       .then(val => {
         this.cartItems = val;
-        //console.log(val);
+        //console.log(this.cartItems);
         //console.log(this.cartItems.length);
         this.createWishUser(this.cartItems.length);
         this.storage.set("ITEMSLength", this.cartItems.length);
         if (this.cartItems.length > 0) {
-          // this.cartItems.forEach((v, indx) => {
-          //   // console.log(v.psize);
-          //   // if(v.psize===undefined){
-          //   //   this.ifSize = false;
-          //   // }else{
-          //   //   this.ifSize = true;
-          //   // }
-          //   this.totalAmount += parseInt(v.totalPrice);
-          //   //console.log(this.totalAmount);
-          // });
-          // this.cdr.detectChanges();
-          // this.isEmptyCart = false;
-
           this.isEmptyCart = false;
           this.recalculateTotalAmount();
         }

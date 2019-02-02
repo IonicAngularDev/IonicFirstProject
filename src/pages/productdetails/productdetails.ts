@@ -106,7 +106,7 @@ export class ProductdetailsPage {
       psize: detailsp.SelectedSize,
       disprice: detailsp.product_price,
       discountp: detailsp.discount,
-      //diataisl: detailsp.product_details,
+      ditailspro: detailsp.product_details,
       productPrice: this.productCount * parseInt(detailsp.product_actual_price),
       totalPrice: productPrice,
     };
@@ -122,11 +122,12 @@ export class ProductdetailsPage {
     let toast = this.toastCtrl.create({
       message: `${name} has been added to cart`,
       showCloseButton: true,
-      closeButtonText: 'View Cart'
+      closeButtonText: 'OK',
+      duration: 1500,
     });
 
     toast.onDidDismiss(() => {
-      this.navCtrl.push(CartPage);
+      //this.navCtrl.push(CartPage);
     });
     toast.present();
   }
