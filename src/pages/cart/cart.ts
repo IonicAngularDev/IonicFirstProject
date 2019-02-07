@@ -1,6 +1,6 @@
 import { CheckoutPage } from './../checkout/checkout';
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events, ToastController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
 import { Storage } from '@ionic/storage';
 import { SingleproductPage } from '../singleproduct/singleproduct';
@@ -16,7 +16,10 @@ export class CartPage {
  isEmptyCart: boolean = true;
  ifSize: boolean = true;
  productCount: number = 1;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, private cdr: ChangeDetectorRef, public events: Events, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private cartService: CartProvider, public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController, private cdr: ChangeDetectorRef,
+    public events: Events, private storage: Storage, public toastCtrl: ToastController) {
   }
 
   createWishUser(pwish) {
@@ -121,8 +124,28 @@ export class CartPage {
   }
 
   incrementProductCount(itm) {
-    itm.count++;
-    this.recalculateTotalAmount();
+    if(itm.max_quantity > itm.count)
+    {
+     itm.count++;
+     this.recalculateTotalAmount();
+    }
+    else
+    {
+      itm.count = itm.max_quantity;
+      this.presentMaxToast2();
+    }
+  }
+
+  presentMaxToast2() {
+    let toast = this.toastCtrl.create({
+      message: `You have reached at the max quantity limit of the product.`,
+      showCloseButton: false,
+      duration: 2200,
+    });
+
+    toast.onDidDismiss(() => {
+    });
+    toast.present();
   }
 
 }

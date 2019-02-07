@@ -27,6 +27,7 @@ export class ProductdetailsPage {
   nosize: boolean = true;
   isenabled: boolean = false;
   hassizenot: boolean = false;
+  outofstockp: boolean;
   //onWishlist:boolean = true;
   hassize:boolean = true;
   public isDisabled: boolean = false;
@@ -38,8 +39,8 @@ export class ProductdetailsPage {
     this.pdeta = this.detailsp.msg;
     this.pdeta.forEach(product => product.count = 1);
     //this.pdeta.forEach(product => product.heart_clicked = true);
-    //console.log(this.detailsp);
-    //console.log(this.detailsp.SelectedSize);
+    console.log(this.detailsp);
+    //console.log(this.detailsp.msg["0"].out_of_stock);
     //console.log(this.detailsp.msg.length);
     if(this.detailsp.msg.length === 0)
     {
@@ -57,6 +58,21 @@ export class ProductdetailsPage {
         this.hassizenot = true;
       }
     }
+
+  //   if(this.detailsp.msg.length != 0)
+  //   {
+  //   for(var k in this.detailsp.msg)
+  //   {
+  //     //this.outofstockp[k] = false;
+  //     console.log(this.detailsp.msg[k].out_of_stock);
+  //     if(this.detailsp.msg[k].out_of_stock === "1")
+  //     {
+  //       this.outofstockp = true;
+  //       this.hassize = false;
+  //       this.hassizenot = false;
+  //     }
+  //   }
+  // }
 
     if (this.navParams.get("productdet")) {
       window.localStorage.setItem('ProductdetailsPage', JSON.stringify(this.navParams.get("productdet")));
@@ -102,6 +118,7 @@ export class ProductdetailsPage {
       name: detailsp.product_name,
       image: detailsp.image,
       count: detailsp.count,
+      max_quantity: detailsp.max_quantity,
       //heart_clicked: detailsp.heart_clicked,
       psize: detailsp.SelectedSize,
       disprice: detailsp.product_price,
@@ -142,11 +159,33 @@ export class ProductdetailsPage {
   }
 
   incrementProductCount(product) {
-    if(typeof product.count === 'undefined') {
-       product.count = 1;
+    //console.log(product.max_quantity);
+    if(product.max_quantity > product.count)
+    {
+      if(typeof product.count === 'undefined') {
+        product.count = 1;
+     }
+     product.count++;
     }
-    product.count++;
+    else
+    {
+      product.count = product.max_quantity;
+      this.presentMaxToast();
+    }
   }
+
+  presentMaxToast() {
+    let toast = this.toastCtrl.create({
+      message: `You have reached at the max quantity limit of the product.`,
+      showCloseButton: false,
+      duration: 2200,
+    });
+
+    toast.onDidDismiss(() => {
+    });
+    toast.present();
+  }
+
 
   toggleOnWishlist(product){
     this.storage.get("ID").then((val) =>

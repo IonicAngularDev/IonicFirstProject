@@ -90,7 +90,7 @@
   </article> -->
 </ion-content>
 
-<ion-footer class="single-footer" ngif="!isEmptyCart" style="bottom: 51px; background-color: #fff;">
+<ion-footer class="single-footer" *ngIf="!isEmptyCart" style="bottom: 51px; background-color: #fff;">
 
   <ion-grid>
     <ion-row>

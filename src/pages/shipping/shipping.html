@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons>
+			<button style="border: 1px solid;" navPop>
+				<ion-icon name="close"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2 class="myformh2">Add Your Address</h2>
+  <form [formGroup]="shippingdet" (ngSubmit)="getShippingDetails()">
+    <ion-list>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Name" type="text" [(ngModel)]="userData.shipping_name" formControlName="shipping_name" required></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Mobile Number" type="number" [(ngModel)]="userData.shipp_mob" formControlName="shipp_mob" required></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Country" type="text" value="India" disabled></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-select placeholder="Select State" [(ngModel)]="userData.shipp_state" formControlName="shipp_state" required (ionChange)="onChange(userData.shipp_state)">
+          <ion-option *ngFor="let pstate of this.statesdetails" value="{{pstate.state_id}}">{{pstate.state_name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-select placeholder="Select City" [(ngModel)]="userData.shipp_city" formControlName="shipp_city" required>
+          <ion-option *ngFor="let pcity of this.citiesdetails" value="{{pcity?.city_id}}">{{pcity?.city_name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Pincode" type="number" [(ngModel)]="userData.shipp_code" formControlName="shipp_code" required></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <textarea placeholder="Address" [(ngModel)]="userData.shipping_address" formControlName="shipping_address" required></textarea>
+      </ion-item>
+      <div>
+        <button [disabled]="!shippingdet.valid" ion-button type="submit" class="newbtn11" color="primary" block>Submit</button>
+      </div>
+    </ion-list>
+</form>
+</ion-content>

@@ -39,17 +39,23 @@
     Add to Cart
   </button> -->
 
-  <ion-col *ngIf="hassizenot" style="padding: 0px;">
+  <ion-col *ngIf="hassizenot && product.out_of_stock == 0" style="padding: 0px;">
       <button class="mybtn11" (click)="addToCart(product)" ion-button small>
         Add to Cart
       </button>
-    </ion-col>
+  </ion-col>
 
-    <ion-col *ngIf="hassize" style="padding: 0px;">
+  <ion-col *ngIf="hassize && product.out_of_stock == 0" style="padding: 0px;">
       <button [disabled]="!product.SelectedSize" class="mybtn11" (click)="addToCart(product)" ion-button small>
         Add to Cart
       </button>
-    </ion-col>
+  </ion-col>
+ <!-- {{product.out_of_stock}} -->
+  <ion-col *ngIf="product.out_of_stock == 1" style="padding: 0px;">
+    <button disabled class="mybtn11" ion-button small>
+      Out Of Stock
+    </button>
+  </ion-col>
     <!-- {{product.id}} -->
   <button ion-button icon-only class="wish-list-btn card" (click)="toggleOnWishlist(product)" color="light" class="mywisbtn11">
     <ion-icon [name]="product.onWishlist ? 'ios-heart' : 'heart-outline' "></ion-icon>

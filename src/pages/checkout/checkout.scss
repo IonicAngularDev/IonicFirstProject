@@ -1,3 +1,41 @@
 page-checkout {
+  button.myaddto22 {
+    background-color: #EB6D2F;
+  }
+  .alert-head h2.alert-title {
+    font-size: 20px !important;
+  }
+  p.mynewp11
+  {
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid;
+  }
+ .item.item-md .checkbox-md {
+  margin: 9px 15px 9px 4px;
+}
+.item-md .radio-md[item-start] {
+  margin: 11px 15px 11px 4px;
+}
+button.myedit22 {
+  border-color: #ff851b !important;
+  color: #ff851b !important;
+}
+button.dele22 {
+  border-color: red;
+  color: red;
+}
+.radio-md .radio-inner {
+  background-color: #EB6D2F;
+}
 
+.radio-md .radio-checked {
+    border-color: #EB6D2F;
+}
+
+.item-radio-checked.item-md ion-label {
+    color: #000;
+}
 }

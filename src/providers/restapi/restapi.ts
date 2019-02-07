@@ -28,10 +28,13 @@ export class RestapiProvider {
   apiUrl6 = 'http://beegoodhoney.in/HoneyApi/MerchandiseProducts/';
   apiUrl7 = 'http://beegoodhoney.in/HoneyApi/Userdashboard/';
   apiUrl8 = 'http://beegoodhoney.in/HoneyApi/get_all_products';
-  // apiUrl11 = apiUrl+'about';
-  apiUrl11 = 'http://192.168.1.3/BGH/HoneyApi/about';
+  apiUrl11 = apiUrl+'about';
+  // apiUrl11 = 'http://192.168.1.3/BGH/HoneyApi/about';
   apiUrl12 = apiUrl+'gallery_images';
   apiUrl13 = apiUrl+'contactus';
+  apiUrl14 = apiUrl+'get_all_states';
+  apiUrl15 = apiUrl+'get_state_cities/';
+  apiUrl16 = apiUrl+'get_address/';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
@@ -261,15 +264,74 @@ getregisterpassword(credentials, type) {
     });
     });
  }
-  // getUsers(credentials, type) {
-  //     var headers = new Headers();
-  //     headers.append('Access-Control-Allow-Origin' , '*');
-  //     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
-  //     headers.append('Accept','application/json');
-  //     headers.append('content-type','application/json');
 
-  //     return this.http.post(apiUrl + type, JSON.stringify(credentials), {headers: headers});
+ getstates()
+  {
+    return new Promise(resolve => {
 
-  // }
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl14, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+
+ getcities($cid)
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl15+$cid, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+
+ getshipping($sid)
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl16+$sid, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+
+ addshipping(credentials, type) {
+  var headers = new HttpHeaders();
+  headers.append('Access-Control-Allow-Origin' , '*');
+  headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+  headers.append('Accept','application/json');
+  headers.append('Content-Type','application/json');
+  headers.append('Access-Control-Allow-Credentials','true');
+  headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+  //console.log(credentials);
+  let v = new FormData();
+  for(var k in credentials)v.append(k,credentials[k]);
+  return this.http.post(apiUrl + type, v, {headers: headers});
+}
 
 }
