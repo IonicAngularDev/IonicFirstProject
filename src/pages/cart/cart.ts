@@ -102,10 +102,11 @@ export class CartPage {
     });
     alert.present();
   }
-
   checkpage()
   {
-    this.navCtrl.push(CheckoutPage);
+    this.navCtrl.push(CheckoutPage, {
+      totalprice: this.totalAmount,
+    });
   }
 
   recalculateTotalAmount() {

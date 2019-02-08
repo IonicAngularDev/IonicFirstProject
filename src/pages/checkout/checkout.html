@@ -2,13 +2,13 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12>
-        <p class="mynewp11">Total Amount Payable: ₹{{totalAmount}}</p>
+        <p class="mynewp11">Total Amount Payable: ₹{{totalpricec}}</p>
       </ion-col>
       <ion-col col-12>
         <ion-list radio-group>
           <ion-item *ngFor="let itm of shippingdetails">
             <!-- <ion-checkbox slot="end" [(ngModel)]="itm.checked" [disabled]="isCheckboxDisabled" (ionChange)="selectCP(itm)"></ion-checkbox> -->
-            <ion-radio item-start value="{{itm.name}}"></ion-radio>
+            <ion-radio item-start value="{{itm.id}}"></ion-radio>
             <!-- <ion-toggle slot="start"></ion-toggle> -->
             <ion-label>
             <h2>{{itm.name}}</h2>
@@ -20,7 +20,7 @@
             <button ion-button outline item-end class="myedit22" (click)="editshipping(itm)">
               <ion-icon name="create"></ion-icon>
             </button>
-            <button ion-button outline item-end class="dele22" (click)="removeshipping(itm)">
+            <button ion-button outline item-end class="dele22" (click)="removeshipping(itm.id)">
               <ion-icon name="ios-trash-outline"></ion-icon>
             </button>
           </ion-item>
@@ -40,7 +40,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="addCart">
-        <button class="myaddto22" full ion-button round="true">
+        <button class="myaddto22" [disabled]="!value" full ion-button round="true">
           Make Payment
         </button>
       </ion-col>

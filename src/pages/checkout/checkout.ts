@@ -19,10 +19,13 @@ export class CheckoutPage {
   shippingdetails: any = [];
   isCheckboxDisabled:boolean=false;
   checkedDrivers: any = [];
+  removesh: any;
+  totalpricec: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private cartService: CartProvider, public loadingCtrl: LoadingController,
     public modalCtrl: ModalController, public restProvider: RestapiProvider,
-    private storage: Storage) {
+    private storage: Storage, private alertCtrl: AlertController) {
+      this.totalpricec = this.navParams.get('totalprice');
       this.getUserShipping();
   }
 
@@ -53,7 +56,10 @@ export class CheckoutPage {
   presentProfileModal() {
     let profileModal = this.modalCtrl.create(ShippingPage);
     profileModal.onDidDismiss(() => {
-      this.navCtrl.setRoot(CheckoutPage);
+      this.navCtrl.setRoot(CheckoutPage,
+        {
+          totalprice: this.totalpricec
+        });
     });
     profileModal.present();
   }
@@ -87,12 +93,47 @@ export class CheckoutPage {
 
   removeshipping(itm)
   {
-     console.log(itm);
+      let alert = this.alertCtrl.create({
+        title: 'Remove Shipping',
+        message: 'Do you want to remove this shipping?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              //console.log('Cancel Clicked');
+            }
+          },
+          {
+            text: 'Yes',
+            handler: () => {
+              this.restProvider.removeshipping(itm)
+              .then(data => {
+               this.removesh = data;
+             });
+             this.navCtrl.setRoot(this.navCtrl.getActive().component);
+             this.navCtrl.setRoot(CheckoutPage,
+              {
+                totalprice: this.totalpricec
+              });
+            }
+          }
+        ]
+      });
+      alert.present();
   }
 
   editshipping(itm)
   {
-     console.log(itm);
+     //console.log(itm);
+     let profileModal2 = this.modalCtrl.create(ShippingPage, {itm: itm});
+     profileModal2.onDidDismiss(() => {
+      this.navCtrl.setRoot(CheckoutPage,
+      {
+        totalprice: this.totalpricec
+      });
+    });
+     profileModal2.present();
   }
 
   // selectCP(itm){

@@ -35,6 +35,7 @@ export class RestapiProvider {
   apiUrl14 = apiUrl+'get_all_states';
   apiUrl15 = apiUrl+'get_state_cities/';
   apiUrl16 = apiUrl+'get_address/';
+  apiUrl20 = apiUrl+'remove_address/';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
@@ -333,5 +334,40 @@ getregisterpassword(credentials, type) {
   for(var k in credentials)v.append(k,credentials[k]);
   return this.http.post(apiUrl + type, v, {headers: headers});
 }
+
+editUpshipping(credentials, type) {
+
+  var headers = new HttpHeaders();
+  headers.append('Access-Control-Allow-Origin' , '*');
+  headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+  headers.append('Accept','application/json');
+  headers.append('Content-Type','application/json');
+  headers.append('Access-Control-Allow-Credentials','true');
+  headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+  //console.log(credentials);
+  //console.log(type);
+  let v = new FormData();
+  for(var k in credentials)v.append(k,credentials[k]);
+  return this.http.post(apiUrl + type, v, {headers: headers});
+}
+
+removeshipping($sid)
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl20+$sid, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
 
 }
