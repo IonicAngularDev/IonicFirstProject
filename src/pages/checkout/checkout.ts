@@ -21,6 +21,7 @@ export class CheckoutPage {
   checkedDrivers: any = [];
   removesh: any;
   totalpricec: any;
+  RadioValue: boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private cartService: CartProvider, public loadingCtrl: LoadingController,
     public modalCtrl: ModalController, public restProvider: RestapiProvider,

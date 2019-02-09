@@ -1,20 +1,46 @@
 <ion-content padding class="newbg11">
+  <ion-grid *ngIf="userhasorder" align-items-center justify-content-center style="height: 100%;">
+    <ion-row align-items-center justify-content-center style="height: 100%;">
+      <ion-col align-self-start col-12>
+          <h1 class="newh1">Order Details:</h1>
+          <ion-card *ngFor="let myorder of this.m">
+              <ion-card-header>
+                <ion-card-title>Order No: {{myorder.order_no}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p>Payment Mode: {{myorder.payment_mode | uppercase}}</p>
+                <p>Order Date: {{myorder.order_date | date}}</p>
+                <p>Quantity: {{myorder.quantity}}</p>
+                <h4>Payment Details:</h4>
+                <p>Total Price: ₹{{myorder.price}}</p>
+                <p>Discount: {{myorder.discount}}%</p>
+                <p>Delivery Charge: ₹{{myorder.delivery_charge}}</p>
+                <p>Amount Payed: ₹{{myorder.grand_total}}</p>
+                <h4>Order Status:</h4>
+                <p>{{myorder.order_status | uppercase}}</p>
+                <button ion-button color="danger" square>Cancel Order</button>
+              </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-grid *ngIf="userhas" align-items-center justify-content-center style="height: 100%;">
     <ion-row align-items-center justify-content-center style="height: 100%;">
       <ion-col align-self-center col-12 style="text-align: center;">
         <h1 class="newh1">Your order list is empty!!</h1>
-        <img src="assets/imgs/shoppingcart.png" class="slide-image11"/>
+        <img src="assets/imgs/shoppingcart.png" class="slide-image11" />
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <ion-grid *ngIf="usernot" align-items-center justify-content-center style="height: 100%;">
-      <ion-row align-items-center justify-content-center style="height: 100%;">
-        <ion-col align-self-center col-12 style="text-align: center;">
-          <h1 class="newh1">Please Login To Check Your Orders</h1>
-          <!-- <button class="mybtn22" ion-button>Login</button> -->
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-row align-items-center justify-content-center style="height: 100%;">
+      <ion-col align-self-center col-12 style="text-align: center;">
+        <h1 class="newh1">Please Login To Check Your Orders</h1>
+        <!-- <button class="mybtn22" ion-button>Login</button> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <!-- <p>{{this.newuserid}}</p> -->
 </ion-content>

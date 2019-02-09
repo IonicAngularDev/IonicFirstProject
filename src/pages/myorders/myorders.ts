@@ -18,8 +18,10 @@ import { RestapiProvider } from '../../providers/restapi/restapi';
 export class MyordersPage {
   userhas: boolean = false;
   usernot:  boolean = true;
+  userhasorder: boolean = false;
   newuserid: any;
   userord: any;
+  m: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public restProvider: RestapiProvider) {
     this.GetUsername();
   }
@@ -34,16 +36,26 @@ export class MyordersPage {
         if(val)
         {
         this.newuserid = val;
-        this.userhas = true;
         this.usernot = false;
         this.restProvider.getorderdetails(val)
            .then(data => {
             this.userord = data;
-            if(this.userord.msg['0'].order.length === 0)
+            //console.log(this.userord.msg);
+            for(var i in this.userord.msg)
             {
-              console.log(0);
+             this.m = this.userord.msg[i].order;
             }
-            else{ console.log(1); }
+
+            if(this.userord.msg['0'].order.length != 0)
+            {
+              //console.log(0);
+              this.userhasorder = true;
+            }
+            else
+            {
+              //console.log(1);
+              this.userhas = true;
+            }
          });
         }
       });

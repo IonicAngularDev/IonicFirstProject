@@ -1,7 +1,7 @@
 page-myorders {
   div.mydiv2 {
     text-align: right;
-    display: inline-block;
+    //display: inline-block;
     float: right;
     vertical-align: middle !important;
     margin: 22px;
@@ -42,5 +42,26 @@ ion-content.newbg11 {
     border-color: #EB6D2F;
     margin-top: 26px;
     text-transform: uppercase;
+  }
+
+  .card-title-md {
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .card-md {
+    margin: 0px;
+    border-radius: 2px;
+    width: 100%;
+  }
+  .card-md h4{
+    margin: 6px 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .button-md-danger {
+    font-size: 13px;
+    padding: 11px;
   }
 }

@@ -12,8 +12,8 @@
   </ion-slides>
   <h2>{{detailsp.product_name || detailsp.name}}</h2>
   <!-- <p>MRP: ₹{{detailsp.product_price}}</p> -->
-  <p>MRP: ₹{{detailsp.product_price || detailsp.disprice}}</p>
-  <p [ngStyle]="detailsp.discount || detailsp.discountp === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">Discount: {{detailsp.discount || detailsp.discountp}}%</p>
+  <p [ngStyle]="(detailsp.discountp || detailsp.discount) === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">MRP: ₹{{detailsp.product_price || detailsp.disprice}}</p>
+  <p>Discount: {{detailsp.discount || detailsp.discountp}}%</p>
   <p>Discount Price: ₹{{detailsp.product_actual_price || detailsp.disprice}}</p>
   <p><strong>Product Description: </strong>{{detailsp.product_details || detailsp.ditailspro}}</p>
   <button class="mybtn11" (click)="addToCart(detailsp)" ion-button small>

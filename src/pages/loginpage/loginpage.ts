@@ -57,10 +57,10 @@ export class LoginpagePage {
           //this.userid = this.responseData.msg.id;
           //window.localStorage.setItem("ID", this.responseData.msg.id);
           this.storage.set("ID", this.responseData.msg.id);
-          this.createUser(this.user);
           if (this.responseData.status === 'success') {
             //console.log(this.responseData);
             //console.log("User Details");
+            this.createUser(this.user);
             this.navCtrl.push(MyApp);
           }
           else{

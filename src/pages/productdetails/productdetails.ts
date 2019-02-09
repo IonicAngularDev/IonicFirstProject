@@ -39,7 +39,7 @@ export class ProductdetailsPage {
     this.pdeta = this.detailsp.msg;
     this.pdeta.forEach(product => product.count = 1);
     //this.pdeta.forEach(product => product.heart_clicked = true);
-    console.log(this.detailsp);
+    //console.log(this.detailsp);
     //console.log(this.detailsp.msg["0"].out_of_stock);
     //console.log(this.detailsp.msg.length);
     if(this.detailsp.msg.length === 0)

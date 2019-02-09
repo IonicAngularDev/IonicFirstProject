@@ -5,7 +5,7 @@
         <p class="mynewp11">Total Amount Payable: ₹{{totalpricec}}</p>
       </ion-col>
       <ion-col col-12>
-        <ion-list radio-group>
+        <ion-list radio-group [(ngModel)]="RadioValue">
           <ion-item *ngFor="let itm of shippingdetails">
             <!-- <ion-checkbox slot="end" [(ngModel)]="itm.checked" [disabled]="isCheckboxDisabled" (ionChange)="selectCP(itm)"></ion-checkbox> -->
             <ion-radio item-start value="{{itm.id}}"></ion-radio>
@@ -40,7 +40,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="addCart">
-        <button class="myaddto22" [disabled]="!value" full ion-button round="true">
+        <button class="myaddto22" [disabled]="!RadioValue" full ion-button round="true">
           Make Payment
         </button>
       </ion-col>
