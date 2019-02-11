@@ -33,6 +33,7 @@ import { MerchandisePage } from './../pages/merchandise/merchandise';
 import { GalleryPage } from './../pages/gallery/gallery';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ShippingPage } from './../pages/shipping/shipping';
+import { CancelorderPage } from './../pages/cancelorder/cancelorder';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ShippingPage } from './../pages/shipping/shipping';
     SingleproductPage,
     MerchandisePage,
     GalleryPage,
-    ShippingPage
+    ShippingPage,
+    CancelorderPage
     //FootCardComponent
   ],
   imports: [
@@ -94,7 +96,8 @@ import { ShippingPage } from './../pages/shipping/shipping';
     FootCardComponent,
     MerchandisePage,
     GalleryPage,
-    ShippingPage
+    ShippingPage,
+    CancelorderPage
   ],
   providers: [
     StatusBar,

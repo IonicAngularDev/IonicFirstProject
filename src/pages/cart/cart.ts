@@ -1,5 +1,5 @@
 import { CheckoutPage } from './../checkout/checkout';
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events, ToastController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
 import { Storage } from '@ionic/storage';
@@ -18,8 +18,8 @@ export class CartPage {
  productCount: number = 1;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private cartService: CartProvider, public loadingCtrl: LoadingController,
-    private alertCtrl: AlertController, private cdr: ChangeDetectorRef,
-    public events: Events, private storage: Storage, public toastCtrl: ToastController) {
+    private alertCtrl: AlertController, public events: Events,
+    private storage: Storage, public toastCtrl: ToastController) {
   }
 
   createWishUser(pwish) {

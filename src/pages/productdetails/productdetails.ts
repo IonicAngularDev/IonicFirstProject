@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart';
-import { CartPage } from '../cart/cart';
 import { Storage } from '@ionic/storage';
 import { WishlistPage } from '../wishlist/wishlist';
 import { SingleproductPage } from '../singleproduct/singleproduct';

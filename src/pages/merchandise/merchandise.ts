@@ -1,12 +1,7 @@
-import { FrontPage } from './../front/front';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ViewController } from 'ionic-angular';
-import { CartPage } from './../cart/cart';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { ProductdetailsPage } from './../productdetails/productdetails';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { GalleryPage } from '../gallery/gallery';
 /**
  * Generated class for the MerchandisePage page.
  *
@@ -28,7 +23,7 @@ export class MerchandisePage {
   pcatg: any = [];
   mcat: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public restProvider: RestapiProvider, public loadingCtrl: LoadingController, private viewCtrl: ViewController) {
+    public restProvider: RestapiProvider, public loadingCtrl: LoadingController) {
       this.getmerchcategory();
   }
 
@@ -75,28 +70,4 @@ export class MerchandisePage {
       });
   }
 
-  cardpage2()
-  {
-    this.navCtrl.push(CartPage);
-  }
-
-  aboutpage2()
-{
-    this.navCtrl.push(AboutPage);
-}
-
-contactpage2()
-{
-    this.navCtrl.push(ContactPage);
-}
-
-gallerypage2()
-{
-    this.navCtrl.push(GalleryPage);
-}
-
-frontpage2()
-{
-    this.navCtrl.push(FrontPage);
-}
 }

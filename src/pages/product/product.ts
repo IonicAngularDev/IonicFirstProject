@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { ProductdetailsPage } from './../productdetails/productdetails';
-import { CartPage } from './../cart/cart';
-import { CartProvider } from "../../providers/cart/cart";
 import { Storage } from '@ionic/storage';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { GalleryPage } from '../gallery/gallery';
-import { FrontPage } from './../front/front';
+
 
 @IonicPage()
 @Component({
@@ -21,7 +16,7 @@ export class ProductPage {
   wishItems: any;
   itemlength: number;
   pcatg: any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public restProvider: RestapiProvider, public loadingCtrl: LoadingController, public events: Events, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestapiProvider, public loadingCtrl: LoadingController, public events: Events, private storage: Storage) {
   //this.getproducts($id);
   this.getcategories();
   this.events.subscribe('wishlist:created', (pwish) => { // Update from Cart Page
@@ -99,30 +94,5 @@ export class ProductPage {
   //         });
   //       });
   // }
-
-  cardpage2()
-  {
-    this.navCtrl.push(CartPage);
-  }
-
-  aboutpage2()
-{
-    this.navCtrl.setRoot(AboutPage);
-}
-
-contactpage2()
-{
-    this.navCtrl.setRoot(ContactPage);
-}
-
-gallerypage2()
-{
-    this.navCtrl.setRoot(GalleryPage);
-}
-
-frontpage2()
-{
-    this.navCtrl.setRoot(FrontPage);
-}
 
 }

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button style="border: 1px solid;" navPop>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p class="newp11">Order Number: {{orderpa}}</p>
+  <h2 class="myformh2">Fill Your Account Detail's</h2>
+  <form [formGroup]="cancelorderde" (ngSubmit)="cancelorderDetails()">
+    <ion-list>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Account Holder Name*" type="text" formControlName="name" required></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Bank Name*" type="text" formControlName="bank_name" required></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Branch Name*" type="text" formControlName="bank_branch" required></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Account Number*" type="number" formControlName="account_no" required></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <ion-input placeholder="IFSC Code*" type="text" formControlName="ifsc_code" required></ion-input>
+      </ion-item>
+      <p *ngIf="cancelorderde.controls['ifsc_code'].errors && cancelorderde.controls['ifsc_code'].dirty" class="danger">IFSC
+        Code is not valid.</p>
+      <ion-item class="newitem2">
+        <ion-input placeholder="Mobile Number*" type="number" formControlName="mobile_no" required></ion-input>
+      </ion-item>
+      <p *ngIf="cancelorderde.controls['mobile_no'].errors && cancelorderde.controls['mobile_no'].dirty" class="danger">Mobile
+        Number is not valid.</p>
+      <ion-item class="newitem2">
+        <ion-select placeholder="Reason*" formControlName="reason" required>
+          <ion-option value="Order is delayed">Order is delayed</ion-option>
+          <ion-option value="I am unhappy with the discount">I am unhappy with the discount</ion-option>
+          <ion-option value="I have already purchased">I have already purchased</ion-option>
+          <ion-option value="You’re not delivering full order">You’re not delivering full order</ion-option>
+          <ion-option value="I was just trying out">I was just trying out</ion-option>
+          <ion-option value="Other">Other</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="newitem2">
+        <textarea placeholder="Remark" formControlName="remark" required></textarea>
+      </ion-item>
+      <div>
+        <button [disabled]="!cancelorderde.valid" ion-button type="submit" class="newbtn11" color="primary" block>Cancel
+          Order</button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>
