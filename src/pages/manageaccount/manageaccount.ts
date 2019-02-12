@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CartPage } from './../cart/cart';
 import { Storage } from '@ionic/storage';
-
+import { ChangepasswordPage } from './../changepassword/changepassword';
 
 @IonicPage()
 @Component({
@@ -33,9 +32,13 @@ export class ManageaccountPage {
     });
 }
 
-  cardpage2()
+ updatepassword2()
  {
-   this.navCtrl.push(CartPage);
+  this.navCtrl.setRoot(ChangepasswordPage);
  }
 
+ updatepimage2()
+{
+  console.log("Update Image");
+}
 }

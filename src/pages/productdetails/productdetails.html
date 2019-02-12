@@ -52,8 +52,11 @@
   </ion-col>
  <!-- {{product.out_of_stock}} -->
   <ion-col *ngIf="product.out_of_stock == 1" style="padding: 0px;">
-    <button disabled class="mybtn11" ion-button small>
+    <!-- <button disabled class="mybtn11" ion-button small>
       Out Of Stock
+    </button> -->
+    <button class="mybtn11" ion-button small>
+      Notify Me
     </button>
   </ion-col>
     <!-- {{product.id}} -->

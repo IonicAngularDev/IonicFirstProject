@@ -34,7 +34,7 @@ import { GalleryPage } from './../pages/gallery/gallery';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ShippingPage } from './../pages/shipping/shipping';
 import { CancelorderPage } from './../pages/cancelorder/cancelorder';
-
+import { ChangepasswordPage } from './../pages/changepassword/changepassword';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,8 @@ import { CancelorderPage } from './../pages/cancelorder/cancelorder';
     MerchandisePage,
     GalleryPage,
     ShippingPage,
-    CancelorderPage
+    CancelorderPage,
+    ChangepasswordPage
     //FootCardComponent
   ],
   imports: [
@@ -97,7 +98,8 @@ import { CancelorderPage } from './../pages/cancelorder/cancelorder';
     MerchandisePage,
     GalleryPage,
     ShippingPage,
-    CancelorderPage
+    CancelorderPage,
+    ChangepasswordPage
   ],
   providers: [
     StatusBar,
