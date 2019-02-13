@@ -88,7 +88,7 @@ export class CheckoutPage {
       .then(data => {
       this.shippingd = data;
       this.shippingdetails = this.shippingd.msg;
-      //console.log(this.shippingdetails);
+      console.log(this.shippingdetails);
       });
   }
 

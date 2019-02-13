@@ -42,7 +42,7 @@ export class ShippingPage {
         //console.log(navParams.get('itm'));
         this.editMode = true;
         this.editdeta = navParams.get('itm');
-        //console.log(this.editdeta.state_id);
+        console.log(this.editdeta);
         this.getAllCities(this.editdeta.state_id);
         this.editshippingUser();
       }

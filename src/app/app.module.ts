@@ -35,6 +35,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ShippingPage } from './../pages/shipping/shipping';
 import { CancelorderPage } from './../pages/cancelorder/cancelorder';
 import { ChangepasswordPage } from './../pages/changepassword/changepassword';
+import { UpdateimagePage } from './../pages/updateimage/updateimage';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ChangepasswordPage } from './../pages/changepassword/changepassword';
     GalleryPage,
     ShippingPage,
     CancelorderPage,
-    ChangepasswordPage
+    ChangepasswordPage,
+    UpdateimagePage
     //FootCardComponent
   ],
   imports: [
@@ -99,7 +101,8 @@ import { ChangepasswordPage } from './../pages/changepassword/changepassword';
     GalleryPage,
     ShippingPage,
     CancelorderPage,
-    ChangepasswordPage
+    ChangepasswordPage,
+    UpdateimagePage
   ],
   providers: [
     StatusBar,

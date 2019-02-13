@@ -61,6 +61,17 @@ export class MyApp {
       this.menuclick = false;
  });
 
+ this.storage.get("NAME").then((val) =>
+      {
+        if(val)
+        {
+          this.userName1 = val;
+          this.menuclick2 = true;
+          this.menuclick = false;
+        }
+      });
+
+
  this.getsearchproducts();
   }
 
@@ -93,6 +104,10 @@ export class MyApp {
       this.userName1 = null;
       this.menuclick2 = false;
       this.menuclick = true;
+      this.nav.setRoot(FrontPage);
+    });
+
+    this.storage.remove("NAME").then(() => {
       this.nav.setRoot(FrontPage);
     });
   }

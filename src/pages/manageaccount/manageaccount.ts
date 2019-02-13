@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ChangepasswordPage } from './../changepassword/changepassword';
+import { UpdateimagePage } from './../updateimage/updateimage';
 
 @IonicPage()
 @Component({
@@ -39,6 +40,7 @@ export class ManageaccountPage {
 
  updatepimage2()
 {
-  console.log("Update Image");
+  //console.log("Update Image");
+  this.navCtrl.setRoot(UpdateimagePage);
 }
 }

@@ -35,7 +35,10 @@ button.dele22 {
     border-color: #EB6D2F;
 }
 
-.item-radio-checked.item-md ion-label {
-    color: #000;
+.item-radio-checked ion-label {
+  color: #000 !important;
+}
+.radio-checked .radio-inner {
+  border-color: #EB6D2F !important;
 }
 }

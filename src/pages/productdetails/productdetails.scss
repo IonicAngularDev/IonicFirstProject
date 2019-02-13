@@ -54,12 +54,18 @@ button.mynewbtn22.activated
   border: 1px solid #d2d2d2;
   color: #000;
 }
-
-ion-select.select.select-md {
+ion-col.qty.col {
+  display: block;
+}
+ion-select.select {
   max-width: 100%;
-  /* border: 1px solid; */
   padding: 8px;
   background-color: #d2d2d2;
   margin: 6px 2px;
+}
+img.myimgnew11 {
+  max-height: 220px;
+  max-width: 220px;
+  margin: 2px 0;
 }
 }
