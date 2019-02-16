@@ -35,7 +35,7 @@
   <ion-grid class="formenu2">
     <ion-row align-items-center class="mymenuicons22">
       <ion-col col-4>
-        <img class="imgsection12" src="assets/imgs/hipster-man.jpg" />
+        <img class="imgsection12" [src]="userpimage ? './assets/imgs/hipster-man.jpg' : 'http://beegoodhoney.in/uploads/user/'+userpimage" />
       </ion-col>
       <ion-col class="mycols11" col-8>
         <h1 class="mymenuh2">Welcome {{this.userName1}}</h1>

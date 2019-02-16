@@ -37,7 +37,7 @@ button.btn22 {
 }
 
 ion-content.mymenu22 {
-  background: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)), url(http://localhost:8100/assets/imgs/honeycomb22.png);
+  background: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)), url(../assets/imgs/honeycomb22.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -63,7 +63,7 @@ img.imgsection12 {
 h1.mymenuh11
 {
   font-size: 14px;
-  color: #eb6d2fed;
+  color: #EB6D2F;
   margin: 11px 2px;
 }
 
@@ -81,7 +81,7 @@ ion-label.label.label-md {
 }
 
 .menu2 ion-icon.icon {
-  color: #eb6d2fed;
+  color: #EB6D2F;
   padding-right: 6px;
 }
 
@@ -162,3 +162,6 @@ ion-footer.single-footer.footer {
   opacity: 1;
 }
 
+.alert-title {
+  font-size: 16px !important;
+}

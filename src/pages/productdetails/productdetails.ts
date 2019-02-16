@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, ModalController } from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart';
 import { Storage } from '@ionic/storage';
 import { WishlistPage } from '../wishlist/wishlist';
 import { SingleproductPage } from '../singleproduct/singleproduct';
+import { NotifyproductPage } from '../notifyproduct/notifyproduct';
 
 @IonicPage()
 @Component({
@@ -27,12 +28,14 @@ export class ProductdetailsPage {
   isenabled: boolean = false;
   hassizenot: boolean = false;
   outofstockp: boolean;
+  uemail2: string;
   //onWishlist:boolean = true;
   hassize:boolean = true;
   public isDisabled: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams,
   private cartService: CartProvider, public toastCtrl: ToastController,
-  private storage: Storage, private alertCtrl: AlertController) {
+  private storage: Storage, private alertCtrl: AlertController, 
+  public modalCtrl: ModalController) {
     this.detailsp = this.navParams.get('productdet');
     // this.pdeta.forEach(product => product.count = 1);
     this.pdeta = this.detailsp.msg;
@@ -76,6 +79,15 @@ export class ProductdetailsPage {
     if (this.navParams.get("productdet")) {
       window.localStorage.setItem('ProductdetailsPage', JSON.stringify(this.navParams.get("productdet")));
     }
+
+    this.storage.get("EMAIL2").then((val) =>
+    {
+      if(val)
+      {
+         this.uemail2 = val;
+         //console.log(this.uemail2);
+      }
+    });
 
   }
 
@@ -302,5 +314,36 @@ export class ProductdetailsPage {
   toggleOnSize(psize){
     psize.onSize = !psize.onSize;
   }
+  
+  notifymeprod($pnewid)
+  {
+    //console.log($pnewid)
+    this.storage.get("ID").then((val) =>
+    {
+      if(val)
+      {
+        console.log(val);
+        let profileModal2 = this.modalCtrl.create(NotifyproductPage, {usid: val, proid: $pnewid, usemail: this.uemail2});
+        profileModal2.onDidDismiss(() => {
+        this.navCtrl.setRoot(ProductdetailsPage, 
+          {
+            productdet : this.detailsp
+          });
+      });
+      profileModal2.present();
+      }
+      else
+      {
+        this.presentAlert2();
+      }
+    });
+  }
 
+  presentAlert2() {
+    let alert = this.alertCtrl.create({
+      title: 'Please Login For Product Notify',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
 }

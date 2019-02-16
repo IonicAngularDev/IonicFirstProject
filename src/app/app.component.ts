@@ -32,6 +32,7 @@ export class MyApp {
   searchproduct: any = [];
   finalproductsearch: any;
   HasSearch: boolean;
+  userpimage;
   pages: Array<{title: string, component: any, name2: string}>;
   pages1: Array<{title1: string, component: any, name1: string}>;
   constructor(public platform: Platform, public statusBar: StatusBar,
@@ -71,8 +72,18 @@ export class MyApp {
         }
       });
 
+  this.storage.get("IMAGE2").then((val2) =>
+      {
+        if(val2)
+        {
+         this.userpimage = val2;
+         //console.log(val2);
+        }
+      });
 
- this.getsearchproducts();
+  this.getsearchproducts();
+
+
   }
 
   initializeApp() {
@@ -97,7 +108,7 @@ export class MyApp {
   }
 
   logoutClicked() {
-    console.log("Logout");
+    //console.log("Logout");
     //this.authService.logout();
     //window.localStorage.removeItem("ID");
     this.storage.remove("ID").then(() => {
@@ -108,6 +119,10 @@ export class MyApp {
     });
 
     this.storage.remove("NAME").then(() => {
+      //this.nav.setRoot(FrontPage);
+    });
+
+    this.storage.remove("IMAGE2").then(() => {
       this.nav.setRoot(FrontPage);
     });
   }
@@ -181,5 +196,6 @@ showProductDetails(item)
     {
       product: item
     });
+    this.HasSearch = !this.HasSearch;
 }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { Storage } from '@ionic/storage';
@@ -23,7 +23,7 @@ export class CancelorderPage {
   responseEdit: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private formBuilder: FormBuilder, public restProvider: RestapiProvider,
-    private storage: Storage) {
+    private storage: Storage, private alertCtrl: AlertController) {
       this.cancelorderde = this.formBuilder.group({
         name: ['', Validators.required],
         account_no: ['', Validators.required],
@@ -74,11 +74,28 @@ export class CancelorderPage {
           if (data) {
             this.responseEdit = data;
             console.log(this.responseEdit.msg);
+            if (this.responseEdit.status === 'success') {
+              this.presentAlert(this.responseEdit.msg);
+            }
           }
         });
-        this.closeModal();
       }
     });
+  }
+
+  presentAlert($mess) {
+    let alert = this.alertCtrl.create({
+      title: $mess,
+      buttons: [
+        {
+          text: 'Dismiss',
+          role: 'cancel',
+          handler: () => {
+            this.closeModal();
+          }
+        }]
+    });
+    alert.present();
   }
 
   closeModal() {

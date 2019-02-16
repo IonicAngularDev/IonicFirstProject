@@ -1,0 +1,45 @@
+page-notifyproduct {
+    .scroll-content {
+        padding: 51px 16px 51px !important;
+        background-color: aliceblue;
+    }
+    .item-md {
+        padding-left: 0px;
+    }
+    .select-md {
+      padding: 13px 8px 13px 8px;
+    }
+    ion-select {
+      max-width: 100%;
+      width: 100%;
+    }
+    ion-item.newitem2.item-input-disabled {
+      background-color: #e2e2e2;
+    }
+    .label-md {
+      margin: 0px;
+    }
+    textarea {
+      margin: 13px 8px;
+      padding: 0;
+      width: calc(100% - 8px - 8px);
+      color: #000 !important;
+      border: 0px;
+      font-weight: 400;
+      font-size: 16px;
+    }
+    h2.myformh2
+     {
+        text-align: center;
+        margin-bottom: 22px;
+        margin-top: 22px !important;
+     }
+     p.danger {
+      color: red;
+      font-weight: 400;
+    }
+    ion-item.newitem2 {
+      margin-bottom: 11px;
+      padding-left: 0px;
+    }
+}

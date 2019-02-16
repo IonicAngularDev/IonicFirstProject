@@ -18,7 +18,7 @@
                 <p>Amount Payed: ₹{{myorder.grand_total}}</p>
                 <h4>Order Status:</h4>
                 <p>{{myorder.order_status | uppercase}}</p>
-                <button *ngIf="myorder.order_status === 'cancel'" ion-button class="cancel2" square>Cancelled</button>
+                <!-- <button *ngIf="myorder.order_status === 'cancel'" ion-button class="cancel2" square>Cancelled</button> -->
                 <button *ngIf="myorder.order_status === 'confirm'" ion-button (click)="orderform()" color="danger" square>Cancel Order</button>
               </ion-card-content>
           </ion-card>

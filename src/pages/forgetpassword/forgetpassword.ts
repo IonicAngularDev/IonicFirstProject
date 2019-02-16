@@ -40,7 +40,7 @@ export class ForgetpasswordPage {
       if (data) {
         this.responseDatapa = data;
         if (this.responseDatapa.status === 'success') {
-          this.message2 = "Password has been send to your mail id";
+          this.message2 = "Password has been sent to your mail id";
 		      this.presentAlert(this.message2);
         }
         else{
@@ -54,7 +54,15 @@ export class ForgetpasswordPage {
   presentAlert($message2) {
     let alert = this.alertCtrl.create({
       title: $message2,
-      buttons: ['Dismiss']
+      buttons: [
+        {
+          text: 'Dismiss',
+          role: 'cancel',
+          handler: () => {
+            this.todo.reset();
+          }
+        }
+      ]
     });
     alert.present();
   }

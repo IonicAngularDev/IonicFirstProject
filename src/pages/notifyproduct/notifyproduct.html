@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button style="border: 1px solid;" navPop>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h2 class="myformh2">Get Notified For The Product</h2>
+  <form [formGroup]="notifyprod" (ngSubmit)="getnotifyproducts()">
+    <ion-list>
+      <ion-item class="newitem2">
+        <ion-input value="{{this.usemail2}}" type="text" disabled></ion-input>
+      </ion-item>
+      <ion-item class="newitem2">
+        <textarea placeholder="Notification Comment" formControlName="msg2" required></textarea>
+      </ion-item>
+      <div>
+        <button [disabled]="!notifyprod.valid" ion-button type="submit" class="newbtn11" color="primary" block>Submit</button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>

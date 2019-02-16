@@ -36,6 +36,7 @@ import { ShippingPage } from './../pages/shipping/shipping';
 import { CancelorderPage } from './../pages/cancelorder/cancelorder';
 import { ChangepasswordPage } from './../pages/changepassword/changepassword';
 import { UpdateimagePage } from './../pages/updateimage/updateimage';
+import { NotifyproductPage } from './../pages/notifyproduct/notifyproduct';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { UpdateimagePage } from './../pages/updateimage/updateimage';
     ShippingPage,
     CancelorderPage,
     ChangepasswordPage,
-    UpdateimagePage
+    UpdateimagePage,
+    NotifyproductPage
     //FootCardComponent
   ],
   imports: [
@@ -102,7 +104,8 @@ import { UpdateimagePage } from './../pages/updateimage/updateimage';
     ShippingPage,
     CancelorderPage,
     ChangepasswordPage,
-    UpdateimagePage
+    UpdateimagePage,
+    NotifyproductPage
   ],
   providers: [
     StatusBar,

@@ -1,12 +1,45 @@
 <ion-content padding overflow-scroll="true">
   <ion-grid align-items-center justify-content-center>
     <ion-row align-items-center justify-content-center>
-      <ion-col class="mycol22" col-12 *ngFor="let contdetails of this.detailscontact">
-          <h3 class="myneh31">{{contdetails?.sub_head}}</h3>
-          <hr />
-          <p class="newmyp2">{{contdetails?.sub_content_first}}</p>
-          <p class="newmyp2">{{contdetails?.sub_content_second}}</p>
+      <ion-col align-items-center justify-content-center class="mycol22" col-12
+        *ngFor="let contdetails of this.detailscontact,let i = index">
+        <ion-icon name="{{iname[i]}}" class="myion2"></ion-icon>
+        <h3 class="myneh31">{{contdetails?.sub_head}}</h3>
+        <p class="newmyp2">{{contdetails?.sub_content_first}}</p>
+        <p class="newmyp2">{{contdetails?.sub_content_second}}</p>
       </ion-col>
+      <ion-col align-items-center justify-content-center class="mycol22" col-12>
+        <h3 class="myneh31">Have query? Write to us!</h3>
+        <form [formGroup]="submitquery" (ngSubmit)="submityourquery()">
+          <ion-list>
+            <ion-item class="newitem2">
+              <ion-input placeholder="Your Name" type="text" formControlName="name" required></ion-input>
+            </ion-item>
+            <ion-item class="newitem2">
+              <ion-input placeholder="Your Email" type="email" formControlName="email" required></ion-input>
+            </ion-item>
+            <ion-item class="newitem2">
+              <ion-input placeholder="Your Mobile Number" type="number" formControlName="phone" required>
+              </ion-input>
+            </ion-item>
+            <p *ngIf="submitquery.controls['phone'].errors && submitquery.controls['phone'].dirty && submitquery.get('phone').touched"
+              style="color: red">
+              Mobile Number Must Be 10 Characters.
+            </p>
+            <ion-item class="newitem2">
+              <textarea placeholder="Message" formControlName="message" required></textarea>
+            </ion-item>
+            <div>
+              <button [disabled]="!submitquery.valid" ion-button type="submit" class="newbtn11" color="primary"
+                block>Submit</button>
+              <button ion-button type="reset" class="newbtn11" color="primary" block>Reset</button>
+            </div>
+          </ion-list>
+        </form>
+      </ion-col>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29325.16174925493!2d77.412177!3d23.255994000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c428f8fd68fbd%3A0x2155716d572d4f8!2sBhopal%2C+Madhya+Pradesh%2C+India!5e0!3m2!1sen!2sus!4v1550232075218"
+        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     </ion-row>
   </ion-grid>
 </ion-content>

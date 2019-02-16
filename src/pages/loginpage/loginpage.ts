@@ -52,12 +52,14 @@ export class LoginpagePage {
         //console.log(data);
         if (data) {
           this.responseData = data;
-          //console.log(this.responseData.msg.name);
+          //console.log(this.responseData.msg.user_img);
           this.user = this.responseData.msg.name;
           //this.userid = this.responseData.msg.id;
           //window.localStorage.setItem("ID", this.responseData.msg.id);
           this.storage.set("ID", this.responseData.msg.id);
           this.storage.set("NAME", this.responseData.msg.name);
+          this.storage.set("EMAIL2", this.responseData.msg.username);
+          this.storage.set("IMAGE2", this.responseData.msg.user_img);
           if (this.responseData.status === 'success') {
             //console.log(this.responseData);
             //console.log("User Details");
