@@ -5,8 +5,8 @@
     </button>
     <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
     <div class="mydiv2">
-      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"></ion-icon>
-      <ion-icon name="heart" class="myicon22" (click)="wishpage2()"></ion-icon>
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"><ion-badge class="mynewicon11" color="danger">{{cartLength}}</ion-badge></ion-icon>
+      <ion-icon name="heart" class="myicon22" (click)="wishpage2()"><ion-badge class="mynewicon11" color="danger">{{wishLength}}</ion-badge></ion-icon>
       <ion-icon name="search" class="myicon22" (click)="hasSearchnot()"></ion-icon>
     </div>
   </ion-navbar>
@@ -35,7 +35,7 @@
   <ion-grid class="formenu2">
     <ion-row align-items-center class="mymenuicons22">
       <ion-col col-4>
-        <img class="imgsection12" [src]="userpimage ? './assets/imgs/hipster-man.jpg' : 'http://beegoodhoney.in/uploads/user/'+userpimage" />
+        <img class="imgsection12" [src]="profileImage" />
       </ion-col>
       <ion-col class="mycols11" col-8>
         <h1 class="mymenuh2">Welcome {{this.userName1}}</h1>

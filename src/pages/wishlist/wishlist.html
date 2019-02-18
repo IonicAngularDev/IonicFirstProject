@@ -22,4 +22,21 @@
       </button>
     </ion-item>
   </ion-list>
+
+<ion-grid *ngIf="nowishproducts" align-items-center justify-content-center style="height: 100%;">
+    <ion-row align-items-center justify-content-center style="height: 100%;">
+      <ion-col align-self-center col-12 style="text-align: center;">
+        <img src="assets/imgs/noproductimage.png" class="myimgnew11"/>
+        <h1 class="newh1">No Products Found In The Wishlist!!</h1>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+<ion-grid *ngIf="forloginuser2" align-items-center justify-content-center style="height: 100%;">
+  <ion-row align-items-center justify-content-center style="height: 100%;">
+    <ion-col align-self-center col-12 style="text-align: center;">
+      <h1 class="newh1">Please Login For the Wishlist Products</h1>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>

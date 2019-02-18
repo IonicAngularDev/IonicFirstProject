@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Observable, Subject } from 'rxjs';
 
 const CART_KEY = 'cartItems';
 const WISH_KEY = 'wishItems';
 
 @Injectable()
 export class CartProvider {
-
+  subject = new Subject<any>();
+  subjectw = new Subject<any>();
   constructor(public http: HttpClient, public storage: Storage) {
     console.log('Hello CartProvider Provider');
   }
@@ -120,5 +122,19 @@ export class CartProvider {
 
   getWishItems() {
     return this.storage.get(WISH_KEY);
+  }
+
+  public setCart(cart: any) {
+    this.subject.next({ cart: cart });
+  }
+  public getCart(): Observable<any> {
+    return this.subject.asObservable();
+  }
+
+  public setWish(wish: any) {
+    this.subjectw.next({ wish: wish });
+  }
+  public getWish(): Observable<any> {
+    return this.subjectw.asObservable();
   }
 }

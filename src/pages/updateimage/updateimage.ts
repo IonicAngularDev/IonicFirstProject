@@ -84,4 +84,9 @@ export class UpdateimagePage {
     alert.present();
   }
 
+  changeProfileImage2()
+  {
+
+  }
+
 }

@@ -44,50 +44,16 @@
       </button>
     </ion-item>
   </ion-list>
+  
+  <ion-grid *ngIf="nocartproducts" align-items-center justify-content-center style="height: 100%;">
+    <ion-row align-items-center justify-content-center style="height: 100%;">
+      <ion-col align-self-center col-12 style="text-align: center;">
+        <img src="assets/imgs/noproductimage.png" class="myimgnew11"/>
+        <h1 class="newh1">No Products Found In The Cart!!</h1>
+      </ion-col>
+    </ion-row>
+</ion-grid>
 
-  <!-- <article class="product" *ngFor="let itm of cartItems">
-    <header>
-      <a class="remove">
-        <img src="{{itm.image}}">
-      </a>
-    </header>
-
-    <div class="content">
-      <h1>{{itm.name}}</h1>
-    </div>
-
-    <footer class="content-foot">
-      <ion-row class="item-count">
-          <ion-col class="qty">
-              <button (click)="decreaseProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
-                -
-              </button>
-              <button ion-button small clear color="dark" class="mewbtn11">
-                {{itm?.count}}
-              </button>
-              <button (click)="incrementProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
-                +
-              </button>
-          </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="price">
-          ₹{{itm.productPrice * itm.count}}
-       </ion-col>
-       <ion-col class="price">
-        {{itm.discount}}%
-       </ion-col>
-       <ion-col class="price">
-        ₹{{itm.disprice}}
-       </ion-col>
-       <ion-col class="mynewc11">
-         <button (click)="removeItem(itm)" class="mybtn22">
-           Remove
-         </button>
-       </ion-col>
-      </ion-row>
-    </footer>
-  </article> -->
 </ion-content>
 
 <ion-footer class="single-footer" *ngIf="!isEmptyCart" style="bottom: 51px; background-color: #fff;">

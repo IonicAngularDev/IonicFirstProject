@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController, ModalController } from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart';
 import { Storage } from '@ionic/storage';
-import { WishlistPage } from '../wishlist/wishlist';
 import { SingleproductPage } from '../singleproduct/singleproduct';
 import { NotifyproductPage } from '../notifyproduct/notifyproduct';
 
@@ -142,6 +141,8 @@ export class ProductdetailsPage {
     //this.presentToast(productdet.product_name);
 
     this.cartService.addToCart(cartProduct).then((val) => {
+      //console.log(val.length);
+      this.cartService.setCart(val.length);
       this.presentToast(cartProduct.name);
     });
   }
@@ -205,10 +206,12 @@ export class ProductdetailsPage {
       {
         if (!product.onWishlist) {
           this.cartService.addToWishlist(product).then(val => {
+            this.cartService.setWish(val.length);
             this.presentWishToast(product.product_name);
           });
         } else {
           this.cartService.removeFromWish(product).then(val => {
+            this.cartService.setWish(val.length);
             this.presentWishToastRemove(product.product_name);
           });
         }
@@ -271,13 +274,12 @@ export class ProductdetailsPage {
     let toast = this.toastCtrl.create({
       message: `${name} has been added to wishlist`,
       showCloseButton: true,
-      //duration: 2000,
-      closeButtonText: 'View Wishlist',
+      closeButtonText: 'OK',
+      duration: 2000,
       //dismissOnPageChange: true,
     });
 
     toast.onDidDismiss(() => {
-      this.navCtrl.push(WishlistPage);
     });
     toast.present();
     //this.isDisabled = true;

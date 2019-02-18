@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
-import { CartPage } from '../cart/cart';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -11,12 +11,29 @@ import { CartPage } from '../cart/cart';
 export class WishlistPage {
   wishItems: any[] = [];
   isCartItemLoaded: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cartService: CartProvider, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController) {
+  nowishproducts: boolean = false;
+  forloginuser2: boolean;
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private cartService: CartProvider, public loadingCtrl: LoadingController, 
+    private alertCtrl: AlertController, public toastCtrl: ToastController, 
+    private storage: Storage) {
+      this.storage.get("ID").then((val) =>
+      {
+        if(val)
+        {
+          this.loadWishItems();
+          this.forloginuser2 = false;
+        }
+        else
+        {
+          this.forloginuser2 = true;
+        }
+      });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WishlistPage');
-    this.loadWishItems();
+    //this.loadWishItems();
   }
 
   loadWishItems() {
@@ -29,6 +46,13 @@ export class WishlistPage {
       .then(val => {
         this.wishItems = val;
         //console.log(val);
+        //console.log(this.wishItems.length);
+        this.cartService.setWish(this.wishItems.length);
+        if(this.wishItems.length === 0)
+        { 
+        //console.log(this.wishItems.length);
+        this.nowishproducts = true;
+        }
         this.isCartItemLoaded = true;
         loader.dismiss();
       })
@@ -92,11 +116,11 @@ export class WishlistPage {
     let toast = this.toastCtrl.create({
       message: `${name} has been added to cart`,
       showCloseButton: true,
-      closeButtonText: 'View Cart'
+      closeButtonText: 'OK',
+      duration: 2200,
     });
 
     toast.onDidDismiss(() => {
-      this.navCtrl.push(CartPage);
     });
     toast.present();
   }

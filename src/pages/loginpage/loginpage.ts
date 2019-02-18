@@ -26,6 +26,7 @@ export class LoginpagePage {
   userData = {"username": "", "password": ""};
   //users: any;
   user: any;
+  userprofile: any;
   //userid: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public restProvider: RestapiProvider, private formBuilder: FormBuilder, private alertCtrl: AlertController, public events: Events, private storage: Storage) {
@@ -42,6 +43,11 @@ export class LoginpagePage {
     this.events.publish('user:created', user);
   }
 
+  createUserp(prouser) {
+    //console.log('User created!')
+    this.events.publish('userprofile:created', prouser);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginpagePage');
   }
@@ -54,7 +60,7 @@ export class LoginpagePage {
           this.responseData = data;
           //console.log(this.responseData.msg.user_img);
           this.user = this.responseData.msg.name;
-          //this.userid = this.responseData.msg.id;
+          this.userprofile = this.responseData.msg.user_img;
           //window.localStorage.setItem("ID", this.responseData.msg.id);
           this.storage.set("ID", this.responseData.msg.id);
           this.storage.set("NAME", this.responseData.msg.name);
@@ -64,6 +70,7 @@ export class LoginpagePage {
             //console.log(this.responseData);
             //console.log("User Details");
             this.createUser(this.user);
+            this.createUserp(this.userprofile);
             this.navCtrl.push(MyApp);
           }
           else{

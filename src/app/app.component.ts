@@ -16,10 +16,12 @@ import { CartPage } from './../pages/cart/cart';
 import { SingleproductPage } from './../pages/singleproduct/singleproduct';
 import { RestapiProvider } from '../providers/restapi/restapi';
 import { WishlistPage } from './../pages/wishlist/wishlist';
+import { CartProvider } from "../providers/cart/cart";
 
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   //@ViewChild(NavController) navctrl: NavController;
@@ -32,12 +34,16 @@ export class MyApp {
   searchproduct: any = [];
   finalproductsearch: any;
   HasSearch: boolean;
+  profileImage = './assets/imgs/hipster-man.jpg';
   userpimage;
+  cartLength: number = 0;
+  wishLength: number = 0;
   pages: Array<{title: string, component: any, name2: string}>;
   pages1: Array<{title1: string, component: any, name1: string}>;
   constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen, public events: Events,
-    private storage: Storage, public restProvider: RestapiProvider) {
+    private storage: Storage, public restProvider: RestapiProvider, 
+    private cartService: CartProvider) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -62,6 +68,10 @@ export class MyApp {
       this.menuclick = false;
  });
 
+ this.events.subscribe('userprofile:created', (data) => {
+  this.userpimage = data;
+});
+
  this.storage.get("NAME").then((val) =>
       {
         if(val)
@@ -76,14 +86,23 @@ export class MyApp {
       {
         if(val2)
         {
-         this.userpimage = val2;
-         //console.log(val2);
+          this.userpimage = val2;
+          //console.log(this.userpimage);
+          this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
         }
       });
+  
+      this.cartService.getCart().subscribe(data => {
+        //console.log(data.cart);
+        this.cartLength = data.cart;
+      });    
 
-  this.getsearchproducts();
+      this.cartService.getWish().subscribe(data => {
+        //console.log(data.wish);
+        this.wishLength = data.wish;
+      }); 
 
-
+      this.getsearchproducts();
   }
 
   initializeApp() {
@@ -125,6 +144,7 @@ export class MyApp {
     this.storage.remove("IMAGE2").then(() => {
       this.nav.setRoot(FrontPage);
     });
+    this.profileImage = './assets/imgs/hipster-man.jpg';
   }
 
   aboutpage2()
