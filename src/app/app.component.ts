@@ -70,6 +70,7 @@ export class MyApp {
 
  this.events.subscribe('userprofile:created', (data) => {
   this.userpimage = data;
+  this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
 });
 
  this.storage.get("NAME").then((val) =>

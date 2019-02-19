@@ -63,6 +63,7 @@ export class CartPage {
         { 
         //console.log(this.cartItems.length);
         this.nocartproducts = true;
+        this.isEmptyCart = true;
         }
         //console.log(this.cartItems);
         //console.log(this.cartItems.length);

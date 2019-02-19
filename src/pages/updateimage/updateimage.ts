@@ -86,7 +86,7 @@ export class UpdateimagePage {
 
   changeProfileImage2()
   {
-
+   
   }
 
 }

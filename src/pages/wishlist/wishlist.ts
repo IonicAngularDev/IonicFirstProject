@@ -27,6 +27,7 @@ export class WishlistPage {
         else
         {
           this.forloginuser2 = true;
+          this.cartService.setWish(0);
         }
       });
   }
