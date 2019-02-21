@@ -98,10 +98,26 @@ export class MyApp {
         this.cartLength = data.cart;
       });    
 
+      this.storage.get("CARTNU").then((valca) =>
+      {
+        if(valca)
+        {
+		      this.cartLength = valca;
+        }
+      });
+
       this.cartService.getWish().subscribe(data => {
         //console.log(data.wish);
         this.wishLength = data.wish;
       }); 
+
+      this.storage.get("WISHNU").then((valwi) =>
+      {
+        if(valwi)
+        {
+		      this.wishLength = valwi;
+        }
+      });
 
       this.getsearchproducts();
   }
@@ -143,8 +159,13 @@ export class MyApp {
     });
 
     this.storage.remove("IMAGE2").then(() => {
-      this.nav.setRoot(FrontPage);
+      //this.nav.setRoot(FrontPage);
     });
+    
+    this.storage.remove("WISHNU").then(() => {
+      this.wishLength = 0;
+    });
+
     this.profileImage = './assets/imgs/hipster-man.jpg';
   }
 

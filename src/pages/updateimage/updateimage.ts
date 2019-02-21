@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { Storage } from '@ionic/storage';
@@ -17,13 +17,17 @@ export class UpdateimagePage {
   imageUrl;
   converted_image;
   responseEdit: any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private formBuilder: FormBuilder, public restProvider: RestapiProvider,
-    private storage: Storage, private alertCtrl: AlertController) {
+    private storage: Storage, private alertCtrl: AlertController, 
+    public events: Events) {
       this.updateprofileimg = this.formBuilder.group({
         img_upload: ['', Validators.required],
       });
   }
+
+  // const fileTransfer: FileTransferObject = this.transfer.create();
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UpdateimagePage');
@@ -61,6 +65,7 @@ export class UpdateimagePage {
             this.responseEdit = data;
             //console.log(this.responseEdit.msg);
             if (this.responseEdit.status === 'success') {
+              //this.events.publish('userprofile:created', this.converted_image);
               this.presentAlert(this.responseEdit.msg);
             }
           }
@@ -86,7 +91,26 @@ export class UpdateimagePage {
 
   changeProfileImage2()
   {
-   
+    
+  // fileTransfer.upload(this.fileChooser.open()
+  // .then(uri => 
+  //   this.filePath.resolveNativePath(uri)
+  //   .then(filePath => console.log(filePath))
+  //   .catch(err => console.log(err))
+  // ).catch(e => console.log(e))).then(
+  //   this.restProvider.updateprofileimg(fd, 'update_profilepic/'+val).subscribe((data) => {
+  //     //console.log(data);
+  //     if (data) {
+  //       this.responseEdit = data;
+  //       //console.log(this.responseEdit.msg);
+  //       if (this.responseEdit.status === 'success') {
+  //         //this.events.publish('userprofile:created', this.converted_image);
+  //         this.presentAlert(this.responseEdit.msg);
+  //       }
+  //     }
+  //   })
+  // ).catch(e => console.log(e));
+
   }
 
 }

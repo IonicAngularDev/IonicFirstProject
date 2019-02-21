@@ -95,12 +95,14 @@ export class WishlistPage {
       name: itm.product_name,
       image: itm.image,
       count: itm.count,
+      max_quantity: itm.max_quantity,
       disprice: itm.product_price,
       discountp: itm.discount,
       productPrice: parseInt(itm.product_actual_price),
       totalPrice: productPrice,
     };
      this.cartService.addToCart(cartProduct).then((val) => {
+      this.cartService.setCart(val.length);
       this.presentToast(cartProduct.name);
     });
     this.removeWishItem2(itm);

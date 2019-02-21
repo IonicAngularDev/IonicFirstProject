@@ -13,9 +13,11 @@
       <p>
         Discounted Price: ₹{{itm.product_actual_price}}
       </p>
-
-      <button class="btnmy22" ion-button clear (click)="WishItemToCart(itm)">
+      <button *ngIf="itm.out_of_stock == 0"  class="btnmy22" ion-button clear (click)="WishItemToCart(itm)">
         Move To Cart
+      </button>
+      <button *ngIf="itm.out_of_stock == 1" class="btnmy22" ion-button clear disabled>
+        Out Of Stock
       </button>
       <button ion-button icon-only clear item-end (click)="removeWishItem(itm)">
         <ion-icon class="mycaicon11" name="ios-trash-outline"></ion-icon>

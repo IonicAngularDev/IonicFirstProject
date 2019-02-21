@@ -126,6 +126,7 @@ export class CartProvider {
 
   public setCart(cart: any) {
     this.subject.next({ cart: cart });
+    this.storage.set("CARTNU", cart);
   }
   public getCart(): Observable<any> {
     return this.subject.asObservable();
@@ -133,6 +134,7 @@ export class CartProvider {
 
   public setWish(wish: any) {
     this.subjectw.next({ wish: wish });
+    this.storage.set("WISHNU", wish);
   }
   public getWish(): Observable<any> {
     return this.subjectw.asObservable();

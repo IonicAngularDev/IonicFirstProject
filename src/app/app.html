@@ -5,8 +5,8 @@
     </button>
     <div class="mydiv1"><img src="assets/imgs/logo3.png" class="slide-image11" /></div>
     <div class="mydiv2">
-      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"><ion-badge class="mynewicon11" color="danger">{{cartLength}}</ion-badge></ion-icon>
-      <ion-icon name="heart" class="myicon22" (click)="wishpage2()"><ion-badge class="mynewicon11" color="danger">{{wishLength}}</ion-badge></ion-icon>
+      <ion-icon name="cart" class="myicon22" (click)="cardpage2()"><ion-badge *ngIf="cartLength != 0" class="mynewicon11" color="danger">{{cartLength}}</ion-badge></ion-icon>
+      <ion-icon name="heart" class="myicon22" (click)="wishpage2()"><ion-badge *ngIf="wishLength != 0" class="mynewicon11" color="danger">{{wishLength}}</ion-badge></ion-icon>
       <ion-icon name="search" class="myicon22" (click)="hasSearchnot()"></ion-icon>
     </div>
   </ion-navbar>
@@ -83,7 +83,7 @@
           <ion-icon (click)="gallerypage2()" name="images" class="myicons22"></ion-icon>
         </ion-col>
         <ion-col class="mycol33">
-          <ion-icon (click)="contactpage2()" name="contacts" class="myicons22"></ion-icon>
+          <ion-icon (click)="contactpage2()" name="at" class="myicons22"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>

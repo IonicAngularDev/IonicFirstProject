@@ -9,8 +9,9 @@
         <p class="newmyp2">{{contdetails?.sub_content_second}}</p>
       </ion-col>
       <ion-col align-items-center justify-content-center class="mycol22" col-12>
-        <h3 class="myneh31">Have query? Write to us!</h3>
-        <form [formGroup]="submitquery" (ngSubmit)="submityourquery()">
+        <h3 class="myneh31">Have Query? Write To Us!</h3>
+        <hr />
+        <form class="myneform22" [formGroup]="submitquery" (ngSubmit)="submityourquery()">
           <ion-list>
             <ion-item class="newitem2">
               <ion-input placeholder="Your Name" type="text" formControlName="name" required></ion-input>

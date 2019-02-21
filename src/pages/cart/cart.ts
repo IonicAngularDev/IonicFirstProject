@@ -2,7 +2,6 @@ import { CheckoutPage } from './../checkout/checkout';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events, ToastController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
-import { Storage } from '@ionic/storage';
 import { SingleproductPage } from '../singleproduct/singleproduct';
 @IonicPage()
 @Component({
@@ -19,8 +18,8 @@ export class CartPage {
  nocartproducts: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private cartService: CartProvider, public loadingCtrl: LoadingController,
-    private alertCtrl: AlertController, public events: Events,
-    private storage: Storage, public toastCtrl: ToastController) {
+    private alertCtrl: AlertController, public events: Events, 
+    public toastCtrl: ToastController) {
   }
 
   createWishUser(pwish) {
@@ -59,6 +58,7 @@ export class CartPage {
       .getCartItems()
       .then(val => {
         this.cartItems = val;
+        //console.log(this.cartItems);
         if(this.cartItems.length === 0)
         { 
         //console.log(this.cartItems.length);
@@ -68,7 +68,7 @@ export class CartPage {
         //console.log(this.cartItems);
         //console.log(this.cartItems.length);
         this.createWishUser(this.cartItems.length);
-        this.storage.set("ITEMSLength", this.cartItems.length);
+        //this.storage.set("ITEMSLength", this.cartItems.length);
         this.cartService.setCart(this.cartItems.length);
         if (this.cartItems.length > 0) {
           this.isEmptyCart = false;
