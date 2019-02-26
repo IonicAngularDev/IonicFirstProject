@@ -4,6 +4,7 @@ import { CartProvider } from '../../providers/cart/cart';
 import { Storage } from '@ionic/storage';
 import { SingleproductPage } from '../singleproduct/singleproduct';
 import { NotifyproductPage } from '../notifyproduct/notifyproduct';
+import { RestapiProvider } from '../../providers/restapi/restapi';
 
 @IonicPage()
 @Component({
@@ -30,11 +31,14 @@ export class ProductdetailsPage {
   uemail2: string;
   //onWishlist:boolean = true;
   hassize:boolean = true;
+  responseEdit: any;
+  userpro: any;
+  uproducts: any;
   public isDisabled: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams,
   private cartService: CartProvider, public toastCtrl: ToastController,
   private storage: Storage, private alertCtrl: AlertController, 
-  public modalCtrl: ModalController) {
+  public modalCtrl: ModalController, public restProvider: RestapiProvider) {
     this.detailsp = this.navParams.get('productdet');
     // this.pdeta.forEach(product => product.count = 1);
     this.pdeta = this.detailsp.msg;
@@ -121,7 +125,7 @@ export class ProductdetailsPage {
   }
 
   addToCart(detailsp) {
-    //console.log(detailsp);
+    console.log(detailsp);
     var productPrice = this.productCount * parseInt(detailsp.product_actual_price);
     let cartProduct = {
       product_id: detailsp.id,
@@ -143,13 +147,99 @@ export class ProductdetailsPage {
     this.cartService.addToCart(cartProduct).then((val) => {
       //console.log(val.length);
       this.cartService.setCart(val.length);
-      this.presentToast(cartProduct.name);
+      //this.presentToast(cartProduct.name);
     });
+
   }
 
+addtocartnew(detailsp)
+{
+this.storage.get("ID").then((val) =>
+    {
+      if(val)
+      { 
+        if(detailsp.SelectedSize)
+        {
+          let usercartnewdetails = {
+            user_id: val,
+            product_id: detailsp.id,
+            size: detailsp.SelectedSize,
+          };
+          this.restProvider.usercartproducts(usercartnewdetails, 'user_cart/'+detailsp.id+'/'+val+'/'+detailsp.SelectedSize).subscribe((data) => {
+            //console.log(data);
+            if (data) {
+              console.log("One");
+              this.restProvider.getusercartproducts(val)
+              .then(data => {
+             this.userpro = data;
+             this.uproducts = this.userpro.msg.ucart_products
+             //console.log(this.userpro.msg.ucart_products);
+             //console.log(this.userpro.msg.total_cart_products);
+             //console.log(this.userpro.msg.total_amt);
+             this.cartService.setCart(this.userpro.msg.total_cart_products);
+	           });
+              this.responseEdit = data;
+              console.log(this.responseEdit.msg);
+              if (this.responseEdit.status === 'success') {
+                this.presentToast(detailsp.product_name);
+              }
+              else{
+                this.presentToasterror();
+              }
+            }
+          });
+        }
+        else
+        {
+          let usercartnewdetails = {
+            user_id: val,
+            product_id: detailsp.id,
+          };
+          this.restProvider.usercartproducts(usercartnewdetails, 'user_cart/'+detailsp.id+'/'+val).subscribe((data) => {
+            //console.log(data);
+            if (data) {
+              console.log("Two");
+              this.restProvider.getusercartproducts(val)
+              .then(data => {
+             this.userpro = data;
+             this.uproducts = this.userpro.msg.ucart_products
+             //console.log(this.userpro.msg.ucart_products);
+             //console.log(this.userpro.msg.total_cart_products);
+             //console.log(this.userpro.msg.total_amt);
+             this.cartService.setCart(this.userpro.msg.total_cart_products);
+	           });
+              this.responseEdit = data;
+              console.log(this.responseEdit.msg);
+              if (this.responseEdit.status === 'success') {
+                this.presentToast(detailsp.product_name);
+              }
+              else{
+                this.presentToasterror();
+              }
+            }
+          });
+        }
+      }
+    });
+}
+   
   presentToast(name: any) {
     let toast = this.toastCtrl.create({
       message: `${name} has been added to cart`,
+      showCloseButton: true,
+      closeButtonText: 'OK',
+      duration: 1500,
+    });
+
+    toast.onDidDismiss(() => {
+      //this.navCtrl.push(CartPage);
+    });
+    toast.present();
+  }
+
+  presentToasterror() {
+    let toast = this.toastCtrl.create({
+      message: `Product Cannot added to cart. Limit Exceeded.`,
       showCloseButton: true,
       closeButtonText: 'OK',
       duration: 1500,

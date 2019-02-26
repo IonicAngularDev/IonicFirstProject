@@ -55,7 +55,7 @@ export class MyordersPage {
 
              for(var k in this.m)
              {
-              //console.log(this.m[k].order_no);
+              console.log(this.m[k].order_no);
               this.ordernum = this.m[k].order_no;
               this.order_id = this.m[k].id;
              }
@@ -77,9 +77,11 @@ export class MyordersPage {
       loader.dismiss();
   }
 
- orderform()
+ orderform($oid,$upid)
  {
-  let profileModal = this.modalCtrl.create(CancelorderPage, {orderno: this.ordernum, orderid: this.order_id});
+  console.log($oid);
+  console.log($upid);
+  let profileModal = this.modalCtrl.create(CancelorderPage, {orderno: $oid, orderid: $upid});
   profileModal.onDidDismiss(() => {
   });
   profileModal.present();

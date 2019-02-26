@@ -37,6 +37,8 @@ import { CancelorderPage } from './../pages/cancelorder/cancelorder';
 import { ChangepasswordPage } from './../pages/changepassword/changepassword';
 import { UpdateimagePage } from './../pages/updateimage/updateimage';
 import { NotifyproductPage } from './../pages/notifyproduct/notifyproduct';
+// import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+import { PayPal } from '@ionic-native/paypal';
 
 @NgModule({
   declarations: [
@@ -112,6 +114,7 @@ import { NotifyproductPage } from './../pages/notifyproduct/notifyproduct';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestapiProvider,
+    PayPal,
     CartProvider
   ]
 })

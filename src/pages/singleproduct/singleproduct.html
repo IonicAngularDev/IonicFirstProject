@@ -11,12 +11,36 @@
       </ion-slide>
   </ion-slides>
   <h2>{{detailsp.product_name || detailsp.name}}</h2>
+  <ion-col *ngIf="nosize" style="padding: 0px;">
+    <ion-select placeholder="Select Size" [(ngModel)]="detailsp.SelectedSize">
+      <ion-option *ngFor="let psize of detailsp.product_size" value="{{psize.size}}">{{psize.size}}</ion-option>
+    </ion-select>
+  </ion-col>
   <!-- <p>MRP: ₹{{detailsp.product_price}}</p> -->
   <p [ngStyle]="(detailsp.discountp || detailsp.discount) === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">MRP: ₹{{detailsp.product_price || detailsp.disprice}}</p>
   <p>Discount: {{detailsp.discount || detailsp.discountp}}%</p>
   <p>Discount Price: ₹{{detailsp.product_actual_price || detailsp.disprice}}</p>
   <p><strong>Product Description: </strong>{{detailsp.product_details || detailsp.ditailspro}}</p>
-  <button class="mybtn11" (click)="addToCart(detailsp)" ion-button small>
+  <!-- <button  class="mybtn11" (click)="addToCart(detailsp)" ion-button small>
       Add to Cart
-  </button>
+  </button> -->
+  <ion-col *ngIf="hassizenot && detailsp.out_of_stock == 0" style="padding: 0px;">
+    <button class="mybtn11" (click)="addToCart(detailsp)" ion-button small>
+      Add to Cart
+    </button>
+  </ion-col>
+
+  <ion-col *ngIf="hassize && detailsp.out_of_stock == 0" style="padding: 0px;">
+    <button [disabled]="!detailsp.SelectedSize" class="mybtn11" (click)="addToCart(detailsp)" ion-button small>
+      Add to Cart
+    </button>
+  </ion-col>
+  <ion-col *ngIf="detailsp.out_of_stock == 1" style="padding: 0px;">
+    <!-- <button disabled class="mybtn11" ion-button small>
+      Out Of Stock
+    </button> -->
+    <button class="mybtn11" ion-button small disabled>
+      Notify Me
+    </button>
+  </ion-col>
 </ion-content>

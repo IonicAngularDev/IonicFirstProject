@@ -66,6 +66,7 @@ export class UpdateimagePage {
             //console.log(this.responseEdit.msg);
             if (this.responseEdit.status === 'success') {
               //this.events.publish('userprofile:created', this.converted_image);
+              this.events.publish('userprofile:created', this.imageUrl);
               this.presentAlert(this.responseEdit.msg);
             }
           }

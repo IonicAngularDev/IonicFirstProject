@@ -36,7 +36,8 @@ export class RestapiProvider {
   apiUrl15 = apiUrl+'get_state_cities/';
   apiUrl16 = apiUrl+'get_address/';
   apiUrl20 = apiUrl+'remove_address/';
-
+  apiUrl22 = apiUrl+'shopping_cart/';
+  apiUrl31 = apiUrl+'RemovecartProduct/';
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
     //this.token = "";
@@ -450,6 +451,90 @@ submitnotifyproductform(credentials, type) {
 
   //console.log(credentials);
   //console.log(type);
+  let v = new FormData();
+  for(var k in credentials)v.append(k,credentials[k]);
+  return this.http.post(apiUrl + type, v, {headers: headers});
+}
+
+sendpaymentdetails(credentials, type) {
+  var headers = new HttpHeaders();
+  headers.append('Access-Control-Allow-Origin' , '*');
+  headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+  headers.append('Accept','application/json');
+  headers.append('Content-Type','application/json');
+  headers.append('Access-Control-Allow-Credentials','true');
+  headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+  console.log(credentials);
+  console.log(type);
+  let v = new FormData();
+  for(var k in credentials)v.append(k,credentials[k]);
+  return this.http.post(apiUrl + type, credentials, {headers: headers});
+}
+
+usercartproducts(credentials, type) {
+  var headers = new HttpHeaders();
+  headers.append('Access-Control-Allow-Origin' , '*');
+  headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+  headers.append('Accept','application/json');
+  headers.append('Content-Type','application/x-www-form-urlencoded');
+  headers.append('Access-Control-Allow-Credentials','true');
+  headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+  console.log(credentials);
+  console.log(type);
+  let v = new FormData();
+  for(var k in credentials)v.append(k,credentials[k]);
+  return this.http.post(apiUrl + type, v, {headers: headers});
+}
+
+getusercartproducts($upid)
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl22+$upid, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+
+ removeuserproduct($ruid)
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl31+$ruid, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
+
+ updatecartproductsquan(credentials, type) {
+  var headers = new HttpHeaders();
+  headers.append('Access-Control-Allow-Origin' , '*');
+  headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+  headers.append('Accept','application/json');
+  headers.append('Content-Type','application/x-www-form-urlencoded');
+  headers.append('Access-Control-Allow-Credentials','true');
+  headers.append('Access-Control-Allow-Headers','Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+  console.log(credentials);
+  console.log(type);
   let v = new FormData();
   for(var k in credentials)v.append(k,credentials[k]);
   return this.http.post(apiUrl + type, v, {headers: headers});

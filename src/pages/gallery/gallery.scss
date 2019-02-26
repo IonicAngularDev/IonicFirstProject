@@ -11,5 +11,8 @@ page-gallery {
     object-fit: fill;
     height: 100%;
     width: auto !important;
-	}
+  }
+  ion-navbar .bar-button-default {
+    color: black;
+  }
 }

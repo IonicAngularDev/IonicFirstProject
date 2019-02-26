@@ -38,6 +38,9 @@ export class GalleryPage {
       this.galleryimages = this.imggallery.msg;
       //console.log(this.galleryimages);
       });
-    loader.dismiss();
+    //loader.dismiss();
+    setTimeout(() => {
+      loader.dismiss();
+    }, 1100);
   }
 }

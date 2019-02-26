@@ -1,6 +1,6 @@
 <ion-content padding>
 <ion-row align-items-center justify-content-center class="mynewr11">
- <ion-col align-items-center justify-content-center *ngFor="let product of this.pdeta" col-5 class="mynewcol22">
+ <ion-col align-items-center justify-content-center *ngFor="let product of this.pdeta" col-12 col-md-6 col-xl-3 class="mynewcol22">
   <div (click)="showDetails(product)">
   <img class="myimg11" src="{{product.image}}" />
   <p>{{ product.product_name }}</p>
@@ -14,7 +14,7 @@
   <p><strong>Discount Price:</strong> ₹{{ product.product_actual_price * product?.count }}</p>
   <!-- <p>Company Name: {{ product.product_company }}</p> -->
   </div>
-  <ion-col class="qty">
+  <!-- <ion-col class="qty">
     <button (click)="decreaseProductCount(product)" clear ion-button small color="dark" class="mynewbtn11">
       -
     </button>
@@ -24,7 +24,7 @@
     <button (click)="incrementProductCount(product)" clear ion-button small color="dark" class="mynewbtn11">
       +
     </button>
-</ion-col>
+</ion-col> -->
 
 <!-- <button *ngFor="let psize of product.product_size" (click)="toggleOnSize(psize)" [ngClass]="psize.onSize ? 'mynewbtn22' : 'newbtn11' " ion-button small>
   {{ psize.size }}
@@ -40,13 +40,13 @@
   </button> -->
 
   <ion-col *ngIf="hassizenot && product.out_of_stock == 0" style="padding: 0px;">
-      <button class="mybtn11" (click)="addToCart(product)" ion-button small>
+      <button class="mybtn11" (click)="addtocartnew(product)" ion-button small>
         Add to Cart
       </button>
   </ion-col>
 
   <ion-col *ngIf="hassize && product.out_of_stock == 0" style="padding: 0px;">
-      <button [disabled]="!product.SelectedSize" class="mybtn11" (click)="addToCart(product)" ion-button small>
+      <button [disabled]="!product.SelectedSize" class="mybtn11" (click)="addtocartnew(product)" ion-button small>
         Add to Cart
       </button>
   </ion-col>

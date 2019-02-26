@@ -40,7 +40,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="addCart">
-        <button class="myaddto22" [disabled]="!RadioValue" full ion-button round="true">
+        <button class="myaddto22" [disabled]="!RadioValue" (click)="makepaymentp()" full ion-button round="true">
           Make Payment
         </button>
       </ion-col>

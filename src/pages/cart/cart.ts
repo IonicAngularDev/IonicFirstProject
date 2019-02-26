@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events, ToastController } from 'ionic-angular';
 import { CartProvider } from "../../providers/cart/cart";
 import { SingleproductPage } from '../singleproduct/singleproduct';
+import { RestapiProvider } from '../../providers/restapi/restapi';
+import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-cart',
@@ -15,11 +17,54 @@ export class CartPage {
  isEmptyCart: boolean = true;
  ifSize: boolean = true;
  productCount: number = 1;
- nocartproducts: boolean = false;
+ userpro: any;
+ uproducts: any;
+ totalAmountnew: number = 0;
+ responseEdit: any;
+ nocartproducts: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private cartService: CartProvider, public loadingCtrl: LoadingController,
     private alertCtrl: AlertController, public events: Events, 
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController, public restProvider: RestapiProvider, 
+    private storage: Storage) {
+      this.storage.get("ID").then((val) =>
+    {
+      if(val)
+      { 
+	      this.getuserproducts(val);
+	    }
+	}); 
+
+  }
+  
+  getuserproducts($upid)
+  {
+    let loader = this.loadingCtrl.create({
+      content: "Wait.."
+    });
+    loader.present();
+    this.restProvider.getusercartproducts($upid)
+      .then(data => {
+      this.userpro = data;
+      this.uproducts = this.userpro.msg.ucart_products
+      //this.pcatg = this.categories.msg.cat;
+      console.log(this.userpro.msg.ucart_products);
+      console.log(this.userpro.msg.total_cart_products);
+      console.log(this.userpro.msg.total_amt);
+      this.cartService.setCart(this.userpro.msg.total_cart_products);
+      this.totalAmountnew = this.userpro.msg.total_amt;
+      if(this.userpro.msg.total_cart_products > 0)
+        { 
+        //console.log(this.cartItems.length);
+        this.nocartproducts = false;
+        this.isEmptyCart = false;
+        }
+
+      });
+      //loader.dismiss();
+      setTimeout(() => {
+        loader.dismiss();
+      }, 1100);
   }
 
   createWishUser(pwish) {
@@ -50,32 +95,32 @@ export class CartPage {
   }
 
   loadCartItems() {
-    let loader = this.loadingCtrl.create({
-      content: "Wait.."
-    });
-    loader.present();
+    // let loader = this.loadingCtrl.create({
+    //   content: "Wait.."
+    // });
+    // loader.present();
     this.cartService
       .getCartItems()
       .then(val => {
         this.cartItems = val;
         //console.log(this.cartItems);
-        if(this.cartItems.length === 0)
-        { 
-        //console.log(this.cartItems.length);
-        this.nocartproducts = true;
-        this.isEmptyCart = true;
-        }
+        // if(this.cartItems.length === 0)
+        // { 
+        // //console.log(this.cartItems.length);
+        // this.nocartproducts = true;
+        // this.isEmptyCart = true;
+        // }
         //console.log(this.cartItems);
         //console.log(this.cartItems.length);
         this.createWishUser(this.cartItems.length);
         //this.storage.set("ITEMSLength", this.cartItems.length);
         this.cartService.setCart(this.cartItems.length);
         if (this.cartItems.length > 0) {
-          this.isEmptyCart = false;
+          //this.isEmptyCart = false;
           this.recalculateTotalAmount();
         }
         this.isCartItemLoaded = true;
-        loader.dismiss();
+        //loader.dismiss();
       })
       .catch(err => {});
   }
@@ -100,9 +145,16 @@ export class CartPage {
           text: 'Yes',
           handler: () => {
             //console.log(itm.product_id);
-            this.cartService.removeFromCart(itm).then(() => {
-              this.loadCartItems();
+            this.restProvider.removeuserproduct(itm).then(() => {
+              this.storage.get("ID").then((val) =>
+              {
+                if(val)
+                { 
+                  this.getuserproducts(val);
+                }
+            }); 
             });
+            
             //console.log('Buy clicked');
           }
         }
@@ -113,7 +165,7 @@ export class CartPage {
   checkpage()
   {
     this.navCtrl.push(CheckoutPage, {
-      totalprice: this.totalAmount,
+      totalprice: this.totalAmountnew,
     });
   }
 
@@ -126,21 +178,64 @@ export class CartPage {
 }
 
   decreaseProductCount(itm) {
-    if (itm.count > 1) {
-      itm.count--;
-      this.recalculateTotalAmount();
+    if (itm.quantity > 1) {
+      itm.quantity--;
+      this.storage.get("ID").then((val) =>
+    {
+      if(val)
+      { 
+          console.log(itm.quantity);
+          let usercartquantitydetails = {
+            user_id: val,
+            product_id: itm.product_id,
+            quantity: itm.quantity,
+          };
+          this.restProvider.updatecartproductsquan(usercartquantitydetails, 'updateProductQuantity/'+val).subscribe((data) => {
+            //console.log(data);
+            if (data) {
+              console.log("Quantity");
+              this.navCtrl.setRoot(CartPage);
+              this.responseEdit = data;
+              console.log(this.responseEdit.msg);
+            }
+          });
+      }
+    });
+      //this.recalculateTotalAmount();
     }
   }
 
   incrementProductCount(itm) {
-    if(itm.max_quantity > itm.count)
+    console.log(itm);
+    if(itm.max_quantity > itm.quantity)
     {
-     itm.count++;
-     this.recalculateTotalAmount();
+     itm.quantity++;
+     //this.recalculateTotalAmount();
+     this.storage.get("ID").then((val) =>
+    {
+      if(val)
+      { 
+          console.log(itm.quantity);
+          let usercartquantitydetails = {
+            user_id: val,
+            product_id: itm.product_id,
+            quantity: itm.quantity,
+          };
+          this.restProvider.updatecartproductsquan(usercartquantitydetails, 'updateProductQuantity/'+val).subscribe((data) => {
+            //console.log(data);
+            if (data) {
+              console.log("Quantity");
+              this.navCtrl.setRoot(CartPage);
+              this.responseEdit = data;
+              console.log(this.responseEdit.msg);
+            }
+          });
+      }
+    });
     }
     else
     {
-      itm.count = itm.max_quantity;
+      itm.quantity = itm.max_quantity;
       this.presentMaxToast2();
     }
   }

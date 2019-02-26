@@ -68,11 +68,6 @@ export class MyApp {
       this.menuclick = false;
  });
 
- this.events.subscribe('userprofile:created', (data) => {
-  this.userpimage = data;
-  this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
-});
-
  this.storage.get("NAME").then((val) =>
       {
         if(val)
@@ -91,6 +86,13 @@ export class MyApp {
           //console.log(this.userpimage);
           this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
         }
+      });
+
+      this.events.subscribe('userprofile:created', (data) => {
+        this.userpimage = data;
+        this.profileImage = this.userpimage;
+         //this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
+        //this.storage.set("IMAGE2", this.profileImage);
       });
   
       this.cartService.getCart().subscribe(data => {
@@ -164,6 +166,11 @@ export class MyApp {
     
     this.storage.remove("WISHNU").then(() => {
       this.wishLength = 0;
+    });
+
+    this.storage.remove("CARTNU").then(() => {
+      //this.wishLength = 0;
+      this.cartService.setCart(0);
     });
 
     this.profileImage = './assets/imgs/hipster-man.jpg';

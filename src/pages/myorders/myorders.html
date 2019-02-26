@@ -8,6 +8,7 @@
                 <ion-card-title>Order No: {{myorder.order_no}}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
+                <!-- <p>{{myorder.id}}</p> -->
                 <p>Payment Mode: {{myorder.payment_mode | uppercase}}</p>
                 <p>Order Date: {{myorder.order_date | date}}</p>
                 <p>Quantity: {{myorder.quantity}}</p>
@@ -19,7 +20,7 @@
                 <h4>Order Status:</h4>
                 <p>{{myorder.order_status | uppercase}}</p>
                 <!-- <button *ngIf="myorder.order_status === 'cancel'" ion-button class="cancel2" square>Cancelled</button> -->
-                <button *ngIf="myorder.order_status === 'confirm'" ion-button (click)="orderform()" color="danger" square>Cancel Order</button>
+                <button *ngIf="myorder.order_status === 'confirm'" ion-button (click)="orderform(myorder.order_no,myorder.id)" color="danger" square>Cancel Order</button>
               </ion-card-content>
           </ion-card>
       </ion-col>
