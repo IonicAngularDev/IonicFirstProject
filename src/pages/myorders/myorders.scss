@@ -73,4 +73,7 @@ ion-content.newbg11 {
   ion-card-content {
     padding: 6px 16px 22px !important;
   }
+  ion-card:last-child {
+    margin-bottom: 60px !important;
+}
 }

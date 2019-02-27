@@ -47,10 +47,10 @@
 
   <ion-list *ngFor="let itm of this.uproducts" class="myitem11">
     <ion-item>
-      <ion-thumbnail item-start>
-        <img src="{{itm.image_fullPath || 'http://beegoodhoney.in/uploads/products/'+itm.pimage['0']?.pro_images}}" />
+      <ion-thumbnail (click)="showDetails(itm)" item-start>
+        <img src="{{itm.image}}" />
       </ion-thumbnail>
-      <h2>{{itm.product_name}}</h2>
+      <h2 (click)="showDetails(itm)">{{itm.product_name}}</h2>
       <!-- <h2 (click)="showDetails(itm)">{{itm.ditailspro}}</h2> -->
       <p>
         Actual Price:

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, LoadingController
 import { Storage } from '@ionic/storage';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { CancelorderPage } from './../cancelorder/cancelorder';
+import { OrderdetailsPage } from './../orderdetails/orderdetails';
 /**
  * Generated class for the MyordersPage page.
  *
@@ -21,6 +22,7 @@ export class MyordersPage {
   userhasorder: boolean = false;
   newuserid: any;
   userord: any;
+  userorddet: any;
   m: any = [];
   ordernum: any = [];
   order_id: any = [];
@@ -48,20 +50,21 @@ export class MyordersPage {
         this.restProvider.getorderdetails(val)
            .then(data => {
             this.userord = data;
-            //console.log(this.userord.msg);
-            for(var i in this.userord.msg)
-            {
-             this.m = this.userord.msg[i].order;
+            console.log(this.userord.msg);
+            this.m = this.userord.msg;
+            // for(var i in this.userord.msg)
+            // {
+            //  this.m = this.userord.msg[i].order;
+            //  console.log(this.m);
+            //  for(var k in this.m)
+            //  {
+            //   console.log(this.m[k].order_no);
+            //   this.ordernum = this.m[k].order_no;
+            //   this.order_id = this.m[k].id;
+            //  }
+            // }
 
-             for(var k in this.m)
-             {
-              console.log(this.m[k].order_no);
-              this.ordernum = this.m[k].order_no;
-              this.order_id = this.m[k].id;
-             }
-            }
-
-            if(this.userord.msg['0'].order.length != 0)
+            if(this.userord.msg.length != 0)
             {
               //console.log(0);
               this.userhasorder = true;
@@ -86,4 +89,27 @@ export class MyordersPage {
   });
   profileModal.present();
  }
+
+ orderdetailsnew($ouid)
+ {
+     console.log("Order Details");
+     this.storage.get("ID").then((val) =>
+     {
+         if(val)
+        {
+         this.newuserid = val;
+         this.restProvider.getorderdetailsnew($ouid,val)
+            .then(data => {
+             this.userorddet = data;
+             console.log(this.userorddet.msg);
+             this.navCtrl.push(OrderdetailsPage,
+              {
+                orderdetilspro: this.userorddet
+              });
+             //this.m = this.userord.msg;
+            });
+        }
+     });
+ }
+
 }

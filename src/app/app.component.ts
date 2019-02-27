@@ -90,8 +90,15 @@ export class MyApp {
 
       this.events.subscribe('userprofile:created', (data) => {
         this.userpimage = data;
+        //this.profileImage = this.userpimage;
+        this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
+        //this.storage.set("IMAGE2", this.profileImage);
+      });
+
+      this.events.subscribe('userprofileup:created', (data) => {
+        this.userpimage = data;
         this.profileImage = this.userpimage;
-         //this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
+        //this.profileImage = `http://beegoodhoney.in/uploads/user/${this.userpimage}`;
         //this.storage.set("IMAGE2", this.profileImage);
       });
   

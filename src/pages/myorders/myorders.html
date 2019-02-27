@@ -5,7 +5,7 @@
           <h1 class="newh1">Order Details:</h1>
           <ion-card *ngFor="let myorder of this.m">
               <ion-card-header>
-                <ion-card-title>Order No: {{myorder.order_no}}</ion-card-title>
+                <ion-card-title>Order No: <span (click)="orderdetailsnew(myorder.id)" style="text-decoration: underline;">{{myorder.order_no}}</span></ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <!-- <p>{{myorder.id}}</p> -->
@@ -16,7 +16,8 @@
                 <p>Total Price: ₹{{myorder.price}}</p>
                 <p>Discount: {{myorder.discount}}%</p>
                 <p>Delivery Charge: ₹{{myorder.delivery_charge}}</p>
-                <p>Amount Payed: ₹{{myorder.grand_total}}</p>
+                <p>Amount Paid: ₹{{myorder.grand_total}}</p>
+                <p>Transaction No: {{myorder.transaction_no}}</p>
                 <h4>Order Status:</h4>
                 <p>{{myorder.order_status | uppercase}}</p>
                 <!-- <button *ngIf="myorder.order_status === 'cancel'" ion-button class="cancel2" square>Cancelled</button> -->

@@ -46,7 +46,8 @@ export class CartPage {
     this.restProvider.getusercartproducts($upid)
       .then(data => {
       this.userpro = data;
-      this.uproducts = this.userpro.msg.ucart_products
+      this.uproducts = this.userpro.msg.ucart_products;
+      console.log(this.uproducts);
       //this.pcatg = this.categories.msg.cat;
       console.log(this.userpro.msg.ucart_products);
       console.log(this.userpro.msg.total_cart_products);
@@ -87,7 +88,7 @@ export class CartPage {
 
   showDetails(detailsp)
   {
-     //console.log(detailsp);
+     console.log(detailsp);
      this.navCtrl.push(SingleproductPage,
       {
         product: detailsp

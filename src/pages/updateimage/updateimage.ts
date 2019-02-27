@@ -32,6 +32,11 @@ export class UpdateimagePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UpdateimagePage');
   }
+  
+  createUserpro(prouserup) {
+    //console.log('User created!')
+    this.events.publish('userprofileup:created', prouserup);
+  }
 
   onImageSelected(event) {
     this.selectedImage = event.target.files[0];
@@ -66,7 +71,8 @@ export class UpdateimagePage {
             //console.log(this.responseEdit.msg);
             if (this.responseEdit.status === 'success') {
               //this.events.publish('userprofile:created', this.converted_image);
-              this.events.publish('userprofile:created', this.imageUrl);
+              //this.events.publish('userprofileup:created', this.imageUrl);
+              this.createUserpro(this.imageUrl);
               this.presentAlert(this.responseEdit.msg);
             }
           }

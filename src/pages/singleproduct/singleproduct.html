@@ -1,5 +1,5 @@
 <ion-content padding>
-  <img class="myimg11" src="{{detailsp.image}}" />
+  <img class="myimg11" src="{{detailsp.image || detailsp.image_fullPath}}" />
   <ion-slides *ngIf="detailsp.images != null" loop="true" paginationType="dots" pager>
       <ion-slide *ngFor="let slide of detailsp.images || detailsp.pimage; let i = index ;" >
           <img [src]="'http://beegoodhoney.in/uploads/products/'+slide.pro_images">

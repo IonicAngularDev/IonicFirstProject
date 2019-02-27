@@ -154,6 +154,7 @@ export class ProductdetailsPage {
 
 addtocartnew(detailsp)
 {
+  console.log(detailsp);
 this.storage.get("ID").then((val) =>
     {
       if(val)

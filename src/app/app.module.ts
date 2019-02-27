@@ -37,6 +37,7 @@ import { CancelorderPage } from './../pages/cancelorder/cancelorder';
 import { ChangepasswordPage } from './../pages/changepassword/changepassword';
 import { UpdateimagePage } from './../pages/updateimage/updateimage';
 import { NotifyproductPage } from './../pages/notifyproduct/notifyproduct';
+import { OrderdetailsPage } from './../pages/orderdetails/orderdetails';
 // import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { PayPal } from '@ionic-native/paypal';
 
@@ -67,7 +68,8 @@ import { PayPal } from '@ionic-native/paypal';
     CancelorderPage,
     ChangepasswordPage,
     UpdateimagePage,
-    NotifyproductPage
+    NotifyproductPage,
+    OrderdetailsPage
     //FootCardComponent
   ],
   imports: [
@@ -107,7 +109,8 @@ import { PayPal } from '@ionic-native/paypal';
     CancelorderPage,
     ChangepasswordPage,
     UpdateimagePage,
-    NotifyproductPage
+    NotifyproductPage,
+    OrderdetailsPage
   ],
   providers: [
     StatusBar,

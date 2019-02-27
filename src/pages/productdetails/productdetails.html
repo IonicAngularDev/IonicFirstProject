@@ -1,6 +1,6 @@
 <ion-content padding>
 <ion-row align-items-center justify-content-center class="mynewr11">
- <ion-col align-items-center justify-content-center *ngFor="let product of this.pdeta" col-12 col-md-6 col-xl-3 class="mynewcol22">
+ <ion-col align-items-center justify-content-center *ngFor="let product of this.pdeta" col-5 class="mynewcol22">
   <div (click)="showDetails(product)">
   <img class="myimg11" src="{{product.image}}" />
   <p>{{ product.product_name }}</p>
@@ -71,11 +71,39 @@
   </button> -->
 
   <!-- <button ion-button icon-only *ngIf="!product.onWishlist" (click)="toggleOnWishlist1(product.id)"><ion-icon name="heart-outline"></ion-icon></button> -->
-
-
  </ion-col>
-
 </ion-row>
+
+    <!-- <ion-list *ngFor="let product of this.pdeta" class="myitem11">
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="{{product.image}}" />
+            </ion-thumbnail>
+            <h2>{{product.product_name}}</h2>
+            <p><strong>Actual Price:</strong>
+              <span [ngStyle]="product.discount === '0' ? {'text-decoration':'none'} : {'text-decoration':'line-through'}">
+                ₹{{product.product_price * product?.count}}
+              </span>
+            </p>
+            <p><strong>Discount:</strong> {{product.discount}}%</p>
+            <p><strong>Discount Price:</strong> ₹{{ product.product_actual_price * product?.count }}</p>
+            <ion-col *ngIf="nosize" style="padding: 0px;">
+                <ion-select placeholder="Select Size" [(ngModel)]="product.SelectedSize">
+                  <ion-option *ngFor="let psize of product.product_size" value="{{psize.size}}">{{psize.size}}</ion-option>
+                </ion-select>
+            </ion-col>
+            <ion-col *ngIf="hassizenot && product.out_of_stock == 0" style="padding: 0px;">
+                <button class="mybtn11" (click)="addtocartnew(product)" ion-button small>
+                  Add to Cart
+                </button>
+            </ion-col>
+            <ion-col *ngIf="hassize && product.out_of_stock == 0" style="padding: 0px;">
+                <button [disabled]="!product.SelectedSize" class="mybtn11" (click)="addtocartnew(product)" ion-button small>
+                  Add to Cart
+                </button>
+            </ion-col>
+        </ion-item>
+    </ion-list>	 -->
 
 <ion-grid *ngIf="noproducts" align-items-center justify-content-center style="height: 100%;">
       <ion-row align-items-center justify-content-center style="height: 100%;">

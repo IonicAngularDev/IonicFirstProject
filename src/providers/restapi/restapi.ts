@@ -38,6 +38,8 @@ export class RestapiProvider {
   apiUrl20 = apiUrl+'remove_address/';
   apiUrl22 = apiUrl+'shopping_cart/';
   apiUrl31 = apiUrl+'RemovecartProduct/';
+  apiUrl33 = apiUrl+'OrderDetail/';
+  apiUrl34 = apiUrl+'OrderDetailById/';
   constructor(public http: HttpClient) {
     console.log('Hello RestapiProvider Provider');
     //this.token = "";
@@ -116,7 +118,7 @@ getregisterpassword(credentials, type) {
       headers.append('Accept','application/json');
       headers.append('content-type','application/json');
 
-    this.http.get(this.apiUrl7+$oid, {headers: headers}).subscribe(data => {
+    this.http.get(this.apiUrl33+$oid, {headers: headers}).subscribe(data => {
       resolve(data);},
     err => {
     console.log(err);
@@ -539,5 +541,23 @@ getusercartproducts($upid)
   for(var k in credentials)v.append(k,credentials[k]);
   return this.http.post(apiUrl + type, v, {headers: headers});
 }
+
+getorderdetailsnew($roid, $usid)
+  {
+    return new Promise(resolve => {
+
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+      headers.append('Accept','application/json');
+      headers.append('content-type','application/json');
+
+    this.http.get(this.apiUrl34+$roid+'/'+$usid, {headers: headers}).subscribe((data: Response) => {
+      resolve(data);},
+    err => {
+    console.log(err);
+    });
+    });
+ }
 
 }
